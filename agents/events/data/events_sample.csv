@@ -1,0 +1,6 @@
+id,title,category,date,lat,lng,expected_footfall,description
+1,KLE Tech Fest 2024,college_fest,2024-02-10,15.8530,74.5010,5000,Annual technology festival with robotics competitions and hackathons
+2,Belagavi Food & Culture Fair,cultural,2024-02-12,15.8497,74.4977,1200,Local food stalls and cultural performances celebrating Karnataka heritage
+3,Inter-College Hackathon,academic,2024-02-15,15.8545,74.5020,800,24-hour coding competition open to all engineering students
+4,Sports Meet 2024,sports,2024-02-20,15.8510,74.4990,2000,Inter-college athletics and team sports competition
+5,Career Fair,professional,2024-02-25,15.8497,74.4977,3000,Industry professionals meet students for internship and job opportunities
