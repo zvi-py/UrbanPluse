@@ -1,0 +1,9 @@
+# Event Agent Phase 2 Dependencies
+# Add these to the root requirements.txt if needed
+beautifulsoup4>=4.12.0
+feedparser>=6.0.11
+icalendar>=5.0.12
+pyyaml>=6.0.1
+joblib>=1.4.0
+rapidfuzz>=3.8.0
+

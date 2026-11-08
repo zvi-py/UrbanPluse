@@ -1,0 +1,13 @@
+{
+  "ngram_range": [
+    1,
+    1
+  ],
+  "sublinear_tf": true,
+  "min_df": 1,
+  "max_df": 0.95,
+  "w_sim": 0.7,
+  "w_prox": 0.2,
+  "w_time": 0.1,
+  "best_ndcg_10": 0.7549
+}

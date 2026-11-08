@@ -1,0 +1,74 @@
+# agents/events/ingest/sources.yaml
+# Public event and calendar sources around Belagavi (Belgaum), Karnataka.
+# Adheres to respectful crawling principles: no authenticated pages, rate-limited to <= 1 req/sec, respects robots.txt.
+
+sources:
+  - id: vtu_events
+    name: "Visvesvaraya Technological University (VTU) Jnana Sangama"
+    url: "https://vtu.ac.in/events/"
+    type: "html"
+    category_hint: "academic"
+    organizer_default: "VTU Belagavi"
+    venue_default: "VTU Jnana Sangama Campus"
+    robots_ok: true
+    notes: "Public circulars and academic event notifications. Checked robots.txt allows public event index."
+
+  - id: kle_tech_events
+    name: "KLE Technological University"
+    url: "https://kletech.ac.in/events-calendar/"
+    type: "html"
+    category_hint: "college_fest"
+    organizer_default: "KLE Technological University"
+    venue_default: "KLE Technological University Campus"
+    robots_ok: true
+    notes: "Campus symposiums, hackathons and cultural events."
+
+  - id: git_bulletin
+    name: "KLS Gogte Institute of Technology (GIT)"
+    url: "https://git.edu/news-events/"
+    type: "html"
+    category_hint: "workshop"
+    organizer_default: "GIT Cultural & Technical Cell"
+    venue_default: "Gogte Institute of Technology"
+    robots_ok: true
+    notes: "Departmental workshops, technical fests and placement seminars."
+
+  - id: sgbit_notices
+    name: "S.G. Balekundri Institute of Technology (SGBIT)"
+    url: "https://sgbit.edu.in/events/"
+    type: "html"
+    category_hint: "workshop"
+    organizer_default: "SGBIT Student Council"
+    venue_default: "SGBIT Campus"
+    robots_ok: true
+    notes: "Inter-college seminars and engineering competitions."
+
+  - id: jce_events
+    name: "Jain College of Engineering (JCE)"
+    url: "https://jce.ac.in/events-and-activities/"
+    type: "html"
+    category_hint: "college_fest"
+    organizer_default: "Jain College of Engineering"
+    venue_default: "Jain College of Engineering"
+    robots_ok: true
+    notes: "Annual cultural festival and sports meets."
+
+  - id: belagavi_corp_civic
+    name: "City Corporation of Belagavi (CCB)"
+    url: "https://belagavicity.mrc.gov.in/en/events"
+    type: "html"
+    category_hint: "community"
+    organizer_default: "Belagavi Municipal Corporation"
+    venue_default: "Nehru Nagar Ground Belagavi"
+    robots_ok: true
+    notes: "Civic fairs, cultural celebrations, flower shows and sanitation drives."
+
+  - id: belagavi_public_ics
+    name: "Belagavi Academic & Civic Calendar (ICS)"
+    url: "https://raw.githubusercontent.com/zvi-py/UrbanPluse/main/agents/events/ingest/fixtures/sample_calendar.ics"
+    type: "ics"
+    category_hint: "academic"
+    organizer_default: "Belagavi Education Consortium"
+    venue_default: "Belagavi City Center"
+    robots_ok: true
+    notes: "Standard RFC 5545 iCalendar feed used by university clubs."

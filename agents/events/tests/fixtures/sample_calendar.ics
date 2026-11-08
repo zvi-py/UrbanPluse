@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//UrbanPulse Belagavi//Test Feed//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ics-test-001@urbanpulse.belagavi
+DTSTAMP:20261108T100000Z
+DTSTART:20261122T043000Z
+DTEND:20261122T113000Z
+SUMMARY:Belagavi Fort Heritage Walk & Cleanliness Drive
+DESCRIPTION:Morning student heritage exploration around Belagavi Fort and Kamal Basti followed by community lake conservation.
+LOCATION:Belagavi Fort Heritage Zone
+ORGANIZER:Belagavi Heritage Society
+URL:https://belagavi.heritage.org/walk
+END:VEVENT
+BEGIN:VEVENT
+UID:ics-test-002@urbanpulse.belagavi
+DTSTAMP:20261108T100000Z
+DTSTART:20261124T050000Z
+DTEND:20261124T120000Z
+SUMMARY:KLE University Open Medical & Health Camp
+DESCRIPTION:Free health checkup, dental screening, and blood donation camp organized by JNMC medical interns.
+LOCATION:KLE Hospital & JNMC
+ORGANIZER:KLE Medical Interns
+URL:https://jnmc.edu/health-camp
+END:VEVENT
+END:VCALENDAR

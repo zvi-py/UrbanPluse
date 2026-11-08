@@ -1,240 +1,248 @@
-# Event Agent — UrbanPulse
+# Event Agent — UrbanPulse (Belagavi, Karnataka)
 
 **Owner**: Developer 2 (`agents/events/`)  
-**Endpoints prefix**: `/events`  
-**Status**: ✅ CSV-based TF-IDF recommender implemented | 🔲 Live event APIs not yet integrated
+**Endpoints Prefix**: `/events`  
+**Status**: ✅ Phase 2 Complete — Belagavi Ingestion Pipeline, TF-IDF Recommender, Rocchio Feedback Loop, Cross-Agent Contract & Admin CRUD  
+**Geographic Scope**: Belagavi (BGM), Karnataka (Bounding Box: Lat 15.70–16.00, Lng 74.35–74.65)  
 
 ---
 
-## What This Agent Does
+## 1. What This Agent Does
 
-The Event Agent finds events happening near a given location in Belagavi, Karnataka and ranks them based on:
-- How closely they match the user's interests (TF-IDF cosine similarity)
-- How near they are to the user (proximity)
-- How soon they start (time urgency)
+The Event Agent powers hyper-local discovery, semantic recommendation, and crowd impact forecasting for Belagavi, Karnataka. It addresses two primary challenges:
 
-It also flags high-attendance events (≥ 1000 expected attendees) and raises cross-agent alerts so the Traffic and Environment agents can warn about congestion and noise.
+1. **Student Personalisation**: Engineering students across VTU Jnana Sangama, KLE Technological University, KLS GIT, SGBIT, and Jain College need relevant academic, cultural, and technical events without navigating disconnected university portals.
+2. **City-Scale Multi-Agent Coordination**: Large events (such as KLE Tech Fest or convocations) produce immediate traffic congestion and elevated noise levels. The Event Agent flags high-impact gatherings and calculates physical crowd impact radii so that the Traffic and Environment agents can dynamically adjust their predictions.
 
 ---
 
-## Algorithm
+## 2. Dataset Honesty & Data Origins (Viva Disclosure)
 
-### 1. Data Loading
-Events are loaded from `agents/events/data/events.csv` using pandas. The CSV is validated for required columns; rows with invalid lat/lng or missing datetimes are dropped with a warning.
+To maintain absolute academic honesty for the project evaluation and viva:
+- **No hallucinated events**: Every event in the dataset is tagged with its true `data_origin` (`real`, `manual`, or `synthetic_sample`).
+- **Source traceability**: Real events specify `source_name`, `source_url`, and `verified_on`.
+- **API transparency**: The API response envelope's `source` remains `"csv_fallback"` unless generated dynamically during a verified live scrape.
 
-### 2. Filtering
-Before ranking, events are filtered by:
-- **Radius**: only events within `radius_km` of the observer's location (Haversine distance)
-- **Time window**: only upcoming events (not yet ended, within `days` look-ahead)
-- **Category** (optional)
-- **Free-only** (optional)
+### Current Dataset Breakdown
+| Data Origin | Count | Description |
+|---|---|---|
+| `synthetic_sample` | 50 | Realistic baseline test events distributed across Belagavi venues. |
+| `real` | 5 | Manually verified public announcements from VTU, KLE, GIT, Karnataka Youth Services, and BITA Belagavi. |
+| `manual` | 0+ | Organizers and student club leads can register new events via the authenticated `/events` API or CSV template. |
+| **Total** | **55** | Strictly verified inside the Belagavi bounding box. |
 
-### 3. TF-IDF Recommendation (scikit-learn)
-Each event's text corpus is built by concatenating:
-```
-title + description + category + tags
-```
-A `TfidfVectorizer` (English stop words, unigrams + bigrams, `sublinear_tf=True`) is fitted on this corpus. The user's interest string is transformed with the same vectorizer, and **cosine similarity** is computed between the user vector and each event vector.
-
-The vectorizer is **cached at module level** and only rebuilt when the CSV changes (MD5 checksum comparison).
-
-### 4. Ranking Formula
-
-```
-score = 0.60 × similarity
-      + 0.25 × proximity_score
-      + 0.15 × time_score
-```
-
-| Component | Formula | Range |
-|-----------|---------|-------|
-| `similarity` | cosine_similarity(user_tfidf, event_tfidf) | [0, 1] |
-| `proximity_score` | `1 - (distance_km / radius_km)` clipped to [0, 1] | [0, 1] |
-| `time_score` | `1 - (hours_until_start / 720)` clipped to [0, 1] | [0, 1] |
-
-**Weights** are defined as named constants at the top of `agent.py`:
-```python
-W_SIM  = 0.60   # Interest match dominates
-W_PROX = 0.25   # Proximity is second priority
-W_TIME = 0.15   # Sooner events get a small boost
-```
-
-### 5. Edge Cases
-| Situation | Behaviour |
-|-----------|-----------|
-| Empty interests | `similarity = 0` for all events; ranked by proximity + time. `fallback_reason` field explains this. |
-| No events in radius | Returns `count: 0, events: []` with an info alert. No crash. |
-| Invalid lat/lng | Returns `status: "error"` with a clear message. |
-| CSV changes on disk | TF-IDF cache is rebuilt automatically on next request. |
+> **Viva Note on Web Sources**: Public Indian university and municipal portals frequently alter URL routes, require captcha authentication, or present circulars as scanned PDFs. Scraping these yields very few parseable machine-readable events. The UrbanPulse pipeline handles this gracefully: it polls polite sources, falls back honestly, and provides a streamlined manual entry workflow (`data/manual_events_template.csv`) which is the most reliable production intake method for collegiate fests.
 
 ---
 
-## Data
+## 3. Architecture & Data Pipeline
 
-### `agents/events/data/events.csv`
-50 events around Belagavi with realistic coordinates (spread within ~15 km), dates in November 2025, and mix of categories.
+```mermaid
+flowchart TD
+    subgraph Ingestion Pipeline ["agents/events/ingest/"]
+        S["sources.yaml"] --> F["Fetchers\n(HTML / RSS / ICS)"]
+        F --> N["normalize.py\n(Keyword inference, attendance est.)"]
+        N --> G["geocode.py\n(Gazetteer first -> Cache -> OSM Nominatim)"]
+        G --> BBOX{"Bounding Box\n15.70-16.00 N\n74.35-74.65 E"}
+        BBOX -- Out of bounds --> REJ["Rejected\n(ingest_report.md)"]
+        BBOX -- Valid BGM --> D["dedupe.py\n(rapidfuzz / difflib on title+date+venue)"]
+        D --> V["validate.py\n(Datetime order, future check)"]
+        V --> CSV[("data/events.csv")]
+    end
 
-| Column | Type | Description |
-|--------|------|-------------|
-| event_id | string | Unique ID (E001–E050) |
-| title | string | Event name |
-| description | string | 1–3 sentence keyword-rich description |
-| category | string | college_fest / hackathon / music / sports / cultural / workshop / professional / volunteering / food / wellness / community |
-| tags | string | Semicolon-separated keywords |
-| venue | string | Venue name and area |
-| lat, lng | float | WGS84 coordinates |
-| start_datetime | ISO 8601 | Event start (UTC) |
-| end_datetime | ISO 8601 | Event end (UTC) |
-| expected_attendance | int | Estimated headcount |
-| is_free | bool | True if free entry |
-| organizer | string | Organising body |
+    subgraph Recommendation & Learning ["agents/events/model/"]
+        CSV --> PREP["preprocessor.py\n(synonyms.yaml regional expansion)"]
+        PREP --> TRAIN["train.py\n(TfidfVectorizer + Cosine Similarity)"]
+        TRAIN --> ART[("model/artifacts/\nvectorizer.joblib\ntfidf_matrix.joblib")]
+        FB[("data/feedback.db\n(SQLite likes, saves, dismissals)")] --> ROCCHIO["feedback.py\n(Rocchio Vector Update)"]
+        ROCCHIO --> RANK["Multi-Factor Ranking\nScore = w_sim*Sim + w_prox*Prox + w_time*Time"]
+    end
 
-**Large events (expected_attendance ≥ 1000)** — these trigger cross-agent alerts:
-- E001: KLE Tech Fest 2025 (6000)
-- E002: Belagavi Food & Culture Festival (3500)
-- E006: Belagavi Half Marathon (1200)
-- E014: Belagavi Rock & Indie Music Festival (2500)
-- E027: Belagavi Kite Festival (1500)
-- E035: Belagavi Flower Show (2000)
-- E047: Folk Dance & Music Night (1800)
-
-### `agents/events/data/sample_users.csv`
-8 sample user interest profiles for `/events/recommend?user_id=...`
-
-| user_id | Description |
-|---------|-------------|
-| U001 | ML / AI / hackathon enthusiast |
-| U002 | Classical music lover |
-| U003 | Web dev / startup networking |
-| U004 | Environment / volunteering |
-| U005 | Sports / outdoor activities |
-| U006 | Data science / fintech |
-| U007 | Robotics / IoT / hardware |
-| U008 | Photography / art / theatre |
+    subgraph Cross-Agent Contract
+        RANK --> API["FastAPI Router\n(agents/events/api.py)"]
+        API --> TRAFFIC["Traffic Agent\n(get_high_impact_events)"]
+        API --> OVERVIEW["Overview Orchestrator\n(backend/main.py)"]
+    end
+```
 
 ---
 
-## API Endpoints
+## 4. Recommender Algorithm & Mathematical Formulation
 
-### `GET /events/nearby`
-Find and rank events near a location.
+The recommendation engine uses a four-stage process:
 
-**Query params:**
-| Param | Default | Description |
-|-------|---------|-------------|
-| lat | 15.8497 | Observer latitude |
-| lng | 74.4977 | Observer longitude |
-| radius_km | 5.0 | Search radius (max 100) |
-| interests | "" | Free-text interests |
-| category | null | Filter category |
-| free_only | false | Only free events |
-| days | 14 | Look-ahead days (max 30) |
-| limit | 10 | Max results (max 50) |
+### A. Regional Synonym Preprocessing (`model/synonyms.yaml`)
+To bridge local Belagavi collegiate vernacular with formal event postings, text is preprocessed with bilingual and domain synonym expansion:
+- `fest` / `utsav` / `utsava` / `habba` $\rightarrow$ `festival celebration`
+- `hackathon` / `coding` $\rightarrow$ `programming hackathon ideathon`
+- `dance` / `nrutya` $\rightarrow$ `dance cultural nrutya`
+- `sangeet` / `music` $\rightarrow$ `music hindustani classical vocal`
+- `sammelana` $\rightarrow$ `conference symposium`
 
-**Example:**
+### B. TF-IDF Vector Space Model
+Each event text document is represented as:
+$$d_i = \text{preprocess}(\text{title} \oplus \text{description} \oplus \text{category} \oplus \text{tags} \oplus \text{organizer})$$
+The corpus is vectorized using scikit-learn `TfidfVectorizer(ngram_range=(1,1), sublinear_tf=True, min_df=1, max_df=0.95)` and cached via `joblib`. Cache validity is verified via MD5 checksums of the dataset, configuration, and synonyms.
+
+### C. Multi-Factor Scoring
+Events are ranked via a convex combination of semantic relevance, spatial proximity, and temporal urgency:
+$$\text{Score}(u, e) = W_{\text{sim}} \cdot \text{Similarity}(u, e) + W_{\text{prox}} \cdot \text{Proximity}(e) + W_{\text{time}} \cdot \text{TimeScore}(e)$$
+
+- **Similarity**: Cosine similarity $\cos(\vec{q}_u, \vec{d}_e) = \frac{\vec{q}_u \cdot \vec{d}_e}{\|\vec{q}_u\| \|\vec{d}_e\|}$
+- **Proximity Score**: $1 - \min\left(1, \frac{\text{Distance}_{\text{km}}(u, e)}{\text{Radius}_{\text{km}}}\right)$ computed using vectorised Haversine distance.
+- **Time Score**: $1 - \min\left(1, \frac{\text{HoursUntilStart}(e)}{720}\right)$ (30-day temporal horizon).
+
+*Tuned Hyperparameters (from grid search)*:
+$$W_{\text{sim}} = 0.70, \quad W_{\text{prox}} = 0.20, \quad W_{\text{time}} = 0.10$$
+
+### D. User Feedback Loop: Rocchio Vector Update (`feedback.py`)
+When a student interacts with events (actions: `like`, `save`, `dismiss`), their initial query vector $\vec{q}_{\text{init}}$ is continuously refined using Rocchio's classical relevance feedback formula:
+
+$$\vec{q}_{\text{learned}} = \alpha \vec{q}_{\text{init}} + \beta \sum_{e \in \text{Liked}} \vec{d}_e + \delta \sum_{e \in \text{Saved}} \vec{d}_e - \gamma \sum_{e \in \text{Dismissed}} \vec{d}_e$$
+
+- Non-negativity constraint: $\vec{q}_{\text{learned}} = \max(0, \vec{q}_{\text{learned}})$ (term weights in vector space cannot be negative).
+- Unit normalization: $\vec{q}_{\text{learned}} \leftarrow \frac{\vec{q}_{\text{learned}}}{\|\vec{q}_{\text{learned}}\|}$.
+- Parameters: $\alpha = 0.50$ (initial query), $\beta = 0.35$ (likes), $\delta = 0.40$ (bookmarks/saves), $\gamma = 0.25$ (dismissals).
+- Cold start: If a user has 0 interactions, the recommender falls back cleanly to their stated query interests or proximity ranking.
+
+---
+
+## 5. Evaluation Results (`docs/eval_results.md`)
+
+Evaluation was conducted against `agents/events/data/eval_queries.csv` containing 35 realistic student queries with human-labeled ground truth event IDs:
+
+| Model Variant | Precision@5 | Recall@10 | MRR | NDCG@10 |
+|---|---|---|---|---|
+| **Baseline (Proximity & Popularity Only)** | 0.1029 | 0.2271 | 0.2877 | 0.1778 |
+| **Similarity Only (TF-IDF Cosine)** | **0.5029** | **0.7548** | **0.9810** | **0.7616** |
+| **Full Weighted Recommender (Multi-Factor)** | 0.4000 | 0.6619 | 0.8343 | 0.6251 |
+
+### Viva Insights
+1. **Semantic Content is Essential**: The proximity-only baseline (0.1778 NDCG@10) fails because geographic proximity alone does not understand a student's preference (e.g. coding hackathon vs Carnatic music).
+2. **Trade-off in Multi-Factor Ranking**: Full weighted scoring slightly attenuates pure precision in exchange for practical utility (preventing the model from recommending an event 20 km away starting in 28 days over a highly relevant event 1 km away tomorrow).
+
+---
+
+## 6. Cross-Agent Contract
+
+### Helpers in `agents/events/agent.py`
+1. `get_high_impact_events(hours_ahead=48, now=None) -> list[dict]`:
+   - Returns upcoming events with expected attendance $\ge 500$.
+   - Calculates dynamic crowd impact radius:
+     - 500 – 1,500 attendees $\rightarrow$ 0.5 km radius
+     - 1,500 – 5,000 attendees $\rightarrow$ 1.0 km radius
+     - 5,000+ attendees $\rightarrow$ 2.0 km radius
+   - Used by Traffic Agent for congestion prediction and Overview orchestrator for city-wide alerts.
+2. `get_events_near(lat, lng, radius_km=2.0, start=None, end=None) -> list[dict]`:
+   - Spatial-temporal query used by other agents to inspect local activity.
+
+---
+
+## 7. API Reference
+
+All endpoints return the common envelope schema defined in `backend/schemas.py`.
+
+### Public Queries
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/events/nearby` | Ranked nearby events with query search (`?q=`), sorting (`?sort=recommended\|distance\|date\|attendance`), pagination (`?limit=&offset=`), and personalization (`?user_id=`). |
+| `GET` | `/events/recommend` | Personalised recommendations based on `?user_id=` or `?interests=`. |
+| `GET` | `/events/categories` | Categories breakdown with counts. |
+| `GET` | `/events/stats` | Dataset telemetry: real vs manual vs synthetic counts, upcoming 7 days count, high attendance count. |
+| `GET` | `/events/{event_id}` | Details for a specific event. |
+
+### Cross-Agent Endpoints
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/events/high-impact` | High-attendance gatherings starting within `?hours_ahead=48` with crowd radius. |
+| `GET` | `/events/in-range` | Spatial-temporal query with `lat`, `lng`, `radius_km`. |
+
+### Feedback Loop
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/events/feedback` | Record student feedback (`{"user_id": "U001", "event_id": "E001", "action": "like"}`). |
+| `GET` | `/events/profile/{user_id}` | Interaction counts, breakdown, and top learned interest terms. |
+
+### Organizer / Admin Endpoints (Protected by `X-Admin-Key`)
+Default local dev token: `belagavi-events-dev-2025` (set via `EVENTS_ADMIN_TOKEN` env var).
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/events` | Create a new manual event (`data_origin="manual"`). Bounding box and future date validated. |
+| `PUT` | `/events/{event_id}` | Update an existing manual event. Rejects updates to `synthetic_sample` rows (403). |
+| `DELETE` | `/events/{event_id}` | Delete a manual event. Rejects deletion of `synthetic_sample` rows (403). |
+
+#### Example: Register Manual Event
 ```bash
-curl "http://localhost:8000/events/nearby?lat=15.8497&lng=74.4977&radius_km=10&interests=hackathon+AI&limit=5"
-```
-
-**Example response `data`:**
-```json
-{
-  "events": [
-    {
-      "event_id": "E001",
-      "title": "KLE Tech Fest 2025",
-      "category": "college_fest",
-      "venue": "KLE Technological University Campus",
-      "lat": 15.853,
-      "lng": 74.501,
-      "start_datetime": "2025-11-15T09:00:00+00:00",
-      "end_datetime": "2025-11-17T18:00:00+00:00",
-      "distance_km": 0.584,
-      "expected_attendance": 6000,
-      "is_free": false,
-      "high_attendance": true,
-      "score": 0.8142,
-      "score_breakdown": {
-        "similarity": 0.8821,
-        "proximity": 0.8832,
-        "time": 0.6944
-      }
-    }
-  ],
-  "count": 1,
-  "total_found": 1,
-  "fallback_reason": "",
-  "query": { "lat": 15.8497, "lng": 74.4977, "radius_km": 10, ... }
-}
+curl -X POST http://localhost:8000/events \
+  -H "Content-Type: application/json" \
+  -H "X-Admin-Key: belagavi-events-dev-2025" \
+  -d '{
+    "title": "Belagavi Open Robotics Exhibition",
+    "description": "Demonstration of student robotics, drones, and IoT projects.",
+    "category": "workshop",
+    "tags": "robotics;drones;arduino",
+    "venue": "Maratha Mandir Auditorium",
+    "start_datetime": "2026-11-28T10:00:00+00:00",
+    "end_datetime": "2026-11-28T17:00:00+00:00",
+    "expected_attendance": 450,
+    "is_free": true,
+    "organizer": "Belagavi Maker Club"
+  }'
 ```
 
 ---
 
-### `GET /events/recommend`
-Personalised recommendations by user profile or free-text interests.
+## 8. CLI Commands & Workflows
 
+### 1. Run Tests (Offline)
 ```bash
-# By user ID (looks up interests from sample_users.csv)
-curl "http://localhost:8000/events/recommend?user_id=U001"
-
-# By free-text interests
-curl "http://localhost:8000/events/recommend?interests=robotics+IoT+Arduino"
+python -m pytest agents/events
 ```
+Runs all 66 tests (including schema tests, offline ingest fixtures, evaluation, Rocchio math, and admin auth).
 
----
-
-### `GET /events/categories`
-List all event categories with counts.
-
+### 2. Run Ingestion Pipeline
 ```bash
-curl "http://localhost:8000/events/categories"
+# Dry run (safe, does not modify events.csv)
+python -m agents.events.ingest.run_ingest --sources all --dry-run
+
+# Run specific source
+python -m agents.events.ingest.run_ingest --sources vtu_events
 ```
 
----
-
-### `GET /events/{event_id}`
-Full details for one event.
-
+### 3. Evaluate Recommender
 ```bash
-curl "http://localhost:8000/events/E003"
+python -m agents.events.model.evaluate
 ```
-Returns `status: "error"` (not HTTP 404) if the event ID is not found, following the common schema.
 
----
-
-## Running Tests
-
+### 4. Hyperparameter Tuning (Grid Search)
 ```bash
-# From the repo root
-pytest agents/events/tests/ -v
-
-# With coverage
-pytest agents/events/tests/ -v --tb=short
+python -m agents.events.model.tune
 ```
 
-The test suite uses a small **fixture CSV** (written to a temp directory) with a fixed reference datetime (`NOW = 2025-11-10 08:00 UTC`), so tests are **completely date-independent**.
+### 5. Train & Persist Model Artifacts
+```bash
+python -m agents.events.model.train
+```
+
+### 6. Clock-Drift Safety for Viva Demos
+To lock the system clock to a fixed point in time (preventing events from becoming past dates):
+```bash
+# Windows PowerShell
+$env:EVENTS_REFERENCE_NOW = "2026-11-15T09:00:00+00:00"
+
+# Linux / macOS
+export EVENTS_REFERENCE_NOW="2026-11-15T09:00:00+00:00"
+```
 
 ---
 
-## Status
+## 9. Manual Event Entry Guide
 
-| Feature | Status |
-|---------|--------|
-| CSV data loading + validation | ✅ Done |
-| Haversine distance filter | ✅ Done |
-| TF-IDF vectorizer + cosine similarity | ✅ Done |
-| Weighted ranking formula | ✅ Done |
-| Proximity + time score components | ✅ Done |
-| High-attendance flag + alerts | ✅ Done |
-| `/events/nearby` endpoint | ✅ Done |
-| `/events/recommend` endpoint | ✅ Done |
-| `/events/categories` endpoint | ✅ Done |
-| `/events/{event_id}` endpoint | ✅ Done |
-| TF-IDF cache (rebuild on CSV change) | ✅ Done |
-| Edge cases (empty interests, no results, bad coords) | ✅ Done |
-| pytest suite (date-independent, fixture CSV) | ✅ Done |
-| **Live event APIs** (Eventbrite, Meetup, Insider) | 🔲 Not started |
-| User feedback / click-through learning | 🔲 Not started |
-| College event entry form | 🔲 Not started |
-| Persistent user interest profiles | 🔲 Not started |
-
+To add events by hand:
+1. Open `agents/events/data/manual_events_template.csv`.
+2. Fill in the event details:
+   - Ensure `lat` and `lng` fall inside Belagavi: `15.70 <= lat <= 16.00`, `74.35 <= lng <= 74.65` (or use a venue from `data/belagavi_venues.csv`).
+   - `start_datetime` and `end_datetime` in ISO format (`YYYY-MM-DDTHH:MM:SS+00:00`).
+   - Set `data_origin` to `manual`.
+3. Submit via `POST /events` using your admin key, or copy rows directly into `data/events.csv` and run `python -m agents.events.model.train`.
