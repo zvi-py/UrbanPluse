@@ -296,3 +296,4 @@ export default function TrafficPanel({ data, loading = false, error = null }) {
     </div>
   )
 }
+

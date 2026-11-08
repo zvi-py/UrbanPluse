@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-export default function TopBar({ source = 'stub', isMock = false, onRefresh, loading = false }) {
+export default function TopBar({
+  source = 'stub',
+  isMock = false,
+  onRefresh,
+  loading = false,
+  theme = 'dark',
+  onToggleTheme,
+}) {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -20,6 +27,8 @@ export default function TopBar({ source = 'stub', isMock = false, onRefresh, loa
     { label: 'Map', href: '#city-map' },
   ]
 
+  const isLight = theme === 'light'
+
   return (
     <header
       style={{
@@ -27,7 +36,7 @@ export default function TopBar({ source = 'stub', isMock = false, onRefresh, loa
         top: 0,
         zIndex: 100,
         width: '100%',
-        backgroundColor: scrolled ? 'rgba(14, 13, 12, 0.88)' : 'transparent',
+        backgroundColor: scrolled ? 'var(--topbar-bg)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: `1px solid ${scrolled ? 'var(--border-glass)' : 'transparent'}`,
@@ -129,8 +138,68 @@ export default function TopBar({ source = 'stub', isMock = false, onRefresh, loa
           ))}
         </nav>
 
-        {/* System & Source Status */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+        {/* System, Theme Toggle & Source Status */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+          {/* Theme Toggle Button */}
+          {onToggleTheme && (
+            <button
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${isLight ? 'Dark' : 'Light'} theme`}
+              title={`Switch to ${isLight ? 'Dark' : 'Light'} theme`}
+              style={{
+                background: 'transparent',
+                border: '1px solid var(--border-hairline)',
+                borderRadius: 'var(--radius-pill)',
+                padding: '5px 12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                color: 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontSize: '11px',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                transition: 'all var(--transition-fast)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-glass-hover)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-hairline)'
+                e.currentTarget.style.color = 'var(--text-secondary)'
+                e.currentTarget.style.backgroundColor = 'transparent'
+              }}
+            >
+              {isLight ? (
+                <>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                  <span>Dark</span>
+                </>
+              ) : (
+                <>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <span>Light</span>
+                </>
+              )}
+            </button>
+          )}
+
+          {/* Source Status Pill */}
           <div
             className={`pill-badge ${isMock ? 'mock' : source === 'live_api' ? 'live' : source === 'csv_fallback' ? 'csv' : 'stub'}`}
             title={`Active data source: ${isMock ? 'Mock Fallback' : source}`}
@@ -139,11 +208,13 @@ export default function TopBar({ source = 'stub', isMock = false, onRefresh, loa
             <span>{isMock ? 'MOCK DATA' : source.replace('_', ' ')}</span>
           </div>
 
+          {/* Telemetry Refresh */}
           {onRefresh && (
             <button
               onClick={onRefresh}
               aria-label="Refresh urban intelligence telemetry"
               disabled={loading}
+              title="Refresh telemetry"
               style={{
                 background: 'transparent',
                 border: '1px solid var(--border-hairline)',

@@ -243,3 +243,4 @@ export default function StudentPanel({ data, loading = false, error = null }) {
     </div>
   )
 }
+

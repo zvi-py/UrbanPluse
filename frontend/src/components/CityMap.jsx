@@ -30,7 +30,7 @@ const createChampagneIcon = (isHigh) => {
   })
 }
 
-export default function CityMap({ events = [] }) {
+export default function CityMap({ events = [], theme = 'dark' }) {
   const [filterMode, setFilterMode] = useState('all')
 
   const validEvents = (Array.isArray(events) ? events : events?.events || [])
@@ -39,6 +39,11 @@ export default function CityMap({ events = [] }) {
   const displayEvents = filterMode === 'high'
     ? validEvents.filter((e) => e.high_attendance || (e.expected_attendance && e.expected_attendance >= 1000))
     : validEvents
+
+  const isLight = theme === 'light'
+  const tileUrl = isLight
+    ? 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    : 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
 
   return (
     <section
@@ -91,7 +96,7 @@ export default function CityMap({ events = [] }) {
               borderRadius: 'var(--radius-pill)',
               border: `1px solid ${filterMode === 'all' ? 'var(--accent)' : 'var(--border-hairline)'}`,
               background: filterMode === 'all' ? 'var(--accent)' : 'var(--bg-glass)',
-              color: filterMode === 'all' ? '#12100E' : 'var(--text-secondary)',
+              color: filterMode === 'all' ? 'var(--btn-primary-text)' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: filterMode === 'all' ? 600 : 500,
               transition: 'all var(--transition-fast)',
@@ -108,7 +113,7 @@ export default function CityMap({ events = [] }) {
               borderRadius: 'var(--radius-pill)',
               border: `1px solid ${filterMode === 'high' ? 'var(--status-warning)' : 'var(--border-hairline)'}`,
               background: filterMode === 'high' ? 'var(--status-warning)' : 'var(--bg-glass)',
-              color: filterMode === 'high' ? '#12100E' : 'var(--text-secondary)',
+              color: filterMode === 'high' ? '#FFFFFF' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: filterMode === 'high' ? 600 : 500,
               transition: 'all var(--transition-fast)',
@@ -129,21 +134,23 @@ export default function CityMap({ events = [] }) {
           border: '1px solid var(--border-hairline)',
           boxShadow: 'var(--shadow-glass)',
           position: 'relative',
-          backgroundColor: '#0E0D0C',
+          backgroundColor: 'var(--map-bg)',
         }}
       >
         <MapContainer
+          key={theme} /* Re-render tile container when theme changes for instant tile swap */
           center={BELAGAVI_CENTER}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ width: '100%', height: '100%', backgroundColor: '#0E0D0C' }}
+          style={{ width: '100%', height: '100%', backgroundColor: 'var(--map-bg)' }}
         >
           <MapResizer />
 
-          {/* CARTO Dark Matter free tile layer */}
+          {/* CARTO Dark Matter or Positron tile layer */}
           <TileLayer
+            key={tileUrl}
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            url={tileUrl}
             subdomains="abcd"
             maxZoom={19}
           />
@@ -183,7 +190,7 @@ export default function CityMap({ events = [] }) {
                       style={{
                         fontFamily: 'var(--font-display)',
                         fontSize: '17px',
-                        color: '#F3EDE4',
+                        color: 'var(--text-primary)',
                         marginBottom: '4px',
                         lineHeight: 1.2,
                       }}
@@ -191,11 +198,11 @@ export default function CityMap({ events = [] }) {
                       {ev.title}
                     </h4>
 
-                    <p style={{ fontSize: '11.5px', color: '#A59C90', margin: '0 0 6px 0', lineHeight: 1.4 }}>
+                    <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', margin: '0 0 6px 0', lineHeight: 1.4 }}>
                       {ev.venue || 'Belagavi Central Sector'}
                     </p>
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#6E675E', paddingTop: '4px', borderTop: '1px solid rgba(255,244,230,0.1)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--text-dim)', paddingTop: '4px', borderTop: '1px solid var(--border-hairline)' }}>
                       <span>Distance: {ev.distance_km ? `${ev.distance_km} km` : 'Near center'}</span>
                       {ev.expected_attendance && <span>~{ev.expected_attendance} people</span>}
                     </div>
@@ -259,29 +266,29 @@ export default function CityMap({ events = [] }) {
           50% { transform: scale(1.15); opacity: 1; }
         }
 
-        /* Leaflet Dark Popup Customization */
+        /* Leaflet Dark/Light Glass Popup Customization */
         .leaflet-popup-content-wrapper {
-          background: rgba(23, 21, 19, 0.94) !important;
+          background: var(--bg-surface) !important;
           backdrop-filter: blur(16px) !important;
           -webkit-backdrop-filter: blur(16px) !important;
-          border: 1px solid rgba(255, 244, 230, 0.16) !important;
+          border: 1px solid var(--border-glass-bright) !important;
           border-radius: 14px !important;
-          box-shadow: 0 16px 36px rgba(0,0,0,0.7) !important;
-          color: #F3EDE4 !important;
+          box-shadow: var(--shadow-glass) !important;
+          color: var(--text-primary) !important;
         }
 
         .leaflet-popup-tip {
-          background: rgba(23, 21, 19, 0.94) !important;
-          border: 1px solid rgba(255, 244, 230, 0.16) !important;
+          background: var(--bg-surface) !important;
+          border: 1px solid var(--border-glass-bright) !important;
         }
 
         .leaflet-container a.leaflet-popup-close-button {
-          color: #A59C90 !important;
+          color: var(--text-dim) !important;
           padding: 6px 8px !important;
         }
 
         .leaflet-container a.leaflet-popup-close-button:hover {
-          color: #F3EDE4 !important;
+          color: var(--text-primary) !important;
         }
       `}</style>
     </section>

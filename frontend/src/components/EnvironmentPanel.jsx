@@ -262,3 +262,4 @@ export default function EnvironmentPanel({ data, loading = false, error = null }
     </div>
   )
 }
+

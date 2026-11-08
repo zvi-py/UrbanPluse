@@ -341,3 +341,4 @@ export default function EventsPanel({ data, loading = false, error = null }) {
     </div>
   )
 }
+

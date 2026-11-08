@@ -14,6 +14,21 @@ import { MOCK_OVERVIEW_DATA } from './mockData.js'
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search)
+        const paramTheme = params.get('theme')
+        if (paramTheme === 'light' || paramTheme === 'dark') {
+          return paramTheme
+        }
+      }
+      return localStorage.getItem('urbanpulse_theme') || 'dark'
+    } catch {
+      return 'dark'
+    }
+  })
+
   const [overview, setOverview] = useState(null)
   const [eventsData, setEventsData] = useState(null)
   const [agentSources, setAgentSources] = useState({
@@ -25,6 +40,18 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isMock, setIsMock] = useState(false)
+
+  // Apply data-theme attribute on <html>
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    try {
+      localStorage.setItem('urbanpulse_theme', theme)
+    } catch {}
+  }, [theme])
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }, [])
 
   const fetchData = useCallback(async () => {
     setLoading(true)
@@ -98,12 +125,14 @@ export default function App() {
       {/* Large Blurred Ambient Glow */}
       <div className="ambient-glow" />
 
-      {/* Sticky Header */}
+      {/* Sticky Header with Theme Toggle */}
       <TopBar
         source={globalSource}
         isMock={isMock}
         onRefresh={fetchData}
         loading={loading}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <main>
@@ -130,8 +159,8 @@ export default function App() {
                 justifyContent: 'space-between',
                 padding: '12px 20px',
                 borderRadius: 'var(--radius-md)',
-                backgroundColor: 'rgba(212, 168, 95, 0.08)',
-                border: '1px solid rgba(212, 168, 95, 0.25)',
+                backgroundColor: 'var(--status-warning-bg)',
+                border: '1px solid var(--border-accent)',
                 color: 'var(--status-warning)',
                 fontSize: '13px',
                 flexWrap: 'wrap',
@@ -146,7 +175,7 @@ export default function App() {
                 onClick={fetchData}
                 style={{
                   background: 'transparent',
-                  border: '1px solid rgba(212, 168, 95, 0.4)',
+                  border: '1px solid var(--status-warning)',
                   color: 'var(--status-warning)',
                   padding: '4px 12px',
                   borderRadius: 'var(--radius-pill)',
@@ -243,7 +272,7 @@ export default function App() {
         </AgentChapter>
 
         {/* Section 05: Cartographic Atlas */}
-        <CityMap events={resolvedEvents} />
+        <CityMap events={resolvedEvents} theme={theme} />
       </main>
 
       {/* Footer */}
