@@ -29,7 +29,7 @@ Each agent is an independent FastAPI `APIRouter` mounted into the central orches
 | Agent | Endpoint | Planned ML | Status |
 |-------|----------|-----------|--------|
 | Traffic | `/traffic/status` | Congestion classification (scikit-learn RandomForest) | **stub** |
-| Events | `/events/nearby` | TF-IDF + cosine similarity recommendations | **stub** |
+| Events | `/events/nearby` `/events/recommend` `/events/categories` | TF-IDF + cosine similarity recommendations | **csv-based, in progress** |
 | Student | `/student/matches` | Interest cosine similarity matching | **stub** |
 | Environment | `/environment/status` | AQI anomaly detection (Isolation Forest) | **stub** |
 
@@ -128,3 +128,4 @@ pytest
 ## Contributing
 
 See [AGENTS.md](AGENTS.md) for team collaboration rules. Use feature branches and pull requests — **never push directly to main**.
+
