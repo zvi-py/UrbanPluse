@@ -1,0 +1,158 @@
+/* UrbanPulse Smart City Dark Navy Intelligence Theme */
+:root {
+  --bg-main: #0B1120;
+  --bg-sidebar: #111827;
+  --bg-card: #172033;
+  --bg-card-hover: #1e293b;
+  --bg-subtle: rgba(255, 255, 255, 0.03);
+  
+  --primary: #3B82F6;
+  --primary-glow: rgba(59, 130, 246, 0.25);
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --unverified: #64748B;
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(59, 130, 246, 0.4);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-sidebar);
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glass Card */
+.smart-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease-in-out;
+}
+.smart-card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Nav Item */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.nav-item:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-item.active {
+  color: #60A5FA;
+  background: rgba(59, 130, 246, 0.12);
+  border-left: 3px solid var(--primary);
+  font-weight: 600;
+}
+
+/* Badges */
+.badge-count {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+.nav-item.active .badge-count {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93C5FD;
+}
+
+/* Map Leaflet Dark Theme Overrides */
+.leaflet-container {
+  background: #090e1a !important;
+  font-family: var(--font-sans);
+}
+.leaflet-popup-content-wrapper {
+  background: #172033 !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.6) !important;
+}
+.leaflet-popup-tip {
+  background: #172033 !important;
+}
+
+/* Ward Number Badge Pill on Map */
+.ward-number-badge {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #F8FAFC !important;
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+.ward-number-badge::before {
+  display: none !important;
+}
+
+/* Pulsing dot */
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
