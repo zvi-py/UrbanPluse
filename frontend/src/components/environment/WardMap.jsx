@@ -379,7 +379,7 @@ export default function WardMap({ wards = [], onSelectWard, selectedWardId }) {
             {[
               { id: 'all', label: `All (${wards.length || 58})` },
               { id: 'live', label: `Live (${liveCount || 49})` },
-              { id: 'grey', label: `Grey (${greyCount || 9})` }
+              { id: 'grey', label: `Unverified (${greyCount || 9})` }
             ].map(tab => (
               <button
                 key={tab.id}

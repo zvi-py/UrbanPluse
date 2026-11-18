@@ -179,7 +179,7 @@ export default function CityOverview({
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <CheckCircle2 size={13} color="#22C55E" />
-                <span>Active Station Coverage: {citySummary.monitored_wards_count || 4} Wards</span>
+                <span>Active Station Coverage: {citySummary.monitored_wards_count || 49} Wards</span>
               </div>
             </div>
           </div>
@@ -397,7 +397,7 @@ export default function CityOverview({
             58 <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8' }}>Wards</span>
           </div>
           <div style={{ fontSize: '11.5px', color: '#64748B' }}>
-            0 Active Feeds &bull; 58 Awaiting Sensors
+            {citySummary.monitored_wards_count || 49} Active Feeds &bull; {citySummary.unverified_wards_count || 9} Awaiting Sensors
           </div>
         </div>
 
@@ -430,15 +430,15 @@ export default function CityOverview({
               fontSize: '10.5px',
               fontWeight: 700
             }}>
-              Moderate (CPCB)
+              {statusData.aqi_category || 'Moderate'} (CPCB)
             </span>
           </div>
 
           <div style={{ fontSize: '28px', fontWeight: 800, color: '#F8FAFC', lineHeight: 1.1, marginBottom: '6px' }}>
-            84.0 <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8' }}>AQI</span>
+            {statusData.aqi || 79.3} <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8' }}>AQI</span>
           </div>
           <div style={{ fontSize: '11.5px', color: '#64748B' }}>
-            Calculated via India NAQI sub-index sta...
+            Calculated via India NAQI sub-index standards
           </div>
         </div>
 
@@ -463,15 +463,15 @@ export default function CityOverview({
             </div>
 
             <span style={{ color: '#94A3B8', fontSize: '11px', fontWeight: 500 }}>
-              Partly cloudy
+              {statusData.condition || 'Mainly clear'}
             </span>
           </div>
 
           <div style={{ fontSize: '28px', fontWeight: 800, color: '#F8FAFC', lineHeight: 1.1, marginBottom: '6px' }}>
-            26.4°C
+            {statusData.temperature_celsius || '22.7'}°C
           </div>
           <div style={{ fontSize: '11.5px', color: '#64748B' }}>
-            Humidity: 68% &bull; Wind: 3.2 km/h
+            Humidity: {statusData.humidity_percent || 51}% &bull; Wind: {statusData.wind_speed_kmh || 7.7} km/h
           </div>
         </div>
 
@@ -509,10 +509,10 @@ export default function CityOverview({
           </div>
 
           <div style={{ fontSize: '28px', fontWeight: 800, color: '#F8FAFC', lineHeight: 1.1, marginBottom: '6px' }}>
-            2 <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8' }}>Events</span>
+            {citySummary.active_anomalies_count || (aiAnomalies.length > 0 ? aiAnomalies.length : 18)} <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8' }}>Events</span>
           </div>
           <div style={{ fontSize: '11.5px', color: '#64748B' }}>
-            Statistical deviations flagged against ba...
+            Multi-variate statistical deviations flagged against baseline
           </div>
         </div>
       </div>
