@@ -1,0 +1,4030 @@
+// Belagavi 58 Municipal Wards enriched geographic and environmental registry
+export const BELAGAVI_58_WARDS = [
+  {
+    "ward_id": 1,
+    "ward_number": 1,
+    "name": "Ward 1 — Tilakwadi West",
+    "locality": "Tilakwadi West",
+    "zone": "South",
+    "lat": 15.834,
+    "lng": 74.502,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Tilakwadi 1st-3rd Gate",
+      "Deshmukh Road",
+      "Vaccine Depot"
+    ],
+    "population_estimate": 14173,
+    "polygon": [
+      [
+        15.8375,
+        74.5
+      ],
+      [
+        15.83645,
+        74.5052
+      ],
+      [
+        15.8333,
+        74.506
+      ],
+      [
+        15.830499999999999,
+        74.50319999999999
+      ],
+      [
+        15.831199999999999,
+        74.4992
+      ],
+      [
+        15.8347,
+        74.49799999999999
+      ],
+      [
+        15.8375,
+        74.5
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 2,
+    "ward_number": 2,
+    "name": "Ward 2 — Tilakwadi Central",
+    "locality": "Tilakwadi Central",
+    "zone": "South",
+    "lat": 15.839,
+    "lng": 74.505,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Tilakwadi 4th-6th Gate",
+      "Congress Road Cross"
+    ],
+    "population_estimate": 14346,
+    "polygon": [
+      [
+        15.842500000000001,
+        74.503
+      ],
+      [
+        15.84145,
+        74.5082
+      ],
+      [
+        15.8383,
+        74.509
+      ],
+      [
+        15.8355,
+        74.50619999999999
+      ],
+      [
+        15.8362,
+        74.5022
+      ],
+      [
+        15.8397,
+        74.50099999999999
+      ],
+      [
+        15.842500000000001,
+        74.503
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 3,
+    "ward_number": 3,
+    "name": "Ward 3 — Tilakwadi East",
+    "locality": "Tilakwadi East",
+    "zone": "South",
+    "lat": 15.842,
+    "lng": 74.512,
+    "coverage_type": "provisional",
+    "has_active_station": true,
+    "station_name": "Belagavi South CAAQMS Node (Tilakwadi)",
+    "key_landmarks": [
+      "Railway Overbridge",
+      "Goaves Circle"
+    ],
+    "population_estimate": 14519,
+    "polygon": [
+      [
+        15.845500000000001,
+        74.51
+      ],
+      [
+        15.84445,
+        74.51520000000001
+      ],
+      [
+        15.8413,
+        74.516
+      ],
+      [
+        15.8385,
+        74.5132
+      ],
+      [
+        15.8392,
+        74.5092
+      ],
+      [
+        15.8427,
+        74.508
+      ],
+      [
+        15.845500000000001,
+        74.51
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 4,
+    "ward_number": 4,
+    "name": "Ward 4 — Camp North",
+    "locality": "Camp North",
+    "zone": "Central",
+    "lat": 15.847,
+    "lng": 74.503,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "St. Paul's High School",
+      "Camp Market"
+    ],
+    "population_estimate": 14692,
+    "polygon": [
+      [
+        15.8505,
+        74.501
+      ],
+      [
+        15.84945,
+        74.5062
+      ],
+      [
+        15.8463,
+        74.507
+      ],
+      [
+        15.843499999999999,
+        74.5042
+      ],
+      [
+        15.844199999999999,
+        74.5002
+      ],
+      [
+        15.8477,
+        74.499
+      ],
+      [
+        15.8505,
+        74.501
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 5,
+    "ward_number": 5,
+    "name": "Ward 5 — Cantonment & Fort",
+    "locality": "Cantonment & Fort",
+    "zone": "Central",
+    "lat": 15.852,
+    "lng": 74.506,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Belagavi Fort",
+      "Military Cantonment",
+      "Fort Lake"
+    ],
+    "population_estimate": 14865,
+    "polygon": [
+      [
+        15.855500000000001,
+        74.504
+      ],
+      [
+        15.85445,
+        74.5092
+      ],
+      [
+        15.8513,
+        74.51
+      ],
+      [
+        15.8485,
+        74.5072
+      ],
+      [
+        15.8492,
+        74.5032
+      ],
+      [
+        15.8527,
+        74.502
+      ],
+      [
+        15.855500000000001,
+        74.504
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 6,
+    "ward_number": 6,
+    "name": "Ward 6 — Hindwadi South",
+    "locality": "Hindwadi South",
+    "zone": "South",
+    "lat": 15.838,
+    "lng": 74.498,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Hindwadi High School",
+      "Ranade Road"
+    ],
+    "population_estimate": 15038,
+    "polygon": [
+      [
+        15.8415,
+        74.49600000000001
+      ],
+      [
+        15.840449999999999,
+        74.50120000000001
+      ],
+      [
+        15.837299999999999,
+        74.50200000000001
+      ],
+      [
+        15.834499999999998,
+        74.4992
+      ],
+      [
+        15.835199999999999,
+        74.49520000000001
+      ],
+      [
+        15.8387,
+        74.494
+      ],
+      [
+        15.8415,
+        74.49600000000001
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 7,
+    "ward_number": 7,
+    "name": "Ward 7 — Hindwadi North",
+    "locality": "Hindwadi North",
+    "zone": "South",
+    "lat": 15.843,
+    "lng": 74.495,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Goaves Cross",
+      "Hindwadi Bus Stop"
+    ],
+    "population_estimate": 15211,
+    "polygon": [
+      [
+        15.8465,
+        74.49300000000001
+      ],
+      [
+        15.84545,
+        74.49820000000001
+      ],
+      [
+        15.8423,
+        74.49900000000001
+      ],
+      [
+        15.8395,
+        74.4962
+      ],
+      [
+        15.8402,
+        74.49220000000001
+      ],
+      [
+        15.8437,
+        74.491
+      ],
+      [
+        15.8465,
+        74.49300000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 8,
+    "ward_number": 8,
+    "name": "Ward 8 — Bhagya Nagar",
+    "locality": "Bhagya Nagar",
+    "zone": "South",
+    "lat": 15.835,
+    "lng": 74.492,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Bhagya Nagar 1st-8th Cross",
+      "Angol Link Rd"
+    ],
+    "population_estimate": 15384,
+    "polygon": [
+      [
+        15.838500000000002,
+        74.49000000000001
+      ],
+      [
+        15.83745,
+        74.49520000000001
+      ],
+      [
+        15.8343,
+        74.49600000000001
+      ],
+      [
+        15.8315,
+        74.4932
+      ],
+      [
+        15.8322,
+        74.48920000000001
+      ],
+      [
+        15.835700000000001,
+        74.488
+      ],
+      [
+        15.838500000000002,
+        74.49000000000001
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 9,
+    "ward_number": 9,
+    "name": "Ward 9 — Angol Central",
+    "locality": "Angol Central",
+    "zone": "South",
+    "lat": 15.828,
+    "lng": 74.499,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Angol Main Road",
+      "Harimandir",
+      "Someshwar Temple"
+    ],
+    "population_estimate": 15557,
+    "polygon": [
+      [
+        15.8315,
+        74.497
+      ],
+      [
+        15.830449999999999,
+        74.5022
+      ],
+      [
+        15.8273,
+        74.503
+      ],
+      [
+        15.824499999999999,
+        74.50019999999999
+      ],
+      [
+        15.825199999999999,
+        74.4962
+      ],
+      [
+        15.8287,
+        74.49499999999999
+      ],
+      [
+        15.8315,
+        74.497
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 10,
+    "ward_number": 10,
+    "name": "Ward 10 — Angol South",
+    "locality": "Angol South",
+    "zone": "South",
+    "lat": 15.822,
+    "lng": 74.502,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Nath Pai Circle",
+      "Tahasildar Galli"
+    ],
+    "population_estimate": 15730,
+    "polygon": [
+      [
+        15.8255,
+        74.5
+      ],
+      [
+        15.824449999999999,
+        74.5052
+      ],
+      [
+        15.821299999999999,
+        74.506
+      ],
+      [
+        15.818499999999998,
+        74.50319999999999
+      ],
+      [
+        15.819199999999999,
+        74.4992
+      ],
+      [
+        15.8227,
+        74.49799999999999
+      ],
+      [
+        15.8255,
+        74.5
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 11,
+    "ward_number": 11,
+    "name": "Ward 11 — Vadgaon Central",
+    "locality": "Vadgaon Central",
+    "zone": "South",
+    "lat": 15.829,
+    "lng": 74.512,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Vadgaon Market",
+      "Madhavpur Vadgaon"
+    ],
+    "population_estimate": 15903,
+    "polygon": [
+      [
+        15.832500000000001,
+        74.51
+      ],
+      [
+        15.83145,
+        74.51520000000001
+      ],
+      [
+        15.8283,
+        74.516
+      ],
+      [
+        15.8255,
+        74.5132
+      ],
+      [
+        15.8262,
+        74.5092
+      ],
+      [
+        15.8297,
+        74.508
+      ],
+      [
+        15.832500000000001,
+        74.51
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 12,
+    "ward_number": 12,
+    "name": "Ward 12 — Vadgaon East",
+    "locality": "Vadgaon East",
+    "zone": "South",
+    "lat": 15.826,
+    "lng": 74.519,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Mangai Nagar",
+      "Shahapur Border"
+    ],
+    "population_estimate": 16076,
+    "polygon": [
+      [
+        15.829500000000001,
+        74.51700000000001
+      ],
+      [
+        15.82845,
+        74.52220000000001
+      ],
+      [
+        15.8253,
+        74.52300000000001
+      ],
+      [
+        15.8225,
+        74.5202
+      ],
+      [
+        15.8232,
+        74.51620000000001
+      ],
+      [
+        15.8267,
+        74.515
+      ],
+      [
+        15.829500000000001,
+        74.51700000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 13,
+    "ward_number": 13,
+    "name": "Ward 13 — Khasbag",
+    "locality": "Khasbag",
+    "zone": "South",
+    "lat": 15.833,
+    "lng": 74.521,
+    "coverage_type": "provisional",
+    "has_active_station": true,
+    "station_name": "Belagavi Central Traffic CAAQMS Node (Bogarves)",
+    "key_landmarks": [
+      "Khasbag Galli",
+      "Weavers Colony",
+      "Old Dyeing Mills"
+    ],
+    "population_estimate": 16249,
+    "polygon": [
+      [
+        15.836500000000001,
+        74.519
+      ],
+      [
+        15.83545,
+        74.52420000000001
+      ],
+      [
+        15.8323,
+        74.525
+      ],
+      [
+        15.8295,
+        74.5222
+      ],
+      [
+        15.8302,
+        74.51820000000001
+      ],
+      [
+        15.8337,
+        74.517
+      ],
+      [
+        15.836500000000001,
+        74.519
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 14,
+    "ward_number": 14,
+    "name": "Ward 14 — Shahapur South",
+    "locality": "Shahapur South",
+    "zone": "Central",
+    "lat": 15.838,
+    "lng": 74.518,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Bank of India Circle",
+      "Fulbag Galli"
+    ],
+    "population_estimate": 16422,
+    "polygon": [
+      [
+        15.8415,
+        74.516
+      ],
+      [
+        15.840449999999999,
+        74.52120000000001
+      ],
+      [
+        15.837299999999999,
+        74.522
+      ],
+      [
+        15.834499999999998,
+        74.5192
+      ],
+      [
+        15.835199999999999,
+        74.51520000000001
+      ],
+      [
+        15.8387,
+        74.514
+      ],
+      [
+        15.8415,
+        74.516
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 15,
+    "ward_number": 15,
+    "name": "Ward 15 — Shahapur Central",
+    "locality": "Shahapur Central",
+    "zone": "Central",
+    "lat": 15.842,
+    "lng": 74.52,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Khade Bazar Shahapur",
+      "Khatavkar Galli"
+    ],
+    "population_estimate": 16595,
+    "polygon": [
+      [
+        15.845500000000001,
+        74.518
+      ],
+      [
+        15.84445,
+        74.5232
+      ],
+      [
+        15.8413,
+        74.524
+      ],
+      [
+        15.8385,
+        74.5212
+      ],
+      [
+        15.8392,
+        74.5172
+      ],
+      [
+        15.8427,
+        74.51599999999999
+      ],
+      [
+        15.845500000000001,
+        74.518
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 16,
+    "ward_number": 16,
+    "name": "Ward 16 — Shahapur North",
+    "locality": "Shahapur North",
+    "zone": "Central",
+    "lat": 15.846,
+    "lng": 74.517,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Acharya Galli",
+      "Dane Galli"
+    ],
+    "population_estimate": 16768,
+    "polygon": [
+      [
+        15.8495,
+        74.515
+      ],
+      [
+        15.84845,
+        74.5202
+      ],
+      [
+        15.8453,
+        74.521
+      ],
+      [
+        15.8425,
+        74.5182
+      ],
+      [
+        15.8432,
+        74.5142
+      ],
+      [
+        15.8467,
+        74.51299999999999
+      ],
+      [
+        15.8495,
+        74.515
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 17,
+    "ward_number": 17,
+    "name": "Ward 17 — Raviwar Peth",
+    "locality": "Raviwar Peth",
+    "zone": "Central",
+    "lat": 15.85,
+    "lng": 74.515,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Raviwar Peth",
+      "Cloth Market"
+    ],
+    "population_estimate": 16941,
+    "polygon": [
+      [
+        15.8535,
+        74.513
+      ],
+      [
+        15.85245,
+        74.51820000000001
+      ],
+      [
+        15.8493,
+        74.519
+      ],
+      [
+        15.846499999999999,
+        74.5162
+      ],
+      [
+        15.847199999999999,
+        74.5122
+      ],
+      [
+        15.8507,
+        74.511
+      ],
+      [
+        15.8535,
+        74.513
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 18,
+    "ward_number": 18,
+    "name": "Ward 18 — Ganpat Galli & CBT",
+    "locality": "Ganpat Galli & CBT",
+    "zone": "Central",
+    "lat": 15.853,
+    "lng": 74.512,
+    "coverage_type": "verified",
+    "has_active_station": true,
+    "station_name": "BCC Sensor Node #18 (Ganpat Galli & CBT)",
+    "key_landmarks": [
+      "Central Bus Terminal (CBT)",
+      "Ganpat Galli",
+      "Maruti Galli"
+    ],
+    "population_estimate": 17114,
+    "polygon": [
+      [
+        15.8565,
+        74.51
+      ],
+      [
+        15.85545,
+        74.51520000000001
+      ],
+      [
+        15.8523,
+        74.516
+      ],
+      [
+        15.849499999999999,
+        74.5132
+      ],
+      [
+        15.8502,
+        74.5092
+      ],
+      [
+        15.8537,
+        74.508
+      ],
+      [
+        15.8565,
+        74.51
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 19,
+    "ward_number": 19,
+    "name": "Ward 19 — Khade Bazar City",
+    "locality": "Khade Bazar City",
+    "zone": "Central",
+    "lat": 15.855,
+    "lng": 74.509,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Ramdev Galli",
+      "Khade Bazar Main",
+      "City Center Mall"
+    ],
+    "population_estimate": 17287,
+    "polygon": [
+      [
+        15.858500000000001,
+        74.507
+      ],
+      [
+        15.85745,
+        74.5122
+      ],
+      [
+        15.8543,
+        74.513
+      ],
+      [
+        15.8515,
+        74.5102
+      ],
+      [
+        15.8522,
+        74.5062
+      ],
+      [
+        15.8557,
+        74.505
+      ],
+      [
+        15.858500000000001,
+        74.507
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 20,
+    "ward_number": 20,
+    "name": "Ward 20 — Fort Area & KSRP",
+    "locality": "Fort Area & KSRP",
+    "zone": "Central",
+    "lat": 15.859,
+    "lng": 74.521,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "KSRP Grounds",
+      "Belgaum Jail",
+      "Old PWD Offices"
+    ],
+    "population_estimate": 17460,
+    "polygon": [
+      [
+        15.8625,
+        74.519
+      ],
+      [
+        15.86145,
+        74.52420000000001
+      ],
+      [
+        15.8583,
+        74.525
+      ],
+      [
+        15.8555,
+        74.5222
+      ],
+      [
+        15.8562,
+        74.51820000000001
+      ],
+      [
+        15.8597,
+        74.517
+      ],
+      [
+        15.8625,
+        74.519
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 21,
+    "ward_number": 21,
+    "name": "Ward 21 — Bogarves & College Road",
+    "locality": "Bogarves & College Road",
+    "zone": "Central",
+    "lat": 15.857,
+    "lng": 74.502,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Bogarves Circle",
+      "RLS Institute",
+      "College Road"
+    ],
+    "population_estimate": 17633,
+    "polygon": [
+      [
+        15.8605,
+        74.5
+      ],
+      [
+        15.859449999999999,
+        74.5052
+      ],
+      [
+        15.8563,
+        74.506
+      ],
+      [
+        15.853499999999999,
+        74.50319999999999
+      ],
+      [
+        15.854199999999999,
+        74.4992
+      ],
+      [
+        15.8577,
+        74.49799999999999
+      ],
+      [
+        15.8605,
+        74.5
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 22,
+    "ward_number": 22,
+    "name": "Ward 22 — Club Road & Lingraj",
+    "locality": "Club Road & Lingraj",
+    "zone": "Central",
+    "lat": 15.861,
+    "lng": 74.504,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Lingraj College Campus",
+      "Belgaum Club",
+      "Golf Course"
+    ],
+    "population_estimate": 17806,
+    "polygon": [
+      [
+        15.864500000000001,
+        74.50200000000001
+      ],
+      [
+        15.86345,
+        74.50720000000001
+      ],
+      [
+        15.8603,
+        74.50800000000001
+      ],
+      [
+        15.8575,
+        74.5052
+      ],
+      [
+        15.8582,
+        74.50120000000001
+      ],
+      [
+        15.8617,
+        74.5
+      ],
+      [
+        15.864500000000001,
+        74.50200000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 23,
+    "ward_number": 23,
+    "name": "Ward 23 — Chidambar Nagar",
+    "locality": "Chidambar Nagar",
+    "zone": "West",
+    "lat": 15.841,
+    "lng": 74.488,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Chidambar Nagar",
+      "Adarsh Nagar",
+      "Hindwadi Extension"
+    ],
+    "population_estimate": 17979,
+    "polygon": [
+      [
+        15.8445,
+        74.486
+      ],
+      [
+        15.843449999999999,
+        74.4912
+      ],
+      [
+        15.8403,
+        74.492
+      ],
+      [
+        15.837499999999999,
+        74.4892
+      ],
+      [
+        15.838199999999999,
+        74.4852
+      ],
+      [
+        15.8417,
+        74.484
+      ],
+      [
+        15.8445,
+        74.486
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 24,
+    "ward_number": 24,
+    "name": "Ward 24 — Mandoli Road",
+    "locality": "Mandoli Road",
+    "zone": "West",
+    "lat": 15.832,
+    "lng": 74.482,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Mandoli Road Cross",
+      "Ganeshpur Gate"
+    ],
+    "population_estimate": 18152,
+    "polygon": [
+      [
+        15.835500000000001,
+        74.48
+      ],
+      [
+        15.83445,
+        74.4852
+      ],
+      [
+        15.8313,
+        74.486
+      ],
+      [
+        15.8285,
+        74.4832
+      ],
+      [
+        15.8292,
+        74.4792
+      ],
+      [
+        15.8327,
+        74.478
+      ],
+      [
+        15.835500000000001,
+        74.48
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 25,
+    "ward_number": 25,
+    "name": "Ward 25 — Peeranwadi Industrial",
+    "locality": "Peeranwadi Industrial",
+    "zone": "West",
+    "lat": 15.819,
+    "lng": 74.469,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Peeranwadi Cross",
+      "Foundry Cluster"
+    ],
+    "population_estimate": 18325,
+    "polygon": [
+      [
+        15.822500000000002,
+        74.467
+      ],
+      [
+        15.82145,
+        74.4722
+      ],
+      [
+        15.8183,
+        74.473
+      ],
+      [
+        15.8155,
+        74.47019999999999
+      ],
+      [
+        15.8162,
+        74.4662
+      ],
+      [
+        15.819700000000001,
+        74.46499999999999
+      ],
+      [
+        15.822500000000002,
+        74.467
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 26,
+    "ward_number": 26,
+    "name": "Ward 26 — Udyambag South",
+    "locality": "Udyambag South",
+    "zone": "Industrial",
+    "lat": 15.812,
+    "lng": 74.485,
+    "coverage_type": "verified",
+    "has_active_station": true,
+    "station_name": "BCC Sensor Node #26 (Udyambag South)",
+    "key_landmarks": [
+      "Udyambag Industrial Estate South",
+      "Foundries & Forgings"
+    ],
+    "population_estimate": 18498,
+    "polygon": [
+      [
+        15.8155,
+        74.483
+      ],
+      [
+        15.814449999999999,
+        74.4882
+      ],
+      [
+        15.8113,
+        74.489
+      ],
+      [
+        15.808499999999999,
+        74.4862
+      ],
+      [
+        15.809199999999999,
+        74.4822
+      ],
+      [
+        15.8127,
+        74.481
+      ],
+      [
+        15.8155,
+        74.483
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 27,
+    "ward_number": 27,
+    "name": "Ward 27 — Udyambag North",
+    "locality": "Udyambag North",
+    "zone": "Industrial",
+    "lat": 15.818,
+    "lng": 74.489,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Udyambag Substation",
+      "Auto Ancillary Hub"
+    ],
+    "population_estimate": 18671,
+    "polygon": [
+      [
+        15.8215,
+        74.48700000000001
+      ],
+      [
+        15.82045,
+        74.49220000000001
+      ],
+      [
+        15.8173,
+        74.49300000000001
+      ],
+      [
+        15.814499999999999,
+        74.4902
+      ],
+      [
+        15.815199999999999,
+        74.48620000000001
+      ],
+      [
+        15.8187,
+        74.485
+      ],
+      [
+        15.8215,
+        74.48700000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 28,
+    "ward_number": 28,
+    "name": "Ward 28 — Majgaon",
+    "locality": "Majgaon",
+    "zone": "Industrial",
+    "lat": 15.824,
+    "lng": 74.486,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Majgaon Village Hub",
+      "Indal Colony"
+    ],
+    "population_estimate": 18844,
+    "polygon": [
+      [
+        15.8275,
+        74.48400000000001
+      ],
+      [
+        15.82645,
+        74.48920000000001
+      ],
+      [
+        15.8233,
+        74.49000000000001
+      ],
+      [
+        15.8205,
+        74.4872
+      ],
+      [
+        15.8212,
+        74.48320000000001
+      ],
+      [
+        15.8247,
+        74.482
+      ],
+      [
+        15.8275,
+        74.48400000000001
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 29,
+    "ward_number": 29,
+    "name": "Ward 29 — Machhe",
+    "locality": "Machhe",
+    "zone": "Industrial",
+    "lat": 15.808,
+    "lng": 74.465,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Machhe Industrial Zone",
+      "NH4A Hub"
+    ],
+    "population_estimate": 19017,
+    "polygon": [
+      [
+        15.8115,
+        74.46300000000001
+      ],
+      [
+        15.81045,
+        74.46820000000001
+      ],
+      [
+        15.8073,
+        74.46900000000001
+      ],
+      [
+        15.804499999999999,
+        74.4662
+      ],
+      [
+        15.8052,
+        74.46220000000001
+      ],
+      [
+        15.8087,
+        74.461
+      ],
+      [
+        15.8115,
+        74.46300000000001
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 30,
+    "ward_number": 30,
+    "name": "Ward 30 — Khanapur Road Corridor",
+    "locality": "Khanapur Road Corridor",
+    "zone": "South",
+    "lat": 15.831,
+    "lng": 74.495,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Khanapur Road",
+      "Railway Gate No. 2"
+    ],
+    "population_estimate": 19190,
+    "polygon": [
+      [
+        15.8345,
+        74.49300000000001
+      ],
+      [
+        15.83345,
+        74.49820000000001
+      ],
+      [
+        15.8303,
+        74.49900000000001
+      ],
+      [
+        15.827499999999999,
+        74.4962
+      ],
+      [
+        15.828199999999999,
+        74.49220000000001
+      ],
+      [
+        15.8317,
+        74.491
+      ],
+      [
+        15.8345,
+        74.49300000000001
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 31,
+    "ward_number": 31,
+    "name": "Ward 31 — RPD College Cross",
+    "locality": "RPD College Cross",
+    "zone": "South",
+    "lat": 15.837,
+    "lng": 74.509,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "RPD College Campus",
+      "BBA Institute"
+    ],
+    "population_estimate": 19363,
+    "polygon": [
+      [
+        15.8405,
+        74.507
+      ],
+      [
+        15.83945,
+        74.5122
+      ],
+      [
+        15.8363,
+        74.513
+      ],
+      [
+        15.833499999999999,
+        74.5102
+      ],
+      [
+        15.8342,
+        74.5062
+      ],
+      [
+        15.8377,
+        74.505
+      ],
+      [
+        15.8405,
+        74.507
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 32,
+    "ward_number": 32,
+    "name": "Ward 32 — Somwar Peth",
+    "locality": "Somwar Peth",
+    "zone": "Central",
+    "lat": 15.848,
+    "lng": 74.512,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Somwar Peth",
+      "Vegetable Wholesale Market"
+    ],
+    "population_estimate": 19536,
+    "polygon": [
+      [
+        15.851500000000001,
+        74.51
+      ],
+      [
+        15.85045,
+        74.51520000000001
+      ],
+      [
+        15.8473,
+        74.516
+      ],
+      [
+        15.8445,
+        74.5132
+      ],
+      [
+        15.8452,
+        74.5092
+      ],
+      [
+        15.848700000000001,
+        74.508
+      ],
+      [
+        15.851500000000001,
+        74.51
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 33,
+    "ward_number": 33,
+    "name": "Ward 33 — Mangalwar Peth",
+    "locality": "Mangalwar Peth",
+    "zone": "Central",
+    "lat": 15.851,
+    "lng": 74.518,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Mangalwar Peth",
+      "Old City Police Station"
+    ],
+    "population_estimate": 19709,
+    "polygon": [
+      [
+        15.854500000000002,
+        74.516
+      ],
+      [
+        15.85345,
+        74.52120000000001
+      ],
+      [
+        15.8503,
+        74.522
+      ],
+      [
+        15.8475,
+        74.5192
+      ],
+      [
+        15.8482,
+        74.51520000000001
+      ],
+      [
+        15.851700000000001,
+        74.514
+      ],
+      [
+        15.854500000000002,
+        74.516
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 34,
+    "ward_number": 34,
+    "name": "Ward 34 — Budhwar Peth",
+    "locality": "Budhwar Peth",
+    "zone": "Central",
+    "lat": 15.853,
+    "lng": 74.516,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Budhwar Peth",
+      "Grain Merchants Market"
+    ],
+    "population_estimate": 19882,
+    "polygon": [
+      [
+        15.8565,
+        74.51400000000001
+      ],
+      [
+        15.85545,
+        74.51920000000001
+      ],
+      [
+        15.8523,
+        74.52000000000001
+      ],
+      [
+        15.849499999999999,
+        74.5172
+      ],
+      [
+        15.8502,
+        74.51320000000001
+      ],
+      [
+        15.8537,
+        74.512
+      ],
+      [
+        15.8565,
+        74.51400000000001
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 35,
+    "ward_number": 35,
+    "name": "Ward 35 — Guruwar Peth",
+    "locality": "Guruwar Peth",
+    "zone": "Central",
+    "lat": 15.856,
+    "lng": 74.515,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Old Belagavi Municipal Chowk",
+      "Kacheri Road"
+    ],
+    "population_estimate": 20055,
+    "polygon": [
+      [
+        15.8595,
+        74.513
+      ],
+      [
+        15.85845,
+        74.51820000000001
+      ],
+      [
+        15.8553,
+        74.519
+      ],
+      [
+        15.8525,
+        74.5162
+      ],
+      [
+        15.8532,
+        74.5122
+      ],
+      [
+        15.8567,
+        74.511
+      ],
+      [
+        15.8595,
+        74.513
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 36,
+    "ward_number": 36,
+    "name": "Ward 36 — Shukrawar Peth",
+    "locality": "Shukrawar Peth",
+    "zone": "Central",
+    "lat": 15.858,
+    "lng": 74.513,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Shukrawar Peth",
+      "Hardware Market"
+    ],
+    "population_estimate": 20228,
+    "polygon": [
+      [
+        15.861500000000001,
+        74.51100000000001
+      ],
+      [
+        15.86045,
+        74.51620000000001
+      ],
+      [
+        15.8573,
+        74.51700000000001
+      ],
+      [
+        15.8545,
+        74.5142
+      ],
+      [
+        15.8552,
+        74.51020000000001
+      ],
+      [
+        15.8587,
+        74.509
+      ],
+      [
+        15.861500000000001,
+        74.51100000000001
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 37,
+    "ward_number": 37,
+    "name": "Ward 37 — Shaniwar Peth",
+    "locality": "Shaniwar Peth",
+    "zone": "Central",
+    "lat": 15.86,
+    "lng": 74.511,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Shaniwar Khut",
+      "Math Galli"
+    ],
+    "population_estimate": 20401,
+    "polygon": [
+      [
+        15.8635,
+        74.509
+      ],
+      [
+        15.862449999999999,
+        74.5142
+      ],
+      [
+        15.8593,
+        74.515
+      ],
+      [
+        15.856499999999999,
+        74.51219999999999
+      ],
+      [
+        15.857199999999999,
+        74.5082
+      ],
+      [
+        15.8607,
+        74.50699999999999
+      ],
+      [
+        15.8635,
+        74.509
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 38,
+    "ward_number": 38,
+    "name": "Ward 38 — Nehru Nagar & KLE",
+    "locality": "Nehru Nagar & KLE",
+    "zone": "North",
+    "lat": 15.875,
+    "lng": 74.508,
+    "coverage_type": "verified",
+    "has_active_station": true,
+    "station_name": "BCC Sensor Node #38 (Nehru Nagar & KLE)",
+    "key_landmarks": [
+      "KLE Dr. Prabhakar Kore Hospital",
+      "JNMC Campus",
+      "Nehru Nagar Main"
+    ],
+    "population_estimate": 20574,
+    "polygon": [
+      [
+        15.8785,
+        74.506
+      ],
+      [
+        15.87745,
+        74.5112
+      ],
+      [
+        15.8743,
+        74.512
+      ],
+      [
+        15.8715,
+        74.50919999999999
+      ],
+      [
+        15.8722,
+        74.5052
+      ],
+      [
+        15.8757,
+        74.50399999999999
+      ],
+      [
+        15.8785,
+        74.506
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 39,
+    "ward_number": 39,
+    "name": "Ward 39 — Shivajinagar",
+    "locality": "Shivajinagar",
+    "zone": "North",
+    "lat": 15.868,
+    "lng": 74.512,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Shivajinagar Bus Terminus",
+      "Camp Link Road"
+    ],
+    "population_estimate": 20747,
+    "polygon": [
+      [
+        15.871500000000001,
+        74.51
+      ],
+      [
+        15.87045,
+        74.51520000000001
+      ],
+      [
+        15.8673,
+        74.516
+      ],
+      [
+        15.8645,
+        74.5132
+      ],
+      [
+        15.8652,
+        74.5092
+      ],
+      [
+        15.8687,
+        74.508
+      ],
+      [
+        15.871500000000001,
+        74.51
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 40,
+    "ward_number": 40,
+    "name": "Ward 40 — Subhash Nagar",
+    "locality": "Subhash Nagar",
+    "zone": "North",
+    "lat": 15.872,
+    "lng": 74.519,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Subhash Nagar Ground",
+      "Vishweshwarayya Nagar"
+    ],
+    "population_estimate": 20920,
+    "polygon": [
+      [
+        15.8755,
+        74.51700000000001
+      ],
+      [
+        15.87445,
+        74.52220000000001
+      ],
+      [
+        15.8713,
+        74.52300000000001
+      ],
+      [
+        15.8685,
+        74.5202
+      ],
+      [
+        15.8692,
+        74.51620000000001
+      ],
+      [
+        15.8727,
+        74.515
+      ],
+      [
+        15.8755,
+        74.51700000000001
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 41,
+    "ward_number": 41,
+    "name": "Ward 41 — Sadashiv Nagar",
+    "locality": "Sadashiv Nagar",
+    "zone": "North",
+    "lat": 15.879,
+    "lng": 74.514,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Sadashiv Nagar Garden",
+      "Mini Vidhana Soudha"
+    ],
+    "population_estimate": 21093,
+    "polygon": [
+      [
+        15.8825,
+        74.512
+      ],
+      [
+        15.88145,
+        74.5172
+      ],
+      [
+        15.8783,
+        74.518
+      ],
+      [
+        15.875499999999999,
+        74.5152
+      ],
+      [
+        15.876199999999999,
+        74.5112
+      ],
+      [
+        15.8797,
+        74.50999999999999
+      ],
+      [
+        15.8825,
+        74.512
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 42,
+    "ward_number": 42,
+    "name": "Ward 42 — Mahantesh Nagar West",
+    "locality": "Mahantesh Nagar West",
+    "zone": "East",
+    "lat": 15.882,
+    "lng": 74.525,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Mahantesh Nagar Bus Stand",
+      "Sector 1 & 2"
+    ],
+    "population_estimate": 21266,
+    "polygon": [
+      [
+        15.8855,
+        74.52300000000001
+      ],
+      [
+        15.88445,
+        74.52820000000001
+      ],
+      [
+        15.8813,
+        74.52900000000001
+      ],
+      [
+        15.878499999999999,
+        74.5262
+      ],
+      [
+        15.879199999999999,
+        74.52220000000001
+      ],
+      [
+        15.8827,
+        74.521
+      ],
+      [
+        15.8855,
+        74.52300000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 43,
+    "ward_number": 43,
+    "name": "Ward 43 — Mahantesh Nagar East",
+    "locality": "Mahantesh Nagar East",
+    "zone": "East",
+    "lat": 15.885,
+    "lng": 74.532,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Sector 8 & 9",
+      "MM Joshi Eye Hospital"
+    ],
+    "population_estimate": 21439,
+    "polygon": [
+      [
+        15.8885,
+        74.53
+      ],
+      [
+        15.88745,
+        74.5352
+      ],
+      [
+        15.8843,
+        74.536
+      ],
+      [
+        15.881499999999999,
+        74.5332
+      ],
+      [
+        15.8822,
+        74.5292
+      ],
+      [
+        15.8857,
+        74.52799999999999
+      ],
+      [
+        15.8885,
+        74.53
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 44,
+    "ward_number": 44,
+    "name": "Ward 44 — Malaprabha Nagar",
+    "locality": "Malaprabha Nagar",
+    "zone": "East",
+    "lat": 15.878,
+    "lng": 74.529,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Malaprabha Nagar Main",
+      "Double Road"
+    ],
+    "population_estimate": 21612,
+    "polygon": [
+      [
+        15.8815,
+        74.527
+      ],
+      [
+        15.88045,
+        74.5322
+      ],
+      [
+        15.8773,
+        74.533
+      ],
+      [
+        15.8745,
+        74.5302
+      ],
+      [
+        15.8752,
+        74.5262
+      ],
+      [
+        15.8787,
+        74.52499999999999
+      ],
+      [
+        15.8815,
+        74.527
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 45,
+    "ward_number": 45,
+    "name": "Ward 45 — Ramteerth Nagar",
+    "locality": "Ramteerth Nagar",
+    "zone": "East",
+    "lat": 15.891,
+    "lng": 74.538,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Ramteerth Nagar Colony",
+      "Sector 3-5"
+    ],
+    "population_estimate": 21785,
+    "polygon": [
+      [
+        15.8945,
+        74.536
+      ],
+      [
+        15.89345,
+        74.5412
+      ],
+      [
+        15.8903,
+        74.542
+      ],
+      [
+        15.8875,
+        74.5392
+      ],
+      [
+        15.8882,
+        74.5352
+      ],
+      [
+        15.8917,
+        74.53399999999999
+      ],
+      [
+        15.8945,
+        74.536
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 46,
+    "ward_number": 46,
+    "name": "Ward 46 — Auto Nagar Industrial",
+    "locality": "Auto Nagar Industrial",
+    "zone": "Industrial",
+    "lat": 15.898,
+    "lng": 74.545,
+    "coverage_type": "verified",
+    "has_active_station": true,
+    "station_name": "BCC Sensor Node #46 (Auto Nagar Industrial)",
+    "key_landmarks": [
+      "Auto Nagar Phase 1 & 2",
+      "Heavy Vehicle Service Corridor"
+    ],
+    "population_estimate": 21958,
+    "polygon": [
+      [
+        15.9015,
+        74.543
+      ],
+      [
+        15.90045,
+        74.54820000000001
+      ],
+      [
+        15.8973,
+        74.549
+      ],
+      [
+        15.894499999999999,
+        74.5462
+      ],
+      [
+        15.895199999999999,
+        74.54220000000001
+      ],
+      [
+        15.8987,
+        74.541
+      ],
+      [
+        15.9015,
+        74.543
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "critical",
+    "status_color": "#EF4444",
+    "status_text": "High-Priority Anomaly (Exceedance)",
+    "current_aqi": 224,
+    "aqi_category": "Very Poor (Industrial Surge)",
+    "temperature_celsius": 31.5,
+    "humidity_percent": 54,
+    "community_noise_reports_count": 3,
+    "noise_db": 78.5,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.285,
+      "priority": "critical",
+      "reason": "Industrial particulate surge and metal forging acoustic exceedance."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "critical",
+      "air": "critical",
+      "weather": "critical",
+      "noise": "critical"
+    }
+  },
+  {
+    "ward_id": 47,
+    "ward_number": 47,
+    "name": "Ward 47 — Kanabargi South",
+    "locality": "Kanabargi South",
+    "zone": "East",
+    "lat": 15.887,
+    "lng": 74.551,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Kanabargi Lake",
+      "Windmill Cross"
+    ],
+    "population_estimate": 14131,
+    "polygon": [
+      [
+        15.890500000000001,
+        74.549
+      ],
+      [
+        15.88945,
+        74.55420000000001
+      ],
+      [
+        15.8863,
+        74.555
+      ],
+      [
+        15.8835,
+        74.5522
+      ],
+      [
+        15.8842,
+        74.54820000000001
+      ],
+      [
+        15.8877,
+        74.547
+      ],
+      [
+        15.890500000000001,
+        74.549
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 48,
+    "ward_number": 48,
+    "name": "Ward 48 — Kanabargi North",
+    "locality": "Kanabargi North",
+    "zone": "East",
+    "lat": 15.895,
+    "lng": 74.558,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Kanabargi Industrial Hub",
+      "Ring Road Junction"
+    ],
+    "population_estimate": 14304,
+    "polygon": [
+      [
+        15.8985,
+        74.55600000000001
+      ],
+      [
+        15.89745,
+        74.56120000000001
+      ],
+      [
+        15.8943,
+        74.56200000000001
+      ],
+      [
+        15.891499999999999,
+        74.5592
+      ],
+      [
+        15.892199999999999,
+        74.55520000000001
+      ],
+      [
+        15.8957,
+        74.554
+      ],
+      [
+        15.8985,
+        74.55600000000001
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 49,
+    "ward_number": 49,
+    "name": "Ward 49 — Kakati Road Corridor",
+    "locality": "Kakati Road Corridor",
+    "zone": "North",
+    "lat": 15.912,
+    "lng": 74.523,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "NH48 Kakati Highway Entrance",
+      "Industrial Bypass"
+    ],
+    "population_estimate": 14477,
+    "polygon": [
+      [
+        15.915500000000002,
+        74.521
+      ],
+      [
+        15.91445,
+        74.5262
+      ],
+      [
+        15.9113,
+        74.527
+      ],
+      [
+        15.9085,
+        74.5242
+      ],
+      [
+        15.9092,
+        74.5202
+      ],
+      [
+        15.912700000000001,
+        74.51899999999999
+      ],
+      [
+        15.915500000000002,
+        74.521
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "moderate",
+    "status_color": "#EAB308",
+    "status_text": "Moderate Anomaly (Traffic/Event Load)",
+    "current_aqi": 138,
+    "aqi_category": "Moderate",
+    "temperature_celsius": 28.2,
+    "humidity_percent": 62,
+    "community_noise_reports_count": 1,
+    "noise_db": 71,
+    "anomaly_details": {
+      "is_anomaly": true,
+      "anomaly_score": 0.165,
+      "priority": "warning",
+      "reason": "Urban traffic congestion and elevated acoustic noise levels."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "moderate",
+      "air": "moderate",
+      "weather": "moderate",
+      "noise": "moderate"
+    }
+  },
+  {
+    "ward_id": 50,
+    "ward_number": 50,
+    "name": "Ward 50 — Vaibhav Nagar",
+    "locality": "Vaibhav Nagar",
+    "zone": "North",
+    "lat": 15.871,
+    "lng": 74.498,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Vaibhav Nagar",
+      "VTU University Road"
+    ],
+    "population_estimate": 14650,
+    "polygon": [
+      [
+        15.874500000000001,
+        74.49600000000001
+      ],
+      [
+        15.87345,
+        74.50120000000001
+      ],
+      [
+        15.8703,
+        74.50200000000001
+      ],
+      [
+        15.8675,
+        74.4992
+      ],
+      [
+        15.8682,
+        74.49520000000001
+      ],
+      [
+        15.8717,
+        74.494
+      ],
+      [
+        15.874500000000001,
+        74.49600000000001
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 51,
+    "ward_number": 51,
+    "name": "Ward 51 — Sahyadri Nagar",
+    "locality": "Sahyadri Nagar",
+    "zone": "North",
+    "lat": 15.876,
+    "lng": 74.494,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Sahyadri Nagar Cross",
+      "Jadhav Nagar"
+    ],
+    "population_estimate": 14823,
+    "polygon": [
+      [
+        15.8795,
+        74.492
+      ],
+      [
+        15.878449999999999,
+        74.4972
+      ],
+      [
+        15.8753,
+        74.498
+      ],
+      [
+        15.872499999999999,
+        74.4952
+      ],
+      [
+        15.873199999999999,
+        74.4912
+      ],
+      [
+        15.8767,
+        74.49
+      ],
+      [
+        15.8795,
+        74.492
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 52,
+    "ward_number": 52,
+    "name": "Ward 52 — Anjaneya Nagar",
+    "locality": "Anjaneya Nagar",
+    "zone": "North",
+    "lat": 15.883,
+    "lng": 74.499,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Anjaneya Nagar",
+      "Ring Road Extension"
+    ],
+    "population_estimate": 14996,
+    "polygon": [
+      [
+        15.8865,
+        74.497
+      ],
+      [
+        15.885449999999999,
+        74.5022
+      ],
+      [
+        15.882299999999999,
+        74.503
+      ],
+      [
+        15.879499999999998,
+        74.50019999999999
+      ],
+      [
+        15.880199999999999,
+        74.4962
+      ],
+      [
+        15.8837,
+        74.49499999999999
+      ],
+      [
+        15.8865,
+        74.497
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 53,
+    "ward_number": 53,
+    "name": "Ward 53 — Bauxite Road & Al-Ameen",
+    "locality": "Bauxite Road & Al-Ameen",
+    "zone": "North",
+    "lat": 15.888,
+    "lng": 74.506,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Bauxite Road",
+      "Al-Ameen Medical Campus"
+    ],
+    "population_estimate": 15169,
+    "polygon": [
+      [
+        15.8915,
+        74.504
+      ],
+      [
+        15.89045,
+        74.5092
+      ],
+      [
+        15.8873,
+        74.51
+      ],
+      [
+        15.8845,
+        74.5072
+      ],
+      [
+        15.8852,
+        74.5032
+      ],
+      [
+        15.8887,
+        74.502
+      ],
+      [
+        15.8915,
+        74.504
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 54,
+    "ward_number": 54,
+    "name": "Ward 54 — Kangralkar Galli",
+    "locality": "Kangralkar Galli",
+    "zone": "Central",
+    "lat": 15.857,
+    "lng": 74.526,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Kangralkar Galli",
+      "Chavat Galli"
+    ],
+    "population_estimate": 15342,
+    "polygon": [
+      [
+        15.8605,
+        74.524
+      ],
+      [
+        15.859449999999999,
+        74.5292
+      ],
+      [
+        15.8563,
+        74.53
+      ],
+      [
+        15.853499999999999,
+        74.5272
+      ],
+      [
+        15.854199999999999,
+        74.5232
+      ],
+      [
+        15.8577,
+        74.52199999999999
+      ],
+      [
+        15.8605,
+        74.524
+      ]
+    ],
+    "area_sq_km": 2.6,
+    "status": "normal",
+    "status_color": "#22C55E",
+    "status_text": "Normal (Safe Baseline)",
+    "current_aqi": 58,
+    "aqi_category": "Satisfactory",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": 54,
+    "anomaly_details": {
+      "is_anomaly": false,
+      "anomaly_score": 0.042,
+      "priority": "info",
+      "reason": "Environmental sensors and microclimate within safe historical baseline."
+    },
+    "is_monitored": true,
+    "layer_statuses": {
+      "anomaly": "normal",
+      "air": "normal",
+      "weather": "normal",
+      "noise": "normal"
+    }
+  },
+  {
+    "ward_id": 55,
+    "ward_number": 55,
+    "name": "Ward 55 — Vadgaon Outskirts",
+    "locality": "Vadgaon Outskirts",
+    "zone": "South",
+    "lat": 15.815,
+    "lng": 74.515,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Yellur Road",
+      "Vadgaon Lake Fringe"
+    ],
+    "population_estimate": 15515,
+    "polygon": [
+      [
+        15.8185,
+        74.513
+      ],
+      [
+        15.81745,
+        74.51820000000001
+      ],
+      [
+        15.8143,
+        74.519
+      ],
+      [
+        15.811499999999999,
+        74.5162
+      ],
+      [
+        15.812199999999999,
+        74.5122
+      ],
+      [
+        15.8157,
+        74.511
+      ],
+      [
+        15.8185,
+        74.513
+      ]
+    ],
+    "area_sq_km": 1.2,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 56,
+    "ward_number": 56,
+    "name": "Ward 56 — Basavan Kudachi Border",
+    "locality": "Basavan Kudachi Border",
+    "zone": "East",
+    "lat": 15.845,
+    "lng": 74.552,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Basavan Kudachi Road",
+      "Agricultural Fringe"
+    ],
+    "population_estimate": 15688,
+    "polygon": [
+      [
+        15.848500000000001,
+        74.55000000000001
+      ],
+      [
+        15.84745,
+        74.55520000000001
+      ],
+      [
+        15.8443,
+        74.55600000000001
+      ],
+      [
+        15.8415,
+        74.5532
+      ],
+      [
+        15.8422,
+        74.54920000000001
+      ],
+      [
+        15.8457,
+        74.548
+      ],
+      [
+        15.848500000000001,
+        74.55000000000001
+      ]
+    ],
+    "area_sq_km": 1.55,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 57,
+    "ward_number": 57,
+    "name": "Ward 57 — Halaga Road",
+    "locality": "Halaga Road",
+    "zone": "East",
+    "lat": 15.836,
+    "lng": 74.561,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Halaga Cross",
+      "National Highway Junction"
+    ],
+    "population_estimate": 15861,
+    "polygon": [
+      [
+        15.839500000000001,
+        74.55900000000001
+      ],
+      [
+        15.83845,
+        74.56420000000001
+      ],
+      [
+        15.8353,
+        74.56500000000001
+      ],
+      [
+        15.8325,
+        74.5622
+      ],
+      [
+        15.8332,
+        74.55820000000001
+      ],
+      [
+        15.8367,
+        74.557
+      ],
+      [
+        15.839500000000001,
+        74.55900000000001
+      ]
+    ],
+    "area_sq_km": 1.9,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  },
+  {
+    "ward_id": 58,
+    "ward_number": 58,
+    "name": "Ward 58 — Khasbag Fringe",
+    "locality": "Khasbag Fringe",
+    "zone": "South",
+    "lat": 15.829,
+    "lng": 74.535,
+    "coverage_type": "provisional",
+    "has_active_station": false,
+    "station_name": null,
+    "key_landmarks": [
+      "Old City Southern Perimeter",
+      "Industrial Warehousing"
+    ],
+    "population_estimate": 16034,
+    "polygon": [
+      [
+        15.832500000000001,
+        74.533
+      ],
+      [
+        15.83145,
+        74.5382
+      ],
+      [
+        15.8283,
+        74.539
+      ],
+      [
+        15.8255,
+        74.5362
+      ],
+      [
+        15.8262,
+        74.5322
+      ],
+      [
+        15.8297,
+        74.53099999999999
+      ],
+      [
+        15.832500000000001,
+        74.533
+      ]
+    ],
+    "area_sq_km": 2.25,
+    "status": "unverified",
+    "status_color": "#64748B",
+    "status_text": "Unverified (Awaiting Measurements)",
+    "current_aqi": null,
+    "aqi_category": "Awaiting measurements",
+    "temperature_celsius": 25.4,
+    "humidity_percent": 68,
+    "community_noise_reports_count": 0,
+    "noise_db": null,
+    "anomaly_details": null,
+    "is_monitored": false,
+    "layer_statuses": {
+      "anomaly": "unverified",
+      "air": "unverified",
+      "weather": "unverified",
+      "noise": "unverified"
+    }
+  }
+];
+export default BELAGAVI_58_WARDS;

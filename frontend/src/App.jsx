@@ -9,11 +9,14 @@ import StudentPanel from './components/StudentPanel.jsx'
 import EnvironmentPanel from './components/EnvironmentPanel.jsx'
 import CityMap from './components/CityMap.jsx'
 import Footer from './components/Footer.jsx'
+import EnvironmentDashboard from './components/environment/EnvironmentDashboard.jsx'
 import { MOCK_OVERVIEW_DATA } from './mockData.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
 export default function App() {
+  const [viewMode, setViewMode] = useState('overview') // 'overview' | 'environment'
+
   const [theme, setTheme] = useState(() => {
     try {
       if (typeof window !== 'undefined') {
@@ -35,7 +38,7 @@ export default function App() {
     traffic: 'stub',
     events: 'csv_fallback',
     student: 'stub',
-    environment: 'stub',
+    environment: 'csv_fallback',
   })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -66,6 +69,14 @@ export default function App() {
       const json = await res.json()
       setOverview(json)
       setIsMock(false)
+
+      // Update environment source from overview payload if present
+      if (json?.data?.environment?.source) {
+        setAgentSources((prev) => ({
+          ...prev,
+          environment: json.data.environment.source,
+        }))
+      }
 
       // 2. Fetch /events/nearby to get the full dataset & honest source
       try {
@@ -105,6 +116,15 @@ export default function App() {
   useEffect(() => {
     fetchData()
   }, [fetchData])
+
+  // Optional 58-Ward Environment Intelligence deep-dive view
+  if (viewMode === 'environment') {
+    return (
+      <EnvironmentDashboard
+        onBackToOrchestrator={() => setViewMode('overview')}
+      />
+    )
+  }
 
   // Extract agent payloads gracefully
   const trafficData = overview?.data?.traffic
@@ -259,16 +279,41 @@ export default function App() {
           tag="ECOLOGICAL VITALS // ENVIRONMENT AGENT"
           title="Atmospheric Dispersion &"
           italicWord="Acoustic Anomalies."
-          description="Surveils ambient air quality (AQI), microclimate temperature gradients, and acoustic decibel spikes throughout the Belagavi urban basin. Unsupervised Isolation Forests detect outlier environmental anomalies."
+          description="Surveils ambient air quality (AQI), microclimate temperature gradients, and acoustic decibel spikes across all 58 wards of the Belagavi urban basin. Unsupervised Isolation Forests detect outlier environmental anomalies."
           source={agentSources.environment}
           isMock={isMock}
           reversed={true}
         >
-          <EnvironmentPanel
-            data={envData}
-            loading={loading && !overview}
-            error={!envData && !loading ? 'No atmospheric telemetry available.' : null}
-          />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <EnvironmentPanel
+              data={envData}
+              loading={loading && !overview}
+              error={!envData && !loading ? 'No atmospheric telemetry available.' : null}
+            />
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <button
+                onClick={() => setViewMode('environment')}
+                className="btn-outline"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '10px 20px',
+                  borderRadius: 'var(--radius-pill)',
+                  backgroundColor: 'var(--bg-glass)',
+                  border: '1px solid var(--border-accent)',
+                  color: 'var(--text-primary)',
+                  fontSize: '13px',
+                  letterSpacing: '0.04em',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                <span>Open 58-Ward Environment Intelligence</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </AgentChapter>
 
         {/* Section 05: Cartographic Atlas */}
