@@ -100,25 +100,32 @@ def test_weather_intelligence():
 
 
 def test_noise_reporting_and_listing():
-    # Submit report
-    post_payload = {
-        "ward_id": 26,
-        "category": "industrial",
-        "description": "Continuous high-frequency compressor hum from industrial shed.",
-        "decibel_estimate": 76.0,
-        "reporter_alias": "PyTest Verifier",
-    }
-    post_res = client.post("/environment/noise/report", json=post_payload)
-    assert post_res.status_code == 200
-    created = post_res.json()["data"]
-    assert created["ward_id"] == 26
-    assert created["category"] == "industrial"
+    from agents.environment.services.noise_service import NoiseService
+    svc = NoiseService.get_instance()
+    initial_reports = svc._read_reports()
 
-    # List reports
-    list_res = client.get("/environment/noise")
-    assert list_res.status_code == 200
-    reports = list_res.json()["data"]["reports"]
-    assert len(reports) >= 1
+    try:
+        # Submit report
+        post_payload = {
+            "ward_id": 26,
+            "category": "industrial",
+            "description": "Continuous high-frequency compressor hum from industrial shed.",
+            "decibel_estimate": 76.0,
+            "reporter_alias": "PyTest Verifier",
+        }
+        post_res = client.post("/environment/noise/report", json=post_payload)
+        assert post_res.status_code == 200
+        created = post_res.json()["data"]
+        assert created["ward_id"] == 26
+        assert created["category"] == "industrial"
+
+        # List reports
+        list_res = client.get("/environment/noise")
+        assert list_res.status_code == 200
+        reports = list_res.json()["data"]["reports"]
+        assert len(reports) >= 1
+    finally:
+        svc._save_reports(initial_reports)
 
 
 def test_ai_anomaly_detection_endpoints():

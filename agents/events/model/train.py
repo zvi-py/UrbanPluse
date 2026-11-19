@@ -112,7 +112,7 @@ def train_model(
     )
     matrix = vectorizer.fit_transform(corpus)
 
-    if save_artifacts:
+    if save_artifacts and Path(events_csv).resolve() == Path(EVENTS_CSV).resolve():
         joblib.dump(vectorizer, VEC_PATH)
         joblib.dump(matrix, MAT_PATH)
         joblib.dump(event_ids, IDS_PATH)
