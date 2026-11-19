@@ -1,4 +1,4 @@
-"""Smoke tests for the Traffic Agent stub."""
+"""Tests for the Traffic Agent."""
 import pytest
 from fastapi.testclient import TestClient
 from backend.main import app
@@ -18,7 +18,7 @@ def test_traffic_status_schema():
     body = response.json()
     assert body["agent"] == "traffic"
     assert body["status"] == "ok"
-    assert body["source"] == "stub"
+    assert body["source"] == "csv_fallback"
     assert "timestamp" in body
     assert "data" in body
     assert "alerts" in body
