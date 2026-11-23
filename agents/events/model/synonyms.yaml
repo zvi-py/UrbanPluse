@@ -1,0 +1,77 @@
+# agents/events/model/synonyms.yaml
+# Regional, local Belagavi, and domain synonym mappings for TF-IDF text preprocessing.
+# Words are mapped to normalized canonical tokens during text construction and query expansion.
+
+synonyms:
+  # Festivals & Celebrations
+  fest: "festival utsav celebration"
+  festival: "fest utsav celebration"
+  utsav: "festival fest celebration"
+  utsava: "festival fest celebration"
+  habba: "festival celebration"
+  sammelana: "conference summit symposium"
+  mela: "fair exhibition carnival"
+  jathre: "fair festival gathering"
+
+  # Coding & Technology
+  hackathon: "coding programming hackathon ideathon contest"
+  coding: "programming hackathon development software"
+  programming: "coding development software hackathon"
+  ai: "artificial-intelligence machine-learning data-science ai"
+  ml: "machine-learning data-science ai"
+  robotics: "robotics automation hardware embedded"
+  iot: "iot sensors embedded electronics"
+  web: "web-development frontend backend software"
+  cyber: "cybersecurity information-security hacking"
+
+  # Performing Arts & Cultural
+  dance: "dance nrutya folk-dance cultural"
+  nrutya: "dance nrutya cultural"
+  music: "music sangeet hindustani concert vocal"
+  sangeet: "music concert singing vocal"
+  theatre: "theatre drama play natya"
+  natya: "theatre dance drama"
+  art: "art painting exhibition fine-arts"
+  bhajan: "devotional bhajan spiritual temple"
+
+  # Sports & Fitness
+  sports: "sports tournament match athletics competition"
+  cricket: "cricket sports tournament match"
+  volleyball: "volleyball sports match tournament"
+  badminton: "badminton sports racquet tournament"
+  marathon: "marathon running fitness athletics 5k 10k"
+  chess: "chess board-game tournament strategy"
+
+  # Academic & Educational
+  convocation: "convocation graduation degree academic ceremony"
+  seminar: "seminar symposium conference lecture workshop"
+  symposium: "seminar symposium conference academic"
+  workshop: "workshop hands-on training bootcamp masterclass"
+  bootcamp: "workshop bootcamp hands-on training"
+
+  # Volunteering & Civic
+  nss: "nss volunteering community service social-work"
+  cleanliness: "swachh cleanliness sanitation lake-cleanup"
+  swachh: "cleanliness sanitation swachh civic"
+  blood: "blood-donation medical camp health"
+  plantation: "tree-plantation environment sapling green"
+
+  # Business & Career
+  startup: "startup entrepreneurship venture pitch business"
+  summit: "summit conference expo conclave"
+  expo: "expo exhibition showcase conference"
+  networking: "networking career meet professional"
+
+# Local stopwords (ignored or de-emphasized during vectorization)
+custom_stopwords:
+  - "belagavi"
+  - "belgaum"
+  - "karnataka"
+  - "road"
+  - "hall"
+  - "centre"
+  - "center"
+  - "ground"
+  - "campus"
+  - "near"
+  - "opposite"

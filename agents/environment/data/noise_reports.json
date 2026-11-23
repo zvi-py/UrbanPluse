@@ -1,0 +1,107 @@
+[
+  {
+    "report_id": "NR-747517",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T16:50:20.564081+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-012380",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T16:21:51.017886+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-697AA3",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T15:33:41.139874+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-63F2DA",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T15:04:00.073244+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-8095AD",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T15:02:07.985078+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-F4591F",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Continuous high-frequency compressor hum from industrial shed.",
+    "decibel_estimate": 76.0,
+    "timestamp": "2026-11-17T15:00:46.014637+00:00",
+    "status": "investigating",
+    "source": "citizen_report",
+    "reporter_alias": "PyTest Verifier"
+  },
+  {
+    "report_id": "NR-2026-001",
+    "ward_id": 26,
+    "ward_name": "Ward 26 \u2014 Udyambag South",
+    "category": "industrial",
+    "description": "Heavy forging hammer and metal fabrication noise persisting late evening.",
+    "decibel_estimate": 78.5,
+    "timestamp": "2026-11-17T18:45:00+05:30",
+    "status": "investigating",
+    "source": "citizen_report"
+  },
+  {
+    "report_id": "NR-2026-002",
+    "ward_id": 18,
+    "ward_name": "Ward 18 \u2014 Ganpat Galli & CBT",
+    "category": "traffic",
+    "description": "Continuous bus and truck horn honking during peak commercial transit.",
+    "decibel_estimate": 82.0,
+    "timestamp": "2026-11-17T19:15:00+05:30",
+    "status": "acknowledged",
+    "source": "citizen_report"
+  },
+  {
+    "report_id": "NR-2026-003",
+    "ward_id": 4,
+    "ward_name": "Ward 4 \u2014 Camp North",
+    "category": "construction",
+    "description": "Concrete mixing and pneumatic road drilling near commercial complex.",
+    "decibel_estimate": 74.0,
+    "timestamp": "2026-11-17T17:30:00+05:30",
+    "status": "verified",
+    "source": "citizen_report"
+  }
+]

@@ -1,0 +1,36 @@
+query_id,query_text,category_intent,relevant_event_ids,labeled_by,notes
+Q01,coding hackathon and competitive programming,hackathon,E003;E021;E034;E042;E048,student_evaluator_1,Focus on competitive engineering coding contests
+Q02,machine learning and artificial intelligence workshop,workshop,E005;E011;E028;E001,student_evaluator_1,Looking for hands-on ML and data science events
+Q03,classical hindustani music concert and sitar,music,E004;E029;E041;E047,student_evaluator_2,Hindustani and Carnatic traditional music performances
+Q04,annual college cultural fest and utsav,college_fest,E001;R003;E031;R002,student_evaluator_2,Major campus cultural festivals in Belagavi
+Q05,inter college cricket and badminton tournament,sports,E009;E038;E050;E025,student_evaluator_1,Active collegiate sports championships
+Q06,social volunteering and tree plantation drive,volunteering,E015;E044;R004;E033,student_evaluator_3,Community service and ecological initiatives
+Q07,startup pitch competition and entrepreneurship summit,professional,E008;R005;E037;E022,student_evaluator_3,Venture capital and business incubator events
+Q08,cyber security and ethical hacking workshop,workshop,E024;E007;E039;E045,student_evaluator_1,InfoSec network defense and security training
+Q09,embedded systems robotics and iot expo,workshop,E013;E001;E019;E031,student_evaluator_1,Hardware microcontrollers and robotics exhibitions
+Q10,folk dance nrutya and cultural food festival,cultural,E002;E047;E017;E043,student_evaluator_2,Traditional North Karnataka arts and gastronomy
+Q11,blood donation and community medical camp,community,E033;E040;R004;E018,student_evaluator_3,Civic public health and medical drives
+Q12,vtu graduation and convocation ceremony,academic,R001;E001;E031,student_evaluator_1,Academic university degree convocation
+Q13,python programming and data analysis masterclass,workshop,E028;E005;E011;E016,student_evaluator_1,Python scripting and pandas data analysis
+Q14,running half marathon and fitness cycling,sports,E006;E036;E050,student_evaluator_2,Athletics road races and endurance challenges
+Q15,theatre drama and stage plays,cultural,E032;E004;E047;R003,student_evaluator_2,Performing arts and street theatre
+Q16,flower show and nature garden exhibition,cultural,E035;E002;E043,student_evaluator_3,Civic botanical and horticulture showcase
+Q17,web development full stack bootcamp,workshop,E016;E003;E007;E042,student_evaluator_1,React node and modern web development
+Q18,kite festival and outdoor celebrations,cultural,E027;E002;E010,student_evaluator_2,Open-air community festival
+Q19,women in technology and leadership panels,professional,E022;E011;E008;R005,student_evaluator_3,Inclusion and career mentorship panels
+Q20,heritage walk and belagavi historical architecture,cultural,E023;E010;E002;E020,student_evaluator_2,Historical landmarks and fort walking tours
+Q21,cloud computing devops and open source,workshop,E045;E007;E016;E039,student_evaluator_1,Cloud infrastructure and GitHub contribution days
+Q22,rock band and indie music concert,music,E014;E004;R003;E047,student_evaluator_2,Youth live music concerts
+Q23,district volleyball match and sports,sports,E050;E009;E038;E025,student_evaluator_1,Team volleyball league
+Q24,astronomy stargazing and space science talk,workshop,E049;E046;E005,student_evaluator_1,Night sky observation and telescope astronomy
+Q25,fintech innovation and digital banking hackathon,hackathon,E048;E003;E034;E021,student_evaluator_3,Financial tech payment innovations
+Q26,book fair and literature festival,cultural,E020;E023;E032;E010,student_evaluator_2,Authors reading and regional literature
+Q27,photography walk and photo exhibition,cultural,E010;E023;E030;E035,student_evaluator_2,Visual arts and camera enthusiasts walk
+Q28,blockchain and web3 crypto conference,workshop,E039;E048;E003,student_evaluator_1,Decentralized systems and smart contracts
+Q29,kabaddi championship match,sports,E025;E009;E050;E006,student_evaluator_1,Traditional North Karnataka kabaddi tournament
+Q30,digital marketing and social media strategy,professional,E026;E008;E011;R005,student_evaluator_3,Brand growth and digital strategy
+Q31,smart city civic tech hackathon,hackathon,E034;E003;E042;E048,student_evaluator_1,Urban IoT and municipal engineering solutions
+Q32,yoga wellness meditation workshop,wellness,E012;E006;E015,student_evaluator_3,Mindfulness and health camp
+Q33,school science quiz and student competition,college_fest,E046;E019;E031;E001,student_evaluator_1,Inter-school STEM competitions
+Q34,street art painting and mural project,cultural,E030;E010;E043;E020,student_evaluator_2,Urban murals and fine arts workshops
+Q35,crafts market and local artisanal handloom,cultural,E043;E002;E020;E035,student_evaluator_3,Handloom textiles and traditional artisans

@@ -1,0 +1,6 @@
+timestamp,location,congestion_score,level,incident
+2024-01-15 08:00,Belagavi City Center,0.75,high,none
+2024-01-15 08:30,NH48 Bypass,0.30,low,none
+2024-01-15 09:00,College Road,0.60,moderate,roadwork
+2024-01-15 09:30,Market Area,0.85,high,accident
+2024-01-15 10:00,Belagavi City Center,0.55,moderate,none

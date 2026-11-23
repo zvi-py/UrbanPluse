@@ -1,0 +1,2 @@
+event_id,title,description,category,tags,venue,lat,lng,start_datetime,end_datetime,expected_attendance,is_free,organizer,data_origin,source_name,source_url,verified_on,attendance_estimated
+M001,Sample College Symposium,One to three sentences describing the gathering clearly with relevant keywords.,workshop,technology;workshop;coding,KLE Technological University Campus,15.8530,74.5010,2026-11-20T10:00:00+00:00,2026-11-20T17:00:00+00:00,250,True,KLE Tech Student Chapter,manual,Organizer Direct Submission,https://kletech.ac.in,2026-11-08,False

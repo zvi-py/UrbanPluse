@@ -1,0 +1,5 @@
+# agents/events/.gitignore
+__pycache__/
+*.pyc
+data/feedback.db
+data/.cache/

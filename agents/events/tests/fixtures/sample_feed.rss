@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Belagavi Municipal Notices and Public Events</title>
+    <link>https://belagavicity.mrc.gov.in</link>
+    <description>Official notifications for civic and community gatherings</description>
+    <item>
+      <title>Belagavi Annual Flower Show &amp; Horticulture Exhibition</title>
+      <link>https://belagavicity.mrc.gov.in/events/flower-show</link>
+      <description>Spectacular garden display featuring exotic orchids, native flora of Western Ghats, and bonsai contest.</description>
+      <pubDate>Mon, 24 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
