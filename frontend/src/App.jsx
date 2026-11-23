@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import TopBar from './components/TopBar.jsx'
 import Hero from './components/Hero.jsx'
+import MetricCardsBar from './components/MetricCardsBar.jsx'
+import AgentNetworkVisualizer from './components/AgentNetworkVisualizer.jsx'
+import QuickActionGrid from './components/QuickActionGrid.jsx'
 import SignalStrip from './components/SignalStrip.jsx'
 import AgentChapter from './components/AgentChapter.jsx'
 import TrafficPanel from './components/TrafficPanel.jsx'
@@ -8,6 +11,7 @@ import EventsPanel from './components/EventsPanel.jsx'
 import StudentPanel from './components/StudentPanel.jsx'
 import EnvironmentPanel from './components/EnvironmentPanel.jsx'
 import CityMap from './components/CityMap.jsx'
+import HostEventModal from './components/HostEventModal.jsx'
 import Footer from './components/Footer.jsx'
 import EnvironmentDashboard from './components/environment/EnvironmentDashboard.jsx'
 import { MOCK_OVERVIEW_DATA } from './mockData.js'
@@ -16,6 +20,7 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
 export default function App() {
   const [viewMode, setViewMode] = useState('overview') // 'overview' | 'environment'
+  const [isHostModalOpen, setIsHostModalOpen] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     try {
@@ -34,8 +39,9 @@ export default function App() {
 
   const [overview, setOverview] = useState(null)
   const [eventsData, setEventsData] = useState(null)
+  const [trafficData, setTrafficData] = useState(null)
   const [agentSources, setAgentSources] = useState({
-    traffic: 'stub',
+    traffic: 'csv_fallback',
     events: 'csv_fallback',
     student: 'stub',
     environment: 'csv_fallback',
@@ -70,6 +76,10 @@ export default function App() {
       setOverview(json)
       setIsMock(false)
 
+      if (json?.data?.traffic) {
+        setTrafficData(json.data.traffic)
+      }
+
       // Update environment source from overview payload if present
       if (json?.data?.environment?.source) {
         setAgentSources((prev) => ({
@@ -92,11 +102,14 @@ export default function App() {
         console.warn('Could not load specific /events/nearby endpoint:', e)
       }
 
-      // 3. Optional telemetry from individual endpoints to update sources
+      // 3. Fetch /traffic/status
       try {
         const trafficRes = await fetch(`${API_BASE}/traffic/status`)
         if (trafficRes.ok) {
           const tJson = await trafficRes.json()
+          if (tJson.data) {
+            setTrafficData(tJson.data)
+          }
           if (tJson.source) {
             setAgentSources((prev) => ({ ...prev, traffic: tJson.source }))
           }
@@ -107,6 +120,7 @@ export default function App() {
       setError('The city is quiet right now. Displaying baseline architectural projection.')
       setOverview(MOCK_OVERVIEW_DATA)
       setEventsData(MOCK_OVERVIEW_DATA.data.events)
+      setTrafficData(MOCK_OVERVIEW_DATA.data.traffic)
       setIsMock(true)
     } finally {
       setLoading(false)
@@ -127,10 +141,9 @@ export default function App() {
   }
 
   // Extract agent payloads gracefully
-  const trafficData = overview?.data?.traffic
+  const resolvedTrafficData = trafficData || overview?.data?.traffic
   const envData = overview?.data?.environment
   const studentData = overview?.data?.student
-  // Prefer direct eventsData if available, fallback to overview events
   const resolvedEvents = eventsData || overview?.data?.events
 
   const alerts = overview?.alerts || []
@@ -161,6 +174,15 @@ export default function App() {
           timestamp={timestamp}
           source={globalSource}
           isMock={isMock}
+        />
+
+        {/* Top 4 KPI Metrics Bar matching Video Frame 5 & 6 */}
+        <MetricCardsBar
+          overview={overview}
+          eventsData={resolvedEvents}
+          trafficData={resolvedTrafficData}
+          envData={envData}
+          studentData={studentData}
         />
 
         {/* Error / Fallback Banner if backend unreachable */}
@@ -215,6 +237,16 @@ export default function App() {
         {/* Cross-Agent Synthesis Signal Strip */}
         <SignalStrip alerts={alerts} />
 
+        {/* Four Intelligent Agents Architecture Visualizer matching Video Frame 3 & 4 */}
+        <AgentNetworkVisualizer
+          agentSources={agentSources}
+        />
+
+        {/* Quick Civic & Student Discovery Grid matching Video Frame 2, 5 & 6 */}
+        <QuickActionGrid
+          onOpenHostModal={() => setIsHostModalOpen(true)}
+        />
+
         {/* Chapter 01: Traffic Agent */}
         <AgentChapter
           id="traffic"
@@ -228,9 +260,9 @@ export default function App() {
           reversed={false}
         >
           <TrafficPanel
-            data={trafficData}
+            data={resolvedTrafficData}
             loading={loading && !overview}
-            error={!trafficData && !loading ? 'No traffic telemetry available.' : null}
+            error={!resolvedTrafficData && !loading ? 'No traffic telemetry available.' : null}
           />
         </AgentChapter>
 
@@ -316,9 +348,20 @@ export default function App() {
           </div>
         </AgentChapter>
 
-        {/* Section 05: Cartographic Atlas */}
-        <CityMap events={resolvedEvents} theme={theme} />
+        {/* Section 05: Cartographic Atlas with Event Markers & Traffic Corridors */}
+        <CityMap
+          events={resolvedEvents}
+          trafficData={resolvedTrafficData}
+          theme={theme}
+        />
       </main>
+
+      {/* Host Event Slide-over Modal */}
+      <HostEventModal
+        isOpen={isHostModalOpen}
+        onClose={() => setIsHostModalOpen(false)}
+        onEventCreated={fetchData}
+      />
 
       {/* Footer */}
       <Footer />
