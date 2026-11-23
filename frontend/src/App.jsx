@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import TopBar from './components/TopBar.jsx'
-import Hero from './components/Hero.jsx'
-import MetricCardsBar from './components/MetricCardsBar.jsx'
-import AgentNetworkVisualizer from './components/AgentNetworkVisualizer.jsx'
-import QuickActionGrid from './components/QuickActionGrid.jsx'
-import SignalStrip from './components/SignalStrip.jsx'
-import AgentChapter from './components/AgentChapter.jsx'
+import AppSidebar from './components/dashboard/AppSidebar.jsx'
+import AppHeader from './components/dashboard/AppHeader.jsx'
+import DashboardMain from './components/dashboard/DashboardMain.jsx'
+import AiInsightsPanel from './components/dashboard/AiInsightsPanel.jsx'
 import TrafficPanel from './components/TrafficPanel.jsx'
 import EventsPanel from './components/EventsPanel.jsx'
 import StudentPanel from './components/StudentPanel.jsx'
 import EnvironmentPanel from './components/EnvironmentPanel.jsx'
 import CityMap from './components/CityMap.jsx'
 import HostEventModal from './components/HostEventModal.jsx'
-import Footer from './components/Footer.jsx'
+import AgentNetworkVisualizer from './components/AgentNetworkVisualizer.jsx'
 import EnvironmentDashboard from './components/environment/EnvironmentDashboard.jsx'
 import { MOCK_OVERVIEW_DATA } from './mockData.js'
+
+import './dashboard-video.css'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
 export default function App() {
-  const [viewMode, setViewMode] = useState('overview') // 'overview' | 'environment'
+  const [activeTab, setActiveTab] = useState('overview') // 'overview' | 'student' | 'events' | 'traffic' | 'environment' | 'agents_core' | 'map'
+  const [searchQuery, setSearchQuery] = useState('')
   const [isHostModalOpen, setIsHostModalOpen] = useState(false)
 
   const [theme, setTheme] = useState(() => {
@@ -50,7 +50,7 @@ export default function App() {
   const [error, setError] = useState(null)
   const [isMock, setIsMock] = useState(false)
 
-  // Apply data-theme attribute on <html>
+  // Apply theme to document
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     try {
@@ -90,7 +90,7 @@ export default function App() {
 
       // 2. Fetch /events/nearby to get the full dataset & honest source
       try {
-        const eventsRes = await fetch(`${API_BASE}/events/nearby?radius_km=25&limit=20`)
+        const eventsRes = await fetch(`${API_BASE}/events/nearby?radius_km=25&limit=35`)
         if (eventsRes.ok) {
           const eventsJson = await eventsRes.json()
           setEventsData(eventsJson.data)
@@ -117,7 +117,7 @@ export default function App() {
       } catch {}
     } catch (err) {
       console.warn('Backend unavailable, engaging elegant fallback:', err)
-      setError('The city is quiet right now. Displaying baseline architectural projection.')
+      setError('Backend telemetry unavailable. Engaging baseline projection.')
       setOverview(MOCK_OVERVIEW_DATA)
       setEventsData(MOCK_OVERVIEW_DATA.data.events)
       setTrafficData(MOCK_OVERVIEW_DATA.data.traffic)
@@ -131,11 +131,11 @@ export default function App() {
     fetchData()
   }, [fetchData])
 
-  // Optional 58-Ward Environment Intelligence deep-dive view
-  if (viewMode === 'environment') {
+  // If user opens the 58-Ward environment platform
+  if (activeTab === 'environment') {
     return (
       <EnvironmentDashboard
-        onBackToOrchestrator={() => setViewMode('overview')}
+        onBackToOrchestrator={() => setActiveTab('overview')}
       />
     )
   }
@@ -145,226 +145,159 @@ export default function App() {
   const envData = overview?.data?.environment
   const studentData = overview?.data?.student
   const resolvedEvents = eventsData || overview?.data?.events
-
   const alerts = overview?.alerts || []
-  const timestamp = overview?.timestamp
-  const globalSource = isMock ? 'mock' : overview?.source || 'stub'
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'var(--bg-base)' }}>
-      {/* Film Grain Texture Overlay */}
-      <div className="grain-overlay" />
-
-      {/* Large Blurred Ambient Glow */}
-      <div className="ambient-glow" />
-
-      {/* Sticky Header with Theme Toggle */}
-      <TopBar
-        source={globalSource}
-        isMock={isMock}
-        onRefresh={fetchData}
-        loading={loading}
-        theme={theme}
-        onToggleTheme={toggleTheme}
+    <div className="video-dashboard-layout">
+      {/* 1. Left Fixed Sidebar matching Video Frame 5 & 6 */}
+      <AppSidebar
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        onOpenHostModal={() => setIsHostModalOpen(true)}
+        alertCount={alerts.length || 3}
       />
 
-      <main>
-        {/* Hero Section */}
-        <Hero
-          timestamp={timestamp}
-          source={globalSource}
-          isMock={isMock}
-        />
-
-        {/* Top 4 KPI Metrics Bar matching Video Frame 5 & 6 */}
-        <MetricCardsBar
-          overview={overview}
-          eventsData={resolvedEvents}
-          trafficData={resolvedTrafficData}
-          envData={envData}
-          studentData={studentData}
-        />
-
-        {/* Error / Fallback Banner if backend unreachable */}
-        {error && (
-          <div
-            style={{
-              maxWidth: '1360px',
-              margin: '0 auto 32px',
-              padding: '0 28px',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '12px 20px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'var(--status-warning-bg)',
-                border: '1px solid var(--border-accent)',
-                color: 'var(--status-warning)',
-                fontSize: '13px',
-                flexWrap: 'wrap',
-                gap: '12px',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--status-warning)' }} />
-                <span>{error}</span>
-              </div>
-              <button
-                onClick={fetchData}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid var(--status-warning)',
-                  color: 'var(--status-warning)',
-                  padding: '4px 12px',
-                  borderRadius: 'var(--radius-pill)',
-                  cursor: 'pointer',
-                  fontSize: '11px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                }}
-              >
-                Retry Telemetry
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Cross-Agent Synthesis Signal Strip */}
-        <SignalStrip alerts={alerts} />
-
-        {/* Four Intelligent Agents Architecture Visualizer matching Video Frame 3 & 4 */}
-        <AgentNetworkVisualizer
-          agentSources={agentSources}
-        />
-
-        {/* Quick Civic & Student Discovery Grid matching Video Frame 2, 5 & 6 */}
-        <QuickActionGrid
-          onOpenHostModal={() => setIsHostModalOpen(true)}
-        />
-
-        {/* Chapter 01: Traffic Agent */}
-        <AgentChapter
-          id="traffic"
-          number="01"
-          tag="TRANSIT & ARTERIAL FLOW // TRAFFIC AGENT"
-          title="Dynamic Congestion Analysis &"
-          italicWord="Alternate Rerouting."
-          description="Autonomous classification of vehicular density across Belagavi's core road corridors. Evaluates real-time bottleneck thresholds and synthesizes bypass routing to mitigate arterial choking."
-          source={agentSources.traffic}
-          isMock={isMock}
-          reversed={false}
-        >
-          <TrafficPanel
-            data={resolvedTrafficData}
-            loading={loading && !overview}
-            error={!resolvedTrafficData && !loading ? 'No traffic telemetry available.' : null}
-          />
-        </AgentChapter>
-
-        {/* Chapter 02: Events Agent */}
-        <AgentChapter
-          id="events"
-          number="02"
-          tag="COMMUNITY & ACADEMIC GATHERINGS // EVENT AGENT"
-          title="TF-IDF Affinity Ranking &"
-          italicWord="Spatial Proximity."
-          description="Synthesizes campus festivals, technical hackathons, and cultural exhibits across Belagavi. Utilizes TF-IDF vector space modeling and cosine distance to align individual interests with nearby urban happenings."
-          source={agentSources.events}
-          isMock={isMock}
-          reversed={true}
-        >
-          <EventsPanel
-            data={resolvedEvents}
-            loading={loading && !overview}
-            error={!resolvedEvents && !loading ? 'No gathering telemetry available.' : null}
-          />
-        </AgentChapter>
-
-        {/* Chapter 03: Student Agent */}
-        <AgentChapter
-          id="student"
-          number="03"
-          tag="COLLEGIATE CONNECTIVITY // STUDENT AGENT"
-          title="Academic Interest Clusters &"
-          italicWord="Peer Synthesis."
-          description="Connects undergraduate engineering and data science peers across collegiate clusters. Analyzes shared research interests, technical skills, and active campus guilds through vector similarity."
-          source={agentSources.student}
-          isMock={isMock}
-          reversed={false}
-        >
-          <StudentPanel
-            data={studentData}
-            loading={loading && !overview}
-            error={!studentData && !loading ? 'No peer network telemetry available.' : null}
-          />
-        </AgentChapter>
-
-        {/* Chapter 04: Environment Agent */}
-        <AgentChapter
-          id="environment"
-          number="04"
-          tag="ECOLOGICAL VITALS // ENVIRONMENT AGENT"
-          title="Atmospheric Dispersion &"
-          italicWord="Acoustic Anomalies."
-          description="Surveils ambient air quality (AQI), microclimate temperature gradients, and acoustic decibel spikes across all 58 wards of the Belagavi urban basin. Unsupervised Isolation Forests detect outlier environmental anomalies."
-          source={agentSources.environment}
-          isMock={isMock}
-          reversed={true}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <EnvironmentPanel
-              data={envData}
-              loading={loading && !overview}
-              error={!envData && !loading ? 'No atmospheric telemetry available.' : null}
-            />
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button
-                onClick={() => setViewMode('environment')}
-                className="btn-outline"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '10px 20px',
-                  borderRadius: 'var(--radius-pill)',
-                  backgroundColor: 'var(--bg-glass)',
-                  border: '1px solid var(--border-accent)',
-                  color: 'var(--text-primary)',
-                  fontSize: '13px',
-                  letterSpacing: '0.04em',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                <span>Open 58-Ward Environment Intelligence</span>
-                <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </div>
-        </AgentChapter>
-
-        {/* Section 05: Cartographic Atlas with Event Markers & Traffic Corridors */}
-        <CityMap
-          events={resolvedEvents}
-          trafficData={resolvedTrafficData}
+      {/* Main Column (Header + Dynamic Stage) */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, height: '100vh', overflow: 'hidden' }}>
+        {/* 2. Top Header matching Video Frame 5 & 6 */}
+        <AppHeader
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onRefresh={fetchData}
+          loading={loading}
           theme={theme}
+          onToggleTheme={toggleTheme}
+          alertCount={alerts.length || 3}
         />
-      </main>
 
-      {/* Host Event Slide-over Modal */}
+        {/* 3. Center Area (Dashboard Stage + Right AI Insights Panel) */}
+        <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+          {/* Main Content Area */}
+          {activeTab === 'overview' && (
+            <>
+              <DashboardMain
+                overview={overview}
+                eventsData={resolvedEvents}
+                trafficData={resolvedTrafficData}
+                envData={envData}
+                studentData={studentData}
+                onOpenHostModal={() => setIsHostModalOpen(true)}
+                onSelectTab={setActiveTab}
+                theme={theme}
+                agentSources={agentSources}
+              />
+              <AiInsightsPanel
+                alerts={alerts}
+                events={resolvedEvents}
+                onOpenHostModal={() => setIsHostModalOpen(true)}
+              />
+            </>
+          )}
+
+          {activeTab === 'student' && (
+            <div style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
+              <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Student Connectivity & Peer Matcher</h2>
+                <button
+                  onClick={() => setActiveTab('overview')}
+                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  &larr; Back to Dashboard
+                </button>
+              </div>
+              <StudentPanel
+                data={studentData}
+                loading={loading && !overview}
+                error={!studentData && !loading ? 'No peer network telemetry available.' : null}
+              />
+            </div>
+          )}
+
+          {activeTab === 'events' && (
+            <div style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
+              <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Discover Gatherings & Campus Activities</h2>
+                <button
+                  onClick={() => setActiveTab('overview')}
+                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  &larr; Back to Dashboard
+                </button>
+              </div>
+              <EventsPanel
+                data={resolvedEvents}
+                loading={loading && !overview}
+                error={!resolvedEvents && !loading ? 'No gathering telemetry available.' : null}
+              />
+            </div>
+          )}
+
+          {activeTab === 'traffic' && (
+            <div style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
+              <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Traffic Intelligence & Corridor Congestion</h2>
+                <button
+                  onClick={() => setActiveTab('overview')}
+                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  &larr; Back to Dashboard
+                </button>
+              </div>
+              <TrafficPanel
+                data={resolvedTrafficData}
+                loading={loading && !overview}
+                error={!resolvedTrafficData && !loading ? 'No traffic telemetry available.' : null}
+              />
+            </div>
+          )}
+
+          {activeTab === 'agents_core' && (
+            <div style={{ flex: 1, padding: '28px', overflowY: 'auto' }}>
+              <div style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Four Intelligent Agents · Autonomous Architecture</h2>
+                <button
+                  onClick={() => setActiveTab('overview')}
+                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  &larr; Back to Dashboard
+                </button>
+              </div>
+              <AgentNetworkVisualizer
+                agentSources={agentSources}
+                onSelectAgent={setActiveTab}
+              />
+            </div>
+          )}
+
+          {activeTab === 'map' && (
+            <div style={{ flex: 1, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0 }}>Explore City · Belagavi Cartographic Atlas</h2>
+                <button
+                  onClick={() => setActiveTab('overview')}
+                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                >
+                  &larr; Back to Dashboard
+                </button>
+              </div>
+              <div style={{ flex: 1, borderRadius: '14px', overflow: 'hidden' }}>
+                <CityMap
+                  events={resolvedEvents}
+                  trafficData={resolvedTrafficData}
+                  theme={theme}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Host Event Slide-over Modal Form */}
       <HostEventModal
         isOpen={isHostModalOpen}
         onClose={() => setIsHostModalOpen(false)}
         onEventCreated={fetchData}
       />
-
-      {/* Footer */}
-      <Footer />
     </div>
   )
 }
