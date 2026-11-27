@@ -1,8 +1,8 @@
 {
-  "events_hash": "c495a0df79f26a2b6a079eb89b156721",
+  "events_hash": "5b3a97a68a24e901a06fef0a25d6387d",
   "config_hash": "73589c7e1077716b2efd7b7d2f031001",
   "synonyms_hash": "d344b0f0538603b3e96505af53db0ec8",
   "num_events": 57,
   "vocabulary_size": 864,
-  "trained_at": "2026-11-27T13:09:52.495184+00:00"
+  "trained_at": "2026-11-27T13:33:23.271648+00:00"
 }

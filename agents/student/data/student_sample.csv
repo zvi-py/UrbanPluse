@@ -1,7 +1,13 @@
-id,name,department,year,interests
-1,Priya Kulkarni,AI & DS,3,"machine learning,robotics,hackathons,python"
-2,Rahul Desai,CSE,3,"data science,open source,competitive coding,algorithms"
-3,Anjali Patil,ECE,2,"IoT,embedded systems,hackathons,C++"
-4,Vikram Hegde,AI & DS,2,"computer vision,deep learning,python,research"
-5,Sneha Joshi,IT,4,"web development,UI/UX,javascript,open source"
-6,Aditya Kulkarni,CSE,1,"competitive coding,mathematics,algorithms"
+id,name,college,department,year,interests,location
+1,Priya Kulkarni,KLE Technological University,AI & Robotics,3,"machine learning,autonomous systems,robotics,python,ROS",Udyambag
+2,Rahul Desai,KLS Gogte Institute of Technology (GIT),Computer Science,4,"data science,open source,competitive coding,algorithms,fastapi",Tilakwadi
+3,Anjali Patil,VTU Jnana Sangama Campus,Data Science & ML,2,"machine learning,deep learning,NLP,python,research",Machhe
+4,Vikram Hegde,Jain College of Engineering (JCE),Electronics & IoT,3,"IoT,embedded systems,circuit design,smart city sensors,C++",Machhe
+5,Sneha Joshi,Angadi Institute of Technology (AITM),Information Science,2,"web development,react,UI/UX,javascript,open source",Savagaon
+6,Aditya Kulkarni,KLS GIT Udyambag,Computer Science,3,"competitive coding,mathematics,graph algorithms,C++",Camp
+7,Megha Belagavi,KLE Technological University,Robotics & Automation,4,"computer vision,ROS,edge AI,drones,python",Udyambag
+8,Siddharth Patil,VTU Jnana Sangama Campus,Cloud & Distributed Systems,2,"cloud computing,kubernetes,microservices,go,docker",Machhe
+9,Pooja Naik,Belagavi Institute of Medical Sciences (BIMS),Health Informatics,3,"bioinformatics,data visualization,epidemiology,python",Nehru Nagar
+10,Rohan Chougule,Maratha Mandal Engineering College,Mechanical & IoT,4,"structural sensors,CAD,finite element analysis,IoT",Oharwad
+11,Tanvi Mutgekar,KLE Technological University,Civil & Urban Planning,3,"smart mobility,GIS mapping,transit routing,traffic analysis",Hindwadi
+12,Nikhil Bailhongal,KLS Gogte Institute of Technology (GIT),Information Science,3,"full stack,fastapi,react,municipal telemetry,python",Shahapur

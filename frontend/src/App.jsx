@@ -90,7 +90,7 @@ export default function App() {
 
       // 2. Fetch /events/nearby to get the full dataset & honest source
       try {
-        const eventsRes = await fetch(`${API_BASE}/events/nearby?radius_km=25&limit=35`)
+        const eventsRes = await fetch(`${API_BASE}/events/nearby?radius_km=25&limit=50`)
         if (eventsRes.ok) {
           const eventsJson = await eventsRes.json()
           setEventsData(eventsJson.data)

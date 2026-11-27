@@ -134,7 +134,7 @@ export default function StudentPanel({ data, loading = false, error = null }) {
                     {student.name}
                   </h4>
                   <span style={{ fontSize: '12px', color: 'var(--text-dim)' }}>
-                    {student.department || 'Engineering'} {student.year ? `· Year ${student.year}` : ''}
+                    {student.college ? `${student.college} · ` : ''}{student.department || 'Engineering'} {student.year ? `· Year ${student.year}` : ''} {student.location ? `· ${student.location}` : ''}
                   </span>
                 </div>
               </div>
@@ -221,9 +221,16 @@ export default function StudentPanel({ data, loading = false, error = null }) {
                   alignItems: 'center',
                 }}
               >
-                <span style={{ fontSize: '13px', color: 'var(--text-primary)', fontWeight: 500 }}>
-                  {group.name}
-                </span>
+                <div>
+                  <span style={{ fontSize: '13px', color: 'var(--text-primary)', fontWeight: 500, display: 'block' }}>
+                    {group.name}
+                  </span>
+                  {group.campus && (
+                    <span style={{ fontSize: '11px', color: 'var(--text-dim)' }}>
+                      Campus Hub: {group.campus}
+                    </span>
+                  )}
+                </div>
                 <span
                   style={{
                     fontSize: '11px',

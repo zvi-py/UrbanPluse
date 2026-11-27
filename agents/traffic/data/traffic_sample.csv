@@ -1,6 +1,13 @@
 timestamp,location,congestion_score,level,incident
-2024-01-15 08:00,Belagavi City Center,0.75,high,none
-2024-01-15 08:30,NH48 Bypass,0.30,low,none
-2024-01-15 09:00,College Road,0.60,moderate,roadwork
-2024-01-15 09:30,Market Area,0.85,high,accident
-2024-01-15 10:00,Belagavi City Center,0.55,moderate,none
+2026-11-27 08:00,Congress Road (Tilakwadi),0.65,moderate,none
+2026-11-27 08:15,Khanapur Road (Udyambag),0.78,high,none
+2026-11-27 08:30,Rani Channamma Circle (RCC),0.58,moderate,none
+2026-11-27 08:45,Market Area (Khade Bazar),0.85,high,accident
+2026-11-27 09:00,College Road (BIMS),0.62,moderate,roadwork
+2026-11-27 09:15,CBT to Railway Station,0.55,moderate,none
+2026-11-27 09:30,Camp Area (Club Road),0.28,low,none
+2026-11-27 09:45,Hindalga Military Road,0.25,low,none
+2026-11-27 10:00,NH48 Bypass Corridor,0.30,low,none
+2026-11-27 10:15,Shahapur Bazaar Corridor,0.60,moderate,none
+2026-11-27 10:30,VTU Machhe University Road,0.32,low,none
+2026-11-27 10:45,Sambra Airport Road,0.20,low,none

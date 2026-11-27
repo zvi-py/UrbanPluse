@@ -56,7 +56,7 @@ def overview() -> AgentResponse:
     warning alerts about expected traffic and noise.
     """
     traffic_data = get_traffic_status()
-    events_data = get_nearby_events()
+    events_data = get_nearby_events(radius_km=25.0, limit=50)
     student_data = get_student_matches()
     env_data = get_environment_status()
 
