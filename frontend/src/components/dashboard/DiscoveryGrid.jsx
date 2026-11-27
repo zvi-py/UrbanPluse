@@ -10,7 +10,9 @@ import {
   Tag
 } from 'lucide-react'
 
-export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCount = 118, eventsCount = 31 }) {
+export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCount = 118, eventsCount = 31, theme = 'dark' }) {
+  const isLight = theme === 'light'
+
   const peerTags = [
     '#BelagaviTech',
     '#SmartMobility',
@@ -31,7 +33,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       icon: Users,
       actionText: 'Browse Network',
       onClick: () => onSelectTab('student'),
-      color: '#818CF8',
+      color: isLight ? '#4F46E5' : '#818CF8',
     },
     {
       id: 'communities',
@@ -40,7 +42,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       icon: Users2,
       actionText: 'View Guilds',
       onClick: () => onSelectTab('student'),
-      color: '#38BDF8',
+      color: isLight ? '#2563EB' : '#60A5FA',
     },
     {
       id: 'host',
@@ -50,7 +52,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       actionText: 'Launch Form',
       onClick: onOpenHostModal,
       isPrimary: true,
-      color: '#10B981',
+      color: isLight ? '#16A34A' : '#34D399',
     },
     {
       id: 'activities',
@@ -59,7 +61,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       icon: MapPin,
       actionText: 'Explore Events',
       onClick: () => onSelectTab('events'),
-      color: '#F59E0B',
+      color: isLight ? '#D97706' : '#FBBF24',
     },
     {
       id: 'study',
@@ -68,7 +70,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       icon: BookOpen,
       actionText: 'Join Circle',
       onClick: () => onSelectTab('student'),
-      color: '#A78BFA',
+      color: isLight ? '#7C3AED' : '#A78BFA',
     },
     {
       id: 'traffic_flow',
@@ -77,7 +79,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
       icon: Compass,
       actionText: 'Inspect Corridors',
       onClick: () => onSelectTab('traffic'),
-      color: '#06B6D4',
+      color: isLight ? '#0284C7' : '#38BDF8',
     },
   ]
 
@@ -99,14 +101,15 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
               key={act.id}
               onClick={act.onClick}
               style={{
-                backgroundColor: act.isPrimary ? 'rgba(16, 185, 129, 0.06)' : '#0F172A',
-                border: `1px solid ${act.isPrimary ? 'rgba(16, 185, 129, 0.35)' : '#1E293B'}`,
+                backgroundColor: isLight ? '#FFFFFF' : '#0F172A',
+                border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
                 borderRadius: '8px',
                 padding: '16px',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
+                boxShadow: isLight ? '0 1px 3px rgba(0, 0, 0, 0.04)' : 'none',
                 transition: 'border-color 0.15s ease, transform 0.15s ease',
               }}
             >
@@ -117,7 +120,7 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
                       width: '30px',
                       height: '30px',
                       borderRadius: '6px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      backgroundColor: isLight ? '#F1F5F9' : 'rgba(255, 255, 255, 0.05)',
                       color: act.color,
                       display: 'flex',
                       alignItems: 'center',
@@ -127,17 +130,27 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
                     <Icon size={16} />
                   </div>
                   {act.isPrimary && (
-                    <span style={{ fontSize: '9.5px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px', backgroundColor: '#10B981', color: '#FFFFFF' }}>
-                      PRIMARY ACTION
+                    <span
+                      style={{
+                        fontSize: '9.5px',
+                        fontWeight: 700,
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                        backgroundColor: isLight ? '#F0FDF4' : 'rgba(34, 197, 94, 0.15)',
+                        color: isLight ? '#166534' : '#4ADE80',
+                        border: `1px solid ${isLight ? '#DCFCE7' : 'rgba(34, 197, 94, 0.3)'}`,
+                      }}
+                    >
+                      PRIMARY
                     </span>
                   )}
                 </div>
 
-                <div style={{ fontSize: '13.5px', fontWeight: 600, color: '#F8FAFC', marginBottom: '6px' }}>
+                <div style={{ fontSize: '13.5px', fontWeight: 600, color: isLight ? '#0F172A' : '#F8FAFC', marginBottom: '6px' }}>
                   {act.title}
                 </div>
 
-                <p style={{ fontSize: '11.5px', color: '#94A3B8', lineHeight: 1.45, margin: 0 }}>
+                <p style={{ fontSize: '11.5px', color: isLight ? '#64748B' : '#94A3B8', lineHeight: 1.45, margin: 0 }}>
                   {act.desc}
                 </p>
               </div>
@@ -159,8 +172,8 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
           gap: '10px',
           flexWrap: 'wrap',
           padding: '10px 14px',
-          backgroundColor: '#0F172A',
-          border: '1px solid #1E293B',
+          backgroundColor: isLight ? '#FFFFFF' : '#0F172A',
+          border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
           borderRadius: '6px',
         }}
       >
@@ -177,9 +190,9 @@ export default function DiscoveryGrid({ onOpenHostModal, onSelectTab, studentCou
                 fontFamily: 'monospace',
                 padding: '2px 8px',
                 borderRadius: '4px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                color: '#CBD5E1',
+                backgroundColor: isLight ? '#F1F5F9' : 'rgba(255, 255, 255, 0.04)',
+                border: `1px solid ${isLight ? '#E2E8F0' : 'rgba(255, 255, 255, 0.08)'}`,
+                color: isLight ? '#334155' : '#CBD5E1',
               }}
             >
               {t}

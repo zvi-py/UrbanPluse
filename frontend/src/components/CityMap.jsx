@@ -251,7 +251,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                           fontSize: '9.5px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.08em',
-                          color: isAccident ? '#EF4444' : isRoadwork ? '#F59E0B' : '#10B981',
+                          color: isAccident ? '#DC2626' : isRoadwork ? '#D97706' : '#16A34A',
                           fontWeight: 700,
                         }}
                       >
@@ -416,30 +416,30 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
         }
 
         .traffic-radar-critical.traffic-pulse-ring {
-          border: 2px solid rgba(239, 68, 68, 0.8);
-          background: rgba(239, 68, 68, 0.25);
+          border: 1.5px solid rgba(220, 38, 38, 0.6);
+          background: rgba(220, 38, 38, 0.15);
         }
         .traffic-radar-critical.traffic-dot {
-          background: #EF4444;
-          box-shadow: 0 0 10px #EF4444;
+          background: #DC2626;
+          border: 1.5px solid #FFFFFF;
         }
 
         .traffic-radar-warning.traffic-pulse-ring {
-          border: 2px solid rgba(245, 158, 11, 0.8);
-          background: rgba(245, 158, 11, 0.25);
+          border: 1.5px solid rgba(217, 119, 6, 0.6);
+          background: rgba(217, 119, 6, 0.15);
         }
         .traffic-radar-warning.traffic-dot {
-          background: #F59E0B;
-          box-shadow: 0 0 10px #F59E0B;
+          background: #D97706;
+          border: 1.5px solid #FFFFFF;
         }
 
         .traffic-radar-ok.traffic-pulse-ring {
-          border: 2px solid rgba(16, 185, 129, 0.8);
-          background: rgba(16, 185, 129, 0.2);
+          border: 1.5px solid rgba(22, 163, 74, 0.6);
+          background: rgba(22, 163, 74, 0.15);
         }
         .traffic-radar-ok.traffic-dot {
-          background: #10B981;
-          box-shadow: 0 0 10px #10B981;
+          background: #16A34A;
+          border: 1.5px solid #FFFFFF;
         }
 
         @keyframes trafficPulse {

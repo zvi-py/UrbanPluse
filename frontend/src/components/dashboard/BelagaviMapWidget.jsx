@@ -112,8 +112,8 @@ export default function BelagaviMapWidget({ events = [], trafficData = null, the
               width: '28px',
               height: '28px',
               borderRadius: '6px',
-              backgroundColor: 'rgba(6, 182, 212, 0.12)',
-              color: '#06B6D4',
+              backgroundColor: 'rgba(2, 132, 199, 0.1)',
+              color: '#0284C7',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -149,8 +149,8 @@ export default function BelagaviMapWidget({ events = [], trafficData = null, the
                   padding: '4px 10px',
                   borderRadius: '4px',
                   border: 'none',
-                  background: filterMode === f.id ? '#06B6D4' : 'transparent',
-                  color: filterMode === f.id ? '#0B0F17' : '#94A3B8',
+                  background: filterMode === f.id ? '#0284C7' : 'transparent',
+                  color: filterMode === f.id ? '#FFFFFF' : '#94A3B8',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
                 }}
@@ -168,7 +168,7 @@ export default function BelagaviMapWidget({ events = [], trafficData = null, the
               gap: '5px',
               padding: '6px 12px',
               borderRadius: '6px',
-              backgroundColor: '#10B981',
+              backgroundColor: '#0F172A',
               border: 'none',
               color: '#FFFFFF',
               fontSize: '11.5px',
@@ -317,13 +317,12 @@ export default function BelagaviMapWidget({ events = [], trafficData = null, the
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background-color: #06B6D4;
-          box-shadow: 0 0 6px #06B6D4;
+          background-color: #0284C7;
+          border: 1px solid #FFFFFF;
           z-index: 2;
         }
         .senior-event-dot.is-high {
-          background-color: #F59E0B;
-          box-shadow: 0 0 8px #F59E0B;
+          background-color: #D97706;
         }
 
         .senior-traffic-container {
@@ -358,19 +357,17 @@ export default function BelagaviMapWidget({ events = [], trafficData = null, the
           width: 9px;
           height: 9px;
           border-radius: 50%;
+          border: 1.5px solid #FFFFFF;
           z-index: 2;
         }
         .senior-traffic-core.status-crit {
-          background-color: #EF4444;
-          box-shadow: 0 0 8px #EF4444;
+          background-color: #DC2626;
         }
         .senior-traffic-core.status-warn {
-          background-color: #F59E0B;
-          box-shadow: 0 0 8px #F59E0B;
+          background-color: #D97706;
         }
         .senior-traffic-core.status-ok {
-          background-color: #10B981;
-          box-shadow: 0 0 8px #10B981;
+          background-color: #16A34A;
         }
 
         @keyframes trafficRadarPulse {

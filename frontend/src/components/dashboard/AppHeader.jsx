@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, MapPin, RefreshCw, Sun, Moon, Bell } from 'lucide-react'
+import { Search, MapPin, RefreshCw, Sun, Moon } from 'lucide-react'
 
 export default function AppHeader({
   searchQuery,
@@ -8,7 +8,6 @@ export default function AppHeader({
   loading,
   theme,
   onToggleTheme,
-  alertCount = 3,
 }) {
   const isLight = theme === 'light'
 
@@ -16,7 +15,7 @@ export default function AppHeader({
     <header
       style={{
         height: '54px',
-        borderBottom: '1px solid #1E293B',
+        borderBottom: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
         backgroundColor: isLight ? '#FFFFFF' : '#0B0F17',
         display: 'flex',
         alignItems: 'center',
@@ -25,10 +24,11 @@ export default function AppHeader({
         position: 'sticky',
         top: 0,
         zIndex: 90,
+        transition: 'background-color 0.2s ease, border-color 0.2s ease',
       }}
     >
       {/* Search Bar with Keyboard Shortcut */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, maxWidth: '480px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, maxWidth: '460px' }}>
         <div
           style={{
             position: 'relative',
@@ -55,8 +55,8 @@ export default function AppHeader({
               width: '100%',
               padding: '7px 60px 7px 32px',
               borderRadius: '6px',
-              border: '1px solid #1E293B',
-              backgroundColor: isLight ? '#F1F5F9' : '#0F172A',
+              border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
+              backgroundColor: isLight ? '#F8FAFC' : '#0F172A',
               color: isLight ? '#0F172A' : '#F8FAFC',
               fontSize: '12.5px',
               outline: 'none',
@@ -88,22 +88,22 @@ export default function AppHeader({
             gap: '5px',
             padding: '5px 10px',
             borderRadius: '6px',
-            backgroundColor: 'rgba(6, 182, 212, 0.08)',
-            border: '1px solid rgba(6, 182, 212, 0.25)',
-            color: '#06B6D4',
+            backgroundColor: isLight ? '#F1F5F9' : '#1E293B',
+            border: `1px solid ${isLight ? '#E2E8F0' : '#334155'}`,
+            color: isLight ? '#334155' : '#CBD5E1',
             fontSize: '11.5px',
             fontWeight: 600,
             whiteSpace: 'nowrap',
           }}
         >
-          <MapPin size={12} />
+          <MapPin size={12} color={isLight ? '#475569' : '#94A3B8'} />
           <span>Belagavi, KA</span>
         </div>
       </div>
 
-      {/* Right Controls: Telemetry Status, Actions */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {/* Sync Status Badge */}
+      {/* Right Controls: Telemetry Status, Theme Toggle, Refresh */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {/* Sync Status Badge (Zero Neon Glow) */}
         <div
           style={{
             display: 'flex',
@@ -111,9 +111,9 @@ export default function AppHeader({
             gap: '6px',
             padding: '4px 10px',
             borderRadius: '4px',
-            backgroundColor: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
-            color: '#10B981',
+            backgroundColor: isLight ? '#F0FDF4' : 'rgba(34, 197, 94, 0.08)',
+            border: `1px solid ${isLight ? '#DCFCE7' : 'rgba(34, 197, 94, 0.25)'}`,
+            color: isLight ? '#166534' : '#4ADE80',
             fontSize: '11px',
             fontWeight: 600,
             letterSpacing: '0.04em',
@@ -125,8 +125,7 @@ export default function AppHeader({
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              backgroundColor: '#10B981',
-              boxShadow: '0 0 6px #10B981',
+              backgroundColor: isLight ? '#16A34A' : '#4ADE80',
             }}
           />
           <span>4 / 4 AGENTS IN SYNC</span>
@@ -138,80 +137,39 @@ export default function AppHeader({
           title="Refresh Telemetry"
           style={{
             background: 'transparent',
-            border: '1px solid #1E293B',
-            color: '#94A3B8',
+            border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
+            color: isLight ? '#475569' : '#94A3B8',
             width: '32px',
             height: '32px',
             borderRadius: '6px',
-            cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            cursor: 'pointer',
           }}
         >
-          <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
+          <RefreshCw size={13} className={loading ? 'spin' : ''} />
         </button>
 
-        {/* Theme Toggle */}
+        {/* Theme Toggle (Light / Dark) */}
         <button
           onClick={onToggleTheme}
-          title={isLight ? 'Dark Theme' : 'Light Theme'}
+          title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode`}
           style={{
-            background: 'transparent',
-            border: '1px solid #1E293B',
-            color: '#94A3B8',
+            background: isLight ? '#F8FAFC' : '#1E293B',
+            border: `1px solid ${isLight ? '#E2E8F0' : '#334155'}`,
+            color: isLight ? '#0F172A' : '#F8FAFC',
             width: '32px',
             height: '32px',
             borderRadius: '6px',
-            cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            cursor: 'pointer',
           }}
         >
           {isLight ? <Moon size={14} /> : <Sun size={14} />}
         </button>
-
-        {/* Notifications */}
-        <div style={{ position: 'relative' }}>
-          <button
-            style={{
-              background: 'transparent',
-              border: '1px solid #1E293B',
-              color: '#94A3B8',
-              width: '32px',
-              height: '32px',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Bell size={14} />
-          </button>
-          {alertCount > 0 && (
-            <span
-              style={{
-                position: 'absolute',
-                top: '-3px',
-                right: '-3px',
-                width: '14px',
-                height: '14px',
-                borderRadius: '50%',
-                backgroundColor: '#EF4444',
-                color: '#FFFFFF',
-                fontSize: '9px',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              {alertCount}
-            </span>
-          )}
-        </div>
       </div>
     </header>
   )

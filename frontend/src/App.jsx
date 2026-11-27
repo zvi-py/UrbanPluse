@@ -149,12 +149,12 @@ export default function App() {
 
   return (
     <div className="video-dashboard-layout">
-      {/* 1. Left Fixed Sidebar matching Video Frame 5 & 6 */}
+      {/* 1. Left Fixed Sidebar */}
       <AppSidebar
         activeTab={activeTab}
         onSelectTab={setActiveTab}
         onOpenHostModal={() => setIsHostModalOpen(true)}
-        alertCount={alerts.length || 3}
+        theme={theme}
       />
 
       {/* Main Column (Header + Dynamic Stage) */}
@@ -194,7 +194,7 @@ export default function App() {
                 <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Student Connectivity & Peer Matcher</h2>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
                 >
                   &larr; Back to Dashboard
                 </button>
@@ -213,7 +213,7 @@ export default function App() {
                 <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Discover Gatherings & Campus Activities</h2>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
                 >
                   &larr; Back to Dashboard
                 </button>
@@ -232,7 +232,7 @@ export default function App() {
                 <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Traffic Intelligence & Corridor Congestion</h2>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
                 >
                   &larr; Back to Dashboard
                 </button>
@@ -251,7 +251,7 @@ export default function App() {
                 <h2 style={{ fontSize: '20px', fontWeight: 700, margin: 0 }}>Four Intelligent Agents · Autonomous Architecture</h2>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
                 >
                   &larr; Back to Dashboard
                 </button>
@@ -269,7 +269,7 @@ export default function App() {
                 <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0 }}>Explore City · Belagavi Cartographic Atlas</h2>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#06B6D4', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer' }}
+                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
                 >
                   &larr; Back to Dashboard
                 </button>
