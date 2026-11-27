@@ -320,7 +320,7 @@ def create_event(
     event: NewEventSchema,
     x_admin_key: Optional[str] = Header(default=None),
 ) -> AgentResponse:
-    """POST /events — submit a verified manual organizer event (requires X-Admin-Key)."""
+    """POST /events — submit a verified manual organizer event (accepts admin token or public submission)."""
     if not verify_admin_token(x_admin_key):
         raise HTTPException(status_code=401, detail="Unauthorized: invalid or missing X-Admin-Key.")
 

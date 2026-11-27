@@ -95,9 +95,9 @@ def load_events(path: Optional[Path] = None) -> pd.DataFrame:
     if "attendance_estimated" not in df.columns:
         df["attendance_estimated"] = "False"
 
-    # Parse datetimes (timezone-aware UTC)
+    # Parse datetimes (timezone-aware UTC, format='mixed' handles naive & tz-aware ISO strings)
     for col in ("start_datetime", "end_datetime"):
-        df[col] = pd.to_datetime(df[col], utc=True, errors="coerce")
+        df[col] = pd.to_datetime(df[col], format="mixed", utc=True, errors="coerce")
 
     # Coerce numerics
     df["lat"] = pd.to_numeric(df["lat"], errors="coerce")

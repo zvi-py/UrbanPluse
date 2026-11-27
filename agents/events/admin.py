@@ -9,7 +9,7 @@ import logging
 import os
 import shutil
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -35,7 +35,7 @@ class NewEventSchema(BaseModel):
     lat: Optional[float] = None
     lng: Optional[float] = None
     start_datetime: str
-    end_datetime: str
+    end_datetime: Optional[str] = None
     expected_attendance: int = Field(default=200, ge=0)
     is_free: bool = Field(default=True)
     organizer: str = Field(..., min_length=2)
@@ -95,12 +95,15 @@ def add_manual_event(
     except Exception as e:
         raise ValueError(f"Invalid start_datetime format: {e}")
 
-    try:
-        end_dt = datetime.fromisoformat(event_data.end_datetime)
-        if end_dt.tzinfo is None:
-            end_dt = end_dt.replace(tzinfo=timezone.utc)
-    except Exception as e:
-        raise ValueError(f"Invalid end_datetime format: {e}")
+    if event_data.end_datetime:
+        try:
+            end_dt = datetime.fromisoformat(event_data.end_datetime)
+            if end_dt.tzinfo is None:
+                end_dt = end_dt.replace(tzinfo=timezone.utc)
+        except Exception as e:
+            raise ValueError(f"Invalid end_datetime format: {e}")
+    else:
+        end_dt = start_dt + timedelta(hours=3)
 
     if end_dt <= start_dt:
         raise ValueError(f"end_datetime ({end_dt}) must be strictly after start_datetime ({start_dt})")

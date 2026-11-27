@@ -40,13 +40,20 @@ export default function HostEventModal({ isOpen, onClose, onEventCreated }) {
     const venueLat = customVenue.trim() ? 15.8497 : selectedVenue.lat
     const venueLng = customVenue.trim() ? 74.4977 : selectedVenue.lng
 
+    const startIso = new Date(startDateTime).toISOString()
+    const endDate = new Date(startDateTime)
+    endDate.setHours(endDate.getHours() + 4)
+    const endIso = endDate.toISOString()
+
     const payload = {
       title: title.trim(),
       category: category.toLowerCase(),
+      tags: `${category},campus,gathering`,
       venue: venueName,
       lat: venueLat,
       lng: venueLng,
-      start_datetime: new Date(startDateTime).toISOString(),
+      start_datetime: startIso,
+      end_datetime: endIso,
       expected_attendance: parseInt(expectedAttendance, 10) || 100,
       description: description.trim() || `${title} organized in Belagavi for students and civic community.`,
       is_free: isFree,
@@ -59,7 +66,7 @@ export default function HostEventModal({ isOpen, onClose, onEventCreated }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Optional admin token if configured
+          'X-Admin-Key': import.meta.env.VITE_EVENTS_ADMIN_TOKEN || 'belagavi-events-dev-2025',
         },
         body: JSON.stringify(payload),
       })
