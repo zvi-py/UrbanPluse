@@ -308,8 +308,8 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           height: '520px',
           borderRadius: '12px',
           overflow: 'hidden',
-          border: `1px solid ${isLight ? '#CBD5E1' : '#1E293B'}`,
-          backgroundColor: isLight ? '#F1F5F9' : '#090D16',
+          border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
+          backgroundColor: isLight ? '#FFFFFF' : '#090D16',
           position: 'relative',
         }}
       >
@@ -318,7 +318,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           center={BELAGAVI_CENTER}
           zoom={13}
           scrollWheelZoom={false}
-          style={{ width: '100%', height: '100%', backgroundColor: isLight ? '#F8FAFC' : '#090D16' }}
+          style={{ width: '100%', height: '100%', backgroundColor: isLight ? '#FFFFFF' : '#090D16' }}
         >
           <MapResizer />
 

@@ -78,24 +78,24 @@
 }
 
 [data-theme="light"] {
-  /* Color Palette - Warm Travertine & Alabaster Linen (Sage Editorial) */
-  --bg-base: #F7F5F0;
+  /* Color Palette - Clean Crisp White with Botanical Sage Accents */
+  --bg-base: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-surface-raised: #FAF8F5;
-  --bg-glass: rgba(255, 255, 255, 0.88);
-  --bg-glass-hover: rgba(255, 255, 255, 0.96);
+  --bg-surface-raised: #F8FAFC;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-glass-hover: #F1F5F9;
   --bg-glass-active: #FFFFFF;
 
-  /* Luxury Fine Hairlines */
-  --border-hairline: #E8E3DA;
-  --border-glass: rgba(40, 36, 30, 0.08);
-  --border-glass-bright: rgba(40, 36, 30, 0.16);
+  /* Crisp Hairlines */
+  --border-hairline: #E2E8F0;
+  --border-glass: #E2E8F0;
+  --border-glass-bright: #CBD5E1;
   --border-accent: rgba(82, 106, 80, 0.35);
 
-  /* Warm Espresso & Taupe Typography */
-  --text-primary: #1C1917;
-  --text-secondary: #57524A;
-  --text-dim: #8C8479;
+  /* Deep Ink & Slate Typography */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-dim: #94A3B8;
 
   /* Accent - Signature Botanical Sage (From Image Reference) */
   --accent: #526A50;
@@ -136,18 +136,18 @@
   --status-info-bg: #ECF4F3;
 
   /* Shadows & Highlights */
-  --shadow-glass: 0 16px 40px -8px rgba(40, 36, 30, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
-  --shadow-glow: 0 0 28px -4px var(--accent-glow);
+  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  --shadow-glow: 0 0 24px -4px var(--accent-glow);
 
   /* Thematic Accents */
-  --grain-opacity: 0.02;
-  --glow-color: rgba(82, 106, 80, 0.08);
-  --chapter-stroke: rgba(40, 36, 30, 0.14);
+  --grain-opacity: 0.01;
+  --glow-color: rgba(82, 106, 80, 0.05);
+  --chapter-stroke: rgba(0, 0, 0, 0.08);
   --btn-primary-bg: #526A50;
   --btn-primary-text: #FFFFFF;
   --btn-primary-hover: #41553F;
-  --topbar-bg: rgba(247, 245, 240, 0.92);
-  --map-bg: #F0ECE4;
+  --topbar-bg: rgba(255, 255, 255, 0.95);
+  --map-bg: #FFFFFF;
 }
 
 :root {
