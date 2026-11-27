@@ -1,55 +1,59 @@
 import React from 'react'
-import { Cpu, Navigation, Calendar, Users, Activity, Radio, ArrowRight } from 'lucide-react'
+import { Navigation, Calendar, Users, Activity, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
 
-export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {} }) {
+export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {}, onOpenGeminiModal }) {
   const agents = [
     {
       id: 'traffic',
       number: '01',
-      title: 'TRAFFIC INTELLIGENCE AGENT',
+      title: 'Traffic Intelligence Agent',
+      category: 'Municipal Transit',
       icon: Navigation,
-      accent: '#0284C7',
-      accentBg: 'rgba(2, 132, 199, 0.08)',
-      description: 'Monitors vehicular throughput, detects road congestion bottlenecks, and dynamically calculates bypass routes.',
-      telemetry: 'Belagavi City Center · NH48 Bypass',
+      accent: 'var(--agent-traffic)',
+      accentBg: 'var(--agent-traffic-bg)',
+      accentBorder: 'var(--agent-traffic-border)',
+      description: 'Monitors vehicular throughput across 12 Belagavi arterial corridors, dynamically routes campus commuters around bottlenecks.',
+      telemetry: '12 Arteries · NH48 Bypass',
       source: agentSources.traffic || 'csv_fallback',
-      targetHref: '#traffic',
     },
     {
       id: 'events',
       number: '02',
-      title: 'EVENT INTELLIGENCE AGENT',
+      title: 'Event Intelligence Agent',
+      category: 'Civic & Culture',
       icon: Calendar,
-      accent: '#A855F7',
-      accentBg: 'rgba(168, 85, 247, 0.12)',
-      description: 'Discovers academic and cultural gatherings, validates municipal coordinates, and ranks by TF-IDF vector similarity.',
-      telemetry: 'Campus Gatherings · Belagavi Basin',
+      accent: 'var(--agent-events)',
+      accentBg: 'var(--agent-events-bg)',
+      accentBorder: 'var(--agent-events-border)',
+      description: 'Curates 26+ campus fests, tech symposiums, and cultural gatherings with TF-IDF vector ranking and crowd radius modeling.',
+      telemetry: '26 Gatherings · BGM Basin',
       source: agentSources.events || 'csv_fallback',
-      targetHref: '#events',
     },
     {
       id: 'student',
       number: '03',
-      title: 'STUDENT CONNECTIVITY AGENT',
+      title: 'Student Connectivity Agent',
+      category: 'Campus Guilds',
       icon: Users,
-      accent: '#6366F1',
-      accentBg: 'rgba(99, 102, 241, 0.12)',
-      description: 'Connects engineering and science students across Belagavi colleges through shared skills, interests, and peer mentorships.',
-      telemetry: 'Academic Clusters · Student Guilds',
+      accent: 'var(--agent-student)',
+      accentBg: 'var(--agent-student-bg)',
+      accentBorder: 'var(--agent-student-border)',
+      description: 'Connects engineering scholars across KLE Tech, KLS GIT, VTU, and BIMS through peer skill-matching and active project cells.',
+      telemetry: '6 Colleges · Student Guilds',
       source: agentSources.student || 'stub',
-      targetHref: '#student',
     },
     {
       id: 'environment',
       number: '04',
-      title: 'ENVIRONMENTAL & URBAN ANOMALY AGENT',
+      title: 'Environmental Vitals Agent',
+      category: '58 BCC Wards',
       icon: Activity,
-      accent: '#16A34A',
-      accentBg: 'rgba(22, 163, 74, 0.08)',
-      description: 'Surveils air quality (AQI), acoustic decibels, and weather vitals across all 58 BCC wards using Isolation Forest anomaly detection.',
-      telemetry: '58 BCC Wards · CPCB Telemetry',
+      accent: 'var(--agent-env)',
+      accentBg: 'var(--agent-env-bg)',
+      accentBorder: 'var(--agent-env-border)',
+      description: 'Surveils air quality indices, acoustic decibels, and weather vitals across all 58 Belagavi City Corporation wards with anomaly detection.',
+      telemetry: '58 Wards · AQI & Decibels',
       source: agentSources.environment || 'csv_fallback',
-      targetHref: '#environment',
     },
   ]
 
@@ -57,42 +61,169 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
     <section
       style={{
         maxWidth: '1360px',
-        margin: '0 auto 64px',
+        margin: '0 auto 56px',
         padding: '0 clamp(16px, 3vw, 28px)',
         position: 'relative',
       }}
     >
-      {/* Section Header matching Video Frame 3 & 4 */}
-      <div style={{ textAlign: 'center', marginBottom: '40px' }} className="fade-in-up">
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', marginBottom: '14px' }}>
-          <Radio size={14} color="var(--accent)" />
-          <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', color: 'var(--accent)', textTransform: 'uppercase' }}>
+      {/* Section Header with Sage Editorial Styling */}
+      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '6px 16px',
+            borderRadius: 'var(--radius-pill)',
+            background: 'var(--accent-light)',
+            border: '1px solid var(--border-accent)',
+            marginBottom: '16px',
+          }}
+        >
+          <Sparkles size={13} color="var(--accent)" />
+          <span
+            style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              color: 'var(--accent)',
+              textTransform: 'uppercase',
+            }}
+          >
             Autonomous Multi-Agent Synthesis
           </span>
         </div>
+
         <h2
           style={{
-            fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
+            fontSize: 'clamp(2rem, 3.8vw, 3.2rem)',
             fontFamily: 'var(--font-display)',
             color: 'var(--text-primary)',
             letterSpacing: '-0.02em',
-            margin: '0 0 10px 0',
+            margin: '0 0 12px 0',
+            fontWeight: 600,
           }}
         >
-          Four Intelligent Agents. <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>One Connected Platform.</span>
+          Four Intelligent Agents. <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>One Connected City.</span>
         </h2>
-        <p style={{ fontSize: '14.5px', color: 'var(--text-secondary)', maxWidth: '640px', margin: '0 auto', lineHeight: 1.6 }}>
-          One City. Four Intelligent Agents. One Connected Future. Observing, cross-correlating, and orchestrating Belagavi's urban ecosystem in real time.
+        <p
+          style={{
+            fontSize: '14.5px',
+            color: 'var(--text-secondary)',
+            maxWidth: '680px',
+            margin: '0 auto',
+            lineHeight: 1.65,
+          }}
+        >
+          Orchestrating Belagavi's urban ecosystem in real time through synchronized transit intelligence, civic gatherings, collegiate networks, and environmental vitals.
         </p>
       </div>
 
-      {/* Central Visual Architecture Grid with Core Neural Unit */}
+      {/* Central Gemini AI Urban Intelligence Hub Banner */}
       <div
         style={{
-          position: 'relative',
+          background: 'var(--agent-gemini-bg)',
+          border: '1px solid var(--agent-gemini-border)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '24px 28px',
+          marginBottom: '28px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '20px',
+          boxShadow: 'var(--shadow-glass)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: '1 1 500px' }}>
+          <div
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--agent-gemini)',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <Zap size={22} />
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span
+                style={{
+                  fontSize: '10.5px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--agent-gemini)',
+                }}
+              >
+                CENTRAL SYNTHESIS ENGINE
+              </span>
+              <span
+                style={{
+                  fontSize: '10px',
+                  backgroundColor: '#FFFFFF',
+                  color: 'var(--text-secondary)',
+                  padding: '2px 8px',
+                  borderRadius: 'var(--radius-pill)',
+                  border: '1px solid var(--border-hairline)',
+                  fontWeight: 600,
+                }}
+              >
+                Google Gemini 1.5 Flash
+              </span>
+            </div>
+            <h3
+              style={{
+                fontSize: '17px',
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                color: 'var(--text-primary)',
+                margin: '0 0 4px 0',
+              }}
+            >
+              Gemini Urban Intelligence Assistant
+            </h3>
+            <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
+              Synthesizes queries across all four agents to provide instant detour recommendations, campus event planning, and quiet study ward identification.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={onOpenGeminiModal}
+          style={{
+            padding: '10px 20px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: 'var(--agent-gemini)',
+            color: '#FFFFFF',
+            border: 'none',
+            fontSize: '12.5px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            boxShadow: '0 4px 12px rgba(184, 144, 71, 0.25)',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          <Sparkles size={14} />
+          <span>Ask Gemini AI</span>
+        </button>
+      </div>
+
+      {/* 4 Agent Cards Grid with Exact Theme Color Coding */}
+      <div
+        style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '24px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '20px',
         }}
       >
         {agents.map((agent) => {
@@ -100,25 +231,23 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
           return (
             <div
               key={agent.id}
-              className="agent-card-interactive fade-in-up"
+              onClick={() => onSelectAgent && onSelectAgent(agent.id)}
               style={{
-                background: 'var(--bg-glass)',
-                border: '1px solid var(--border-hairline)',
+                backgroundColor: 'var(--bg-surface)',
+                border: `1px solid ${agent.accentBorder}`,
                 borderRadius: 'var(--radius-lg)',
-                padding: '24px',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                padding: '22px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                position: 'relative',
-                overflow: 'hidden',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
                 boxShadow: 'var(--shadow-glass)',
+                position: 'relative',
               }}
             >
-              {/* Top Row: Number, Icon, Status */}
               <div>
+                {/* Card Top: Number, Icon & Category */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div
@@ -128,35 +257,42 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
                         borderRadius: '10px',
                         backgroundColor: agent.accentBg,
                         color: agent.accent,
+                        border: `1px solid ${agent.accentBorder}`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}
                     >
-                      <Icon size={20} />
+                      <Icon size={19} />
                     </div>
-                    <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
-                      {agent.number}
+                    <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.06em' }}>
+                      AGENT {agent.number}
                     </span>
                   </div>
+
                   <span
-                    className={`pill-badge ${agent.source === 'live_api' ? 'live' : agent.source === 'csv_fallback' ? 'csv' : 'stub'}`}
-                    style={{ fontSize: '10px', padding: '3px 8px' }}
+                    style={{
+                      fontSize: '10.5px',
+                      padding: '3px 9px',
+                      borderRadius: 'var(--radius-pill)',
+                      backgroundColor: agent.accentBg,
+                      color: agent.accent,
+                      border: `1px solid ${agent.accentBorder}`,
+                      fontWeight: 700,
+                    }}
                   >
-                    <span className="pulse-dot" />
-                    {agent.source.toUpperCase().replace('_', ' ')}
+                    {agent.category}
                   </span>
                 </div>
 
                 {/* Agent Title */}
                 <h3
                   style={{
-                    fontSize: '15px',
+                    fontSize: '16px',
                     fontWeight: 700,
                     color: 'var(--text-primary)',
-                    letterSpacing: '0.02em',
-                    margin: '0 0 10px 0',
-                    textTransform: 'uppercase',
+                    letterSpacing: '-0.01em',
+                    margin: '0 0 8px 0',
                   }}
                 >
                   {agent.title}
@@ -165,7 +301,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
                 {/* Description */}
                 <p
                   style={{
-                    fontSize: '13px',
+                    fontSize: '12.5px',
                     color: 'var(--text-secondary)',
                     lineHeight: 1.55,
                     margin: '0 0 16px 0',
@@ -175,35 +311,33 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
                 </p>
               </div>
 
-              {/* Footer Row: Telemetry pill & Navigation Link */}
+              {/* Card Footer: Telemetry summary & inspect link */}
               <div
                 style={{
                   borderTop: '1px solid var(--border-hairline)',
-                  paddingTop: '14px',
+                  paddingTop: '12px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: '10px',
                 }}
               >
-                <span style={{ fontSize: '11.5px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono, monospace)' }}>
+                <span style={{ fontSize: '11px', color: 'var(--text-dim)', fontWeight: 500 }}>
                   {agent.telemetry}
                 </span>
-                <a
-                  href={agent.targetHref}
+
+                <div
                   style={{
-                    display: 'inline-flex',
+                    display: 'flex',
                     alignItems: 'center',
                     gap: '4px',
                     color: agent.accent,
                     fontSize: '12px',
-                    fontWeight: 600,
-                    textDecoration: 'none',
+                    fontWeight: 700,
                   }}
                 >
-                  <span>Inspect</span>
+                  <span>Explore</span>
                   <ArrowRight size={13} />
-                </a>
+                </div>
               </div>
             </div>
           )

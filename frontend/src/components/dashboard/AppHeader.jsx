@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, MapPin, RefreshCw, Sun, Moon } from 'lucide-react'
+import { Search, MapPin, RefreshCw, Sun, Moon, Sparkles } from 'lucide-react'
 
 export default function AppHeader({
   searchQuery,
@@ -8,15 +8,16 @@ export default function AppHeader({
   loading,
   theme,
   onToggleTheme,
+  onOpenGeminiModal,
 }) {
   const isLight = theme === 'light'
 
   return (
     <header
       style={{
-        height: '54px',
-        borderBottom: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-        backgroundColor: isLight ? '#FFFFFF' : '#0B0F17',
+        height: '56px',
+        borderBottom: '1px solid var(--border-hairline)',
+        backgroundColor: 'var(--bg-surface)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -28,7 +29,7 @@ export default function AppHeader({
       }}
     >
       {/* Search Bar with Keyboard Shortcut */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, maxWidth: '460px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, maxWidth: '480px' }}>
         <div
           style={{
             position: 'relative',
@@ -41,23 +42,23 @@ export default function AppHeader({
             size={14}
             style={{
               position: 'absolute',
-              left: '11px',
-              color: '#64748B',
+              left: '12px',
+              color: 'var(--text-dim)',
               pointerEvents: 'none',
             }}
           />
           <input
             type="text"
-            placeholder="Search activities, gathering keywords, corridors, or wards..."
+            placeholder="Search Belagavi campus fests, arterial corridors, wards..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%',
-              padding: '7px 60px 7px 32px',
-              borderRadius: '6px',
-              border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-              backgroundColor: isLight ? '#F8FAFC' : '#0F172A',
-              color: isLight ? '#0F172A' : '#F8FAFC',
+              padding: '8px 60px 8px 34px',
+              borderRadius: 'var(--radius-pill)',
+              border: '1px solid var(--border-hairline)',
+              backgroundColor: 'var(--bg-surface-raised)',
+              color: 'var(--text-primary)',
               fontSize: '12.5px',
               outline: 'none',
               fontFamily: 'inherit',
@@ -66,11 +67,12 @@ export default function AppHeader({
           <span
             style={{
               position: 'absolute',
-              right: '8px',
+              right: '10px',
               fontSize: '10px',
-              color: '#64748B',
-              backgroundColor: isLight ? '#E2E8F0' : '#1E293B',
-              padding: '2px 5px',
+              color: 'var(--text-dim)',
+              backgroundColor: 'var(--bg-surface)',
+              border: '1px solid var(--border-hairline)',
+              padding: '2px 6px',
               borderRadius: '4px',
               pointerEvents: 'none',
               fontFamily: 'monospace',
@@ -86,36 +88,58 @@ export default function AppHeader({
             display: 'flex',
             alignItems: 'center',
             gap: '5px',
-            padding: '5px 10px',
-            borderRadius: '6px',
-            backgroundColor: isLight ? '#F1F5F9' : '#1E293B',
-            border: `1px solid ${isLight ? '#E2E8F0' : '#334155'}`,
-            color: isLight ? '#334155' : '#CBD5E1',
+            padding: '6px 12px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: 'var(--bg-surface-raised)',
+            border: '1px solid var(--border-hairline)',
+            color: 'var(--text-secondary)',
             fontSize: '11.5px',
             fontWeight: 600,
             whiteSpace: 'nowrap',
           }}
         >
-          <MapPin size={12} color={isLight ? '#475569' : '#94A3B8'} />
+          <MapPin size={12} color="var(--accent)" />
           <span>Belagavi, KA</span>
         </div>
       </div>
 
-      {/* Right Controls: Telemetry Status, Theme Toggle, Refresh */}
+      {/* Right Controls: Gemini AI, Sync Status, Theme Toggle, Refresh */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        {/* Sync Status Badge (Zero Neon Glow) */}
+        {/* Gemini AI Urban Assistant Trigger Pill */}
+        <button
+          onClick={onOpenGeminiModal}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 14px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: 'var(--agent-gemini-bg)',
+            border: '1px solid var(--agent-gemini-border)',
+            color: 'var(--agent-gemini)',
+            fontSize: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          <Sparkles size={13} />
+          <span>Gemini AI</span>
+        </button>
+
+        {/* Sync Status Badge in Sage Style */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '4px 10px',
-            borderRadius: '4px',
-            backgroundColor: isLight ? '#F0FDF4' : 'rgba(34, 197, 94, 0.08)',
-            border: `1px solid ${isLight ? '#DCFCE7' : 'rgba(34, 197, 94, 0.25)'}`,
-            color: isLight ? '#166534' : '#4ADE80',
+            padding: '5px 12px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: 'var(--agent-student-bg)',
+            border: '1px solid var(--agent-student-border)',
+            color: 'var(--agent-student)',
             fontSize: '11px',
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: '0.04em',
             fontFamily: 'monospace',
           }}
@@ -125,7 +149,7 @@ export default function AppHeader({
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              backgroundColor: isLight ? '#16A34A' : '#4ADE80',
+              backgroundColor: 'var(--agent-student)',
             }}
           />
           <span>4 / 4 AGENTS IN SYNC</span>
@@ -136,16 +160,17 @@ export default function AppHeader({
           onClick={onRefresh}
           title="Refresh Telemetry"
           style={{
-            background: 'transparent',
-            border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-            color: isLight ? '#475569' : '#94A3B8',
+            background: 'var(--bg-surface-raised)',
+            border: '1px solid var(--border-hairline)',
+            color: 'var(--text-secondary)',
             width: '32px',
             height: '32px',
-            borderRadius: '6px',
+            borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
+            transition: 'all 0.15s ease',
           }}
         >
           <RefreshCw size={13} className={loading ? 'spin' : ''} />
@@ -156,16 +181,17 @@ export default function AppHeader({
           onClick={onToggleTheme}
           title={`Switch to ${isLight ? 'Dark' : 'Light'} Mode`}
           style={{
-            background: isLight ? '#F8FAFC' : '#1E293B',
-            border: `1px solid ${isLight ? '#E2E8F0' : '#334155'}`,
-            color: isLight ? '#0F172A' : '#F8FAFC',
+            background: 'var(--bg-surface-raised)',
+            border: '1px solid var(--border-hairline)',
+            color: 'var(--text-primary)',
             width: '32px',
             height: '32px',
-            borderRadius: '6px',
+            borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
+            transition: 'all 0.15s ease',
           }}
         >
           {isLight ? <Moon size={14} /> : <Sun size={14} />}

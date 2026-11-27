@@ -10,6 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.schemas import Alert, AgentResponse, make_response
+from backend.gemini import router as gemini_router
 from agents.traffic.api import router as traffic_router
 from agents.events.api import router as events_router
 from agents.student.api import router as student_router
@@ -40,6 +41,7 @@ app.include_router(traffic_router, prefix="/traffic", tags=["Traffic"])
 app.include_router(events_router, prefix="/events", tags=["Events"])
 app.include_router(student_router, prefix="/student", tags=["Student"])
 app.include_router(environment_router, prefix="/environment", tags=["Environment"])
+app.include_router(gemini_router, prefix="/gemini", tags=["Gemini AI"])
 
 
 @app.get("/health", tags=["System"])

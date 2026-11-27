@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Radio, AlertCircle, Info, Calendar, Plus, ExternalLink, ChevronRight } from 'lucide-react'
+import { Sparkles, Calendar, Plus, ChevronRight, Navigation, Activity } from 'lucide-react'
 
-export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostModal }) {
+export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostModal, onOpenGeminiModal }) {
   const [activeCategory, setActiveCategory] = useState('all')
 
   const validEvents = Array.isArray(events) ? events : events?.events || []
@@ -15,8 +15,8 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
       style={{
         width: '320px',
         minWidth: '320px',
-        borderLeft: '1px solid #1E293B',
-        backgroundColor: '#0B0F17',
+        borderLeft: '1px solid var(--border-hairline)',
+        backgroundColor: 'var(--bg-surface)',
         padding: '20px 18px',
         display: 'flex',
         flexDirection: 'column',
@@ -24,74 +24,80 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
         overflowY: 'auto',
       }}
     >
-      {/* Header: System Synthesis & Alerts */}
+      {/* Header: Gemini AI Urban Synthesis */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Radio size={15} color="#06B6D4" />
-            <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', color: '#F8FAFC', textTransform: 'uppercase' }}>
-              System Synthesis & Alerts
+            <Sparkles size={15} color="var(--agent-gemini)" />
+            <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
+              Gemini Urban Synthesis
             </span>
           </div>
-          <span style={{ fontSize: '10.5px', color: '#64748B', fontFamily: 'monospace' }}>
+          <span style={{ fontSize: '10px', color: 'var(--text-dim)', fontFamily: 'monospace' }}>
             LIVE FEED
           </span>
         </div>
 
-        {/* Real-time Alert 1 */}
+        {/* Real-time Alert 1 - Cross-Agent */}
         <div
           style={{
-            backgroundColor: '#0F172A',
-            border: '1px solid #1E293B',
-            borderLeft: '3px solid #F59E0B',
-            borderRadius: '6px',
+            backgroundColor: 'var(--bg-surface-raised)',
+            border: '1px solid var(--border-hairline)',
+            borderLeft: '3px solid var(--agent-events)',
+            borderRadius: 'var(--radius-sm)',
             padding: '12px 14px',
             marginBottom: '10px',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-            <span style={{ fontSize: '10px', fontWeight: 700, color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--agent-events)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               CROSS-AGENT ADVISORY
             </span>
-            <span style={{ fontSize: '10px', color: '#64748B', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '10px', color: 'var(--text-dim)', fontFamily: 'monospace' }}>
               12:30
             </span>
           </div>
-          <p style={{ fontSize: '11.5px', color: '#CBD5E1', lineHeight: 1.45, margin: '0 0 8px 0' }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.45, margin: '0 0 8px 0' }}>
             {alerts[0]?.message || 'High-attendance tech gatherings detected near Tilakwadi. Traffic flow along Congress Road may experience minor slowing.'}
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-            <span style={{ fontSize: '11px', color: '#38BDF8', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span>Details</span>
+            <span
+              onClick={onOpenGeminiModal}
+              style={{ fontSize: '11px', color: 'var(--accent)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '2px' }}
+            >
+              <span>Ask Gemini AI</span>
               <ChevronRight size={12} />
             </span>
           </div>
         </div>
 
-        {/* Real-time Alert 2 */}
+        {/* Real-time Alert 2 - Corridor Alert */}
         <div
           style={{
-            backgroundColor: '#0F172A',
-            border: '1px solid #1E293B',
-            borderLeft: '3px solid #EF4444',
-            borderRadius: '6px',
+            backgroundColor: 'var(--bg-surface-raised)',
+            border: '1px solid var(--border-hairline)',
+            borderLeft: '3px solid var(--agent-traffic)',
+            borderRadius: 'var(--radius-sm)',
             padding: '12px 14px',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-            <span style={{ fontSize: '10px', fontWeight: 700, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--agent-traffic)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               CORRIDOR ALERT
             </span>
-            <span style={{ fontSize: '10px', color: '#64748B', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '10px', color: 'var(--text-dim)', fontFamily: 'monospace' }}>
               14:15
             </span>
           </div>
-          <p style={{ fontSize: '11.5px', color: '#CBD5E1', lineHeight: 1.45, margin: '0 0 8px 0' }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.45, margin: '0 0 8px 0' }}>
             {alerts[1]?.message || 'Accident reported near Market Area corridor. Autonomous rerouting via NH48 Bypass saves ~8-12 minutes for campus commuters.'}
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-            <span style={{ fontSize: '11px', color: '#38BDF8', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '2px' }}>
-              <span>View Route</span>
+            <span
+              onClick={onOpenGeminiModal}
+              style={{ fontSize: '11px', color: 'var(--agent-traffic)', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '2px' }}
+            >
+              <span>Reroute Advice</span>
               <ChevronRight size={12} />
             </span>
           </div>
@@ -101,7 +107,7 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
       {/* Section 2: Verified Activities Feed */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#F8FAFC', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Verified Activities
           </span>
           <button
@@ -109,9 +115,9 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
             style={{
               background: 'transparent',
               border: 'none',
-              color: '#10B981',
+              color: 'var(--accent)',
               fontSize: '11px',
-              fontWeight: 600,
+              fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -130,15 +136,16 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
               key={cat}
               onClick={() => setActiveCategory(cat)}
               style={{
-                fontSize: '10.5px',
-                padding: '3px 8px',
-                borderRadius: '4px',
+                fontSize: '11px',
+                padding: '3px 9px',
+                borderRadius: 'var(--radius-pill)',
                 border: '1px solid',
-                borderColor: activeCategory === cat ? '#06B6D4' : '#1E293B',
-                backgroundColor: activeCategory === cat ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
-                color: activeCategory === cat ? '#06B6D4' : '#94A3B8',
+                borderColor: activeCategory === cat ? 'var(--accent)' : 'var(--border-hairline)',
+                backgroundColor: activeCategory === cat ? 'var(--accent-light)' : 'transparent',
+                color: activeCategory === cat ? 'var(--accent)' : 'var(--text-secondary)',
                 cursor: 'pointer',
                 textTransform: 'capitalize',
+                fontWeight: 600,
               }}
             >
               {cat}
@@ -153,9 +160,9 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
               key={ev.event_id || idx}
               style={{
                 padding: '10px 12px',
-                borderRadius: '6px',
-                backgroundColor: '#0F172A',
-                border: '1px solid #1E293B',
+                borderRadius: 'var(--radius-sm)',
+                backgroundColor: 'var(--bg-surface-raised)',
+                border: '1px solid var(--border-hairline)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '4px',
@@ -166,36 +173,36 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
                   style={{
                     fontSize: '9.5px',
                     fontWeight: 700,
-                    color: '#06B6D4',
+                    color: 'var(--agent-events)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.04em',
                   }}
                 >
-                  {ev.category || 'Gathering'}
+                  {ev.category?.replace('_', ' ') || 'Gathering'}
                 </span>
-                <span style={{ fontSize: '10px', color: '#10B981', fontWeight: 600 }}>
+                <span style={{ fontSize: '10px', color: 'var(--agent-student)', fontWeight: 700 }}>
                   {ev.is_free ? 'Free' : 'Ticketed'}
                 </span>
               </div>
 
-              <div style={{ fontSize: '12.5px', fontWeight: 600, color: '#F8FAFC', lineHeight: 1.3 }}>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.3 }}>
                 {ev.title}
               </div>
 
-              <div style={{ fontSize: '10.5px', color: '#64748B', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ fontSize: '11px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <Calendar size={11} />
                 <span>{ev.venue || 'Belagavi Sector'}</span>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '4px', paddingTop: '4px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <span style={{ fontSize: '10px', color: '#64748B', fontFamily: 'monospace' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '4px', paddingTop: '4px', borderTop: '1px solid var(--border-hairline)' }}>
+                <span style={{ fontSize: '10.5px', color: 'var(--text-dim)' }}>
                   ~{ev.expected_attendance || 150} Attendees
                 </span>
                 <span
                   style={{
-                    color: '#38BDF8',
-                    fontSize: '10.5px',
-                    fontWeight: 600,
+                    color: 'var(--accent)',
+                    fontSize: '11px',
+                    fontWeight: 700,
                     cursor: 'pointer',
                   }}
                 >

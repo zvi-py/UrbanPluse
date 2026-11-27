@@ -42,14 +42,10 @@ function MapResizer() {
   return null
 }
 
-// Executive Event Pin Icon (Indigo / Amber for high attendance)
+// Executive Event Pin Icon (Champagne Bronze / Gilded Amber for high attendance)
 const createEventIcon = (isHigh, isLight) => {
-  const mainColor = isHigh ? '#D97706' : isLight ? '#4F46E5' : '#818CF8'
-  const ringColor = isHigh
-    ? 'rgba(217, 119, 6, 0.25)'
-    : isLight
-    ? 'rgba(79, 70, 229, 0.2)'
-    : 'rgba(129, 140, 248, 0.25)'
+  const mainColor = isHigh ? '#B89047' : '#9C6C42'
+  const ringColor = isHigh ? 'rgba(184, 144, 71, 0.25)' : 'rgba(156, 108, 66, 0.22)'
 
   return L.divIcon({
     className: 'urban-event-marker',
@@ -85,16 +81,16 @@ const createEventIcon = (isHigh, isLight) => {
   })
 }
 
-// Executive Traffic Radar Icon (Crimson / Amber / Emerald)
+// Executive Traffic Radar Icon (Warm Terracotta / Sienna / Botanical Sage)
 const createTrafficIcon = (level, incident) => {
   const isCritical = level === 'high' || incident === 'accident'
   const isWarning = level === 'moderate' || incident === 'roadwork'
-  const color = isCritical ? '#DC2626' : isWarning ? '#D97706' : '#16A34A'
+  const color = isCritical ? '#B25938' : isWarning ? '#C87D55' : '#526A50'
   const ringBg = isCritical
-    ? 'rgba(220, 38, 38, 0.2)'
+    ? 'rgba(178, 89, 56, 0.22)'
     : isWarning
-    ? 'rgba(217, 119, 6, 0.2)'
-    : 'rgba(22, 163, 74, 0.2)'
+    ? 'rgba(200, 125, 85, 0.2)'
+    : 'rgba(82, 106, 80, 0.2)'
 
   return L.divIcon({
     className: 'urban-traffic-marker',
@@ -200,24 +196,25 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
       >
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <span style={{ width: '16px', height: '2px', backgroundColor: isLight ? '#0F172A' : '#94A3B8' }} />
+            <span style={{ width: '16px', height: '2px', backgroundColor: 'var(--accent)' }} />
             <span style={{
               fontSize: '11px',
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
-              color: isLight ? '#475569' : '#94A3B8',
+              color: 'var(--accent)',
             }}>
               URBAN CARTOGRAPHY · BELAGAVI CARTOGRAPHIC ATLAS
             </span>
           </div>
 
           <h2 style={{
-            fontSize: '24px',
-            fontWeight: 800,
+            fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
             letterSpacing: '-0.02em',
             margin: 0,
-            color: isLight ? '#0F172A' : '#F8FAFC',
+            color: 'var(--text-primary)',
           }}>
             Spatial Distribution of Urban Events & Traffic
           </h2>
@@ -228,7 +225,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           <span style={{
             fontSize: '11px',
             fontWeight: 700,
-            color: isLight ? '#64748B' : '#94A3B8',
+            color: 'var(--text-dim)',
             letterSpacing: '0.06em',
           }}>
             LAYERS:
@@ -239,10 +236,10 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
             style={{
               fontSize: '12px',
               padding: '6px 14px',
-              borderRadius: '6px',
-              border: `1px solid ${filterMode === 'all' ? (isLight ? '#0F172A' : '#FFFFFF') : (isLight ? '#CBD5E1' : '#334155')}`,
-              background: filterMode === 'all' ? (isLight ? '#0F172A' : '#1E293B') : (isLight ? '#FFFFFF' : '#0B0F17'),
-              color: filterMode === 'all' ? '#FFFFFF' : (isLight ? '#334155' : '#CBD5E1'),
+              borderRadius: 'var(--radius-pill)',
+              border: `1px solid ${filterMode === 'all' ? 'var(--accent)' : 'var(--border-hairline)'}`,
+              background: filterMode === 'all' ? 'var(--accent)' : 'var(--bg-surface-raised)',
+              color: filterMode === 'all' ? '#FFFFFF' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: 600,
               transition: 'all 0.15s ease',
@@ -256,10 +253,10 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
             style={{
               fontSize: '12px',
               padding: '6px 14px',
-              borderRadius: '6px',
-              border: `1px solid ${filterMode === 'events' ? (isLight ? '#0F172A' : '#FFFFFF') : (isLight ? '#CBD5E1' : '#334155')}`,
-              background: filterMode === 'events' ? (isLight ? '#0F172A' : '#1E293B') : (isLight ? '#FFFFFF' : '#0B0F17'),
-              color: filterMode === 'events' ? '#FFFFFF' : (isLight ? '#334155' : '#CBD5E1'),
+              borderRadius: 'var(--radius-pill)',
+              border: `1px solid ${filterMode === 'events' ? 'var(--agent-events)' : 'var(--border-hairline)'}`,
+              background: filterMode === 'events' ? 'var(--agent-events)' : 'var(--bg-surface-raised)',
+              color: filterMode === 'events' ? '#FFFFFF' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: 600,
               transition: 'all 0.15s ease',
@@ -273,10 +270,10 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
             style={{
               fontSize: '12px',
               padding: '6px 14px',
-              borderRadius: '6px',
-              border: `1px solid ${filterMode === 'traffic' ? (isLight ? '#0F172A' : '#FFFFFF') : (isLight ? '#CBD5E1' : '#334155')}`,
-              background: filterMode === 'traffic' ? (isLight ? '#0F172A' : '#1E293B') : (isLight ? '#FFFFFF' : '#0B0F17'),
-              color: filterMode === 'traffic' ? '#FFFFFF' : (isLight ? '#334155' : '#CBD5E1'),
+              borderRadius: 'var(--radius-pill)',
+              border: `1px solid ${filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--border-hairline)'}`,
+              background: filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--bg-surface-raised)',
+              color: filterMode === 'traffic' ? '#FFFFFF' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: 600,
               transition: 'all 0.15s ease',
@@ -290,10 +287,10 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
             style={{
               fontSize: '12px',
               padding: '6px 14px',
-              borderRadius: '6px',
-              border: `1px solid ${filterMode === 'high' ? '#D97706' : (isLight ? '#CBD5E1' : '#334155')}`,
-              background: filterMode === 'high' ? (isLight ? '#FEF3C7' : '#78350F') : (isLight ? '#FFFFFF' : '#0B0F17'),
-              color: filterMode === 'high' ? (isLight ? '#92400E' : '#FDE68A') : (isLight ? '#334155' : '#CBD5E1'),
+              borderRadius: 'var(--radius-pill)',
+              border: `1px solid ${filterMode === 'high' ? 'var(--agent-gemini)' : 'var(--border-hairline)'}`,
+              background: filterMode === 'high' ? 'var(--agent-gemini)' : 'var(--bg-surface-raised)',
+              color: filterMode === 'high' ? '#FFFFFF' : 'var(--text-secondary)',
               cursor: 'pointer',
               fontWeight: 600,
               transition: 'all 0.15s ease',
@@ -523,40 +520,40 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           })}
         </MapContainer>
 
-        {/* Executive Map Legend Floating Bar */}
+        {/* Executive Map Legend Floating Bar with Harmonized Sage Theme Colors */}
         <div
           style={{
             position: 'absolute',
             bottom: '16px',
             right: '16px',
             zIndex: 1000,
-            backgroundColor: isLight ? 'rgba(255, 255, 255, 0.94)' : 'rgba(15, 23, 42, 0.94)',
-            backdropFilter: 'blur(8px)',
-            border: `1px solid ${isLight ? '#E2E8F0' : '#334155'}`,
-            borderRadius: '8px',
-            padding: '8px 12px',
+            backgroundColor: 'var(--bg-surface)',
+            backdropFilter: 'blur(12px)',
+            border: '1px solid var(--border-hairline)',
+            borderRadius: 'var(--radius-pill)',
+            padding: '7px 16px',
             display: 'flex',
             alignItems: 'center',
             gap: '14px',
             fontSize: '11px',
-            color: isLight ? '#334155' : '#CBD5E1',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            color: 'var(--text-secondary)',
+            boxShadow: 'var(--shadow-glass)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4F46E5' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#9C6C42' }} />
             <span>Campus Event</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#D97706' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B89047' }} />
             <span>High Attendance</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#DC2626' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B25938' }} />
             <span>Traffic Delay / Incident</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#526A50' }} />
             <span>Flowing Corridor</span>
           </div>
         </div>
@@ -571,15 +568,15 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           animation: trafficPulse 2s infinite ease-out;
         }
         .leaflet-popup-content-wrapper {
-          background: ${isLight ? '#FFFFFF' : '#0B0F17'} !important;
-          border: 1px solid ${isLight ? '#E2E8F0' : '#1E293B'} !important;
-          border-radius: 10px !important;
-          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
-          color: ${isLight ? '#0F172A' : '#F8FAFC'} !important;
+          background: var(--bg-surface) !important;
+          border: 1px solid var(--border-hairline) !important;
+          border-radius: 12px !important;
+          box-shadow: var(--shadow-glass) !important;
+          color: var(--text-primary) !important;
         }
         .leaflet-popup-tip {
-          background: ${isLight ? '#FFFFFF' : '#0B0F17'} !important;
-          border: 1px solid ${isLight ? '#E2E8F0' : '#1E293B'} !important;
+          background: var(--bg-surface) !important;
+          border: 1px solid var(--border-hairline) !important;
         }
       `}</style>
     </section>

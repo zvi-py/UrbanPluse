@@ -3,7 +3,7 @@ import MetricCardsBar from '../MetricCardsBar.jsx'
 import CityMap from '../CityMap.jsx'
 import AgentNetworkVisualizer from '../AgentNetworkVisualizer.jsx'
 import DiscoveryGrid from './DiscoveryGrid.jsx'
-import { Navigation, Radio, CalendarPlus, ChevronRight } from 'lucide-react'
+import { Navigation, Radio, CalendarPlus, ChevronRight, Sparkles } from 'lucide-react'
 
 export default function DashboardMain({
   overview,
@@ -13,8 +13,9 @@ export default function DashboardMain({
   studentData,
   alerts = [],
   onOpenHostModal,
+  onOpenGeminiModal,
   onSelectTab,
-  theme = 'dark',
+  theme = 'light',
   agentSources,
 }) {
   const isLight = theme === 'light'
@@ -33,81 +34,112 @@ export default function DashboardMain({
   ]
 
   const corridorLocations = trafficData?.locations || [
-    { location: 'Market Area', congestion_score: 0.85, congestion_level: 'high', incident: 'accident' },
-    { location: 'College Road', congestion_score: 0.60, congestion_level: 'moderate', incident: 'roadwork' },
-    { location: 'Belagavi City Center', congestion_score: 0.55, congestion_level: 'moderate', incident: 'none' },
-    { location: 'NH48 Bypass', congestion_score: 0.30, congestion_level: 'low', incident: 'none' },
+    { location: 'Market Area (Khade Bazar)', congestion_score: 0.85, congestion_level: 'high', incident: 'accident' },
+    { location: 'Khanapur Road (Udyambag)', congestion_score: 0.78, congestion_level: 'high', incident: 'none' },
+    { location: 'College Road (BIMS)', congestion_score: 0.62, congestion_level: 'moderate', incident: 'roadwork' },
+    { location: 'Congress Road (Tilakwadi)', congestion_score: 0.65, congestion_level: 'moderate', incident: 'none' },
+    { location: 'Camp Area (Club Road)', congestion_score: 0.28, congestion_level: 'low', incident: 'none' },
+    { location: 'NH48 Bypass Corridor', congestion_score: 0.30, congestion_level: 'low', incident: 'none' },
   ]
 
   const cardStyle = {
-    backgroundColor: isLight ? '#FFFFFF' : '#0F172A',
-    border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-    borderRadius: '10px',
-    padding: '20px',
-    boxShadow: isLight ? '0 1px 3px rgba(0, 0, 0, 0.04)' : 'none',
-    transition: 'background-color 0.2s ease, border-color 0.2s ease',
+    backgroundColor: 'var(--bg-surface)',
+    border: '1px solid var(--border-hairline)',
+    borderRadius: 'var(--radius-lg)',
+    padding: '24px',
+    boxShadow: 'var(--shadow-glass)',
+    transition: 'all 0.2s ease',
   }
 
   return (
     <div
       style={{
         flex: 1,
-        padding: '28px 36px',
+        padding: '32px 40px',
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        gap: '28px',
-        maxWidth: '1280px',
+        gap: '32px',
+        maxWidth: '1360px',
         margin: '0 auto',
         width: '100%',
       }}
     >
-      {/* 1. Dashboard Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+      {/* 1. Dashboard Header with Sage Editorial Typography */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: 700, color: isLight ? '#0F172A' : '#F8FAFC', margin: '0 0 6px 0', letterSpacing: '-0.02em' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <span style={{ width: '18px', height: '2px', backgroundColor: 'var(--accent)' }} />
+            <span
+              style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--accent)',
+              }}
+            >
+              Belagavi Smart Urban Life
+            </span>
+          </div>
+
+          <h1
+            style={{
+              fontSize: 'clamp(2.2rem, 3.5vw, 3rem)',
+              fontFamily: 'var(--font-display)',
+              fontWeight: 700,
+              color: 'var(--text-primary)',
+              margin: '0 0 6px 0',
+              letterSpacing: '-0.025em',
+              lineHeight: 1.1,
+            }}
+          >
             Belagavi Urban Pulse
           </h1>
-          <p style={{ fontSize: '13.5px', color: isLight ? '#64748B' : '#94A3B8', margin: 0 }}>
-            Autonomous multi-agent intelligence coordinating transit, campus events, and municipal environment.
+          <p style={{ fontSize: '14px', color: 'var(--text-secondary)', margin: 0, maxWidth: '600px', lineHeight: 1.6 }}>
+            Autonomous multi-agent intelligence coordinating transit arteries, collegiate gatherings, and municipal environment.
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {/* Muted Agent Sync Badge (Zero Neon Glow) */}
-          <div
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          {/* Ask Gemini AI Trigger Button */}
+          <button
+            onClick={onOpenGeminiModal}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '6px',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              backgroundColor: isLight ? '#F0FDF4' : 'rgba(34, 197, 94, 0.08)',
-              border: `1px solid ${isLight ? '#DCFCE7' : 'rgba(34, 197, 94, 0.25)'}`,
-              color: isLight ? '#166534' : '#4ADE80',
-              fontSize: '11px',
-              fontWeight: 600,
-              fontFamily: 'monospace',
+              gap: '8px',
+              padding: '9px 18px',
+              borderRadius: 'var(--radius-pill)',
+              backgroundColor: 'var(--agent-gemini-bg)',
+              border: '1px solid var(--agent-gemini-border)',
+              color: 'var(--agent-gemini)',
+              fontSize: '12.5px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
             }}
           >
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: isLight ? '#16A34A' : '#4ADE80' }} />
-            <span>4 / 4 AGENTS IN SYNC</span>
-          </div>
+            <Sparkles size={14} />
+            <span>Ask Gemini AI</span>
+          </button>
 
+          {/* Host Gathering Action */}
           <button
             onClick={onOpenHostModal}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '6px',
-              padding: '7px 16px',
-              borderRadius: '6px',
-              backgroundColor: isLight ? '#0F172A' : '#F8FAFC',
+              gap: '7px',
+              padding: '9px 18px',
+              borderRadius: 'var(--radius-pill)',
+              backgroundColor: 'var(--accent)',
               border: 'none',
-              color: isLight ? '#FFFFFF' : '#0B0F17',
-              fontSize: '12px',
-              fontWeight: 600,
+              color: '#FFFFFF',
+              fontSize: '12.5px',
+              fontWeight: 700,
               cursor: 'pointer',
+              boxShadow: '0 4px 12px rgba(82, 106, 80, 0.25)',
               transition: 'opacity 0.15s ease',
             }}
           >
@@ -117,7 +149,7 @@ export default function DashboardMain({
         </div>
       </div>
 
-      {/* 2. Top 4 Metric Cards */}
+      {/* 2. Top 4 Metric Cards with Sage Luxury Styling */}
       <MetricCardsBar
         overview={overview}
         eventsData={eventsData}
@@ -130,12 +162,11 @@ export default function DashboardMain({
       {/* 3. The Main Centerpiece: Belagavi Cartographic Atlas */}
       <div
         style={{
-          backgroundColor: isLight ? '#FFFFFF' : '#0F172A',
-          border: `1px solid ${isLight ? '#E2E8F0' : '#1E293B'}`,
-          borderRadius: '12px',
+          backgroundColor: 'var(--bg-surface)',
+          border: '1px solid var(--border-hairline)',
+          borderRadius: 'var(--radius-xl)',
           padding: '24px 24px 16px',
-          boxShadow: isLight ? '0 1px 4px rgba(0, 0, 0, 0.05)' : 'none',
-          transition: 'background-color 0.2s ease, border-color 0.2s ease',
+          boxShadow: 'var(--shadow-glass)',
         }}
       >
         <CityMap
@@ -147,29 +178,49 @@ export default function DashboardMain({
       </div>
 
       {/* 4. Live 2-Column Operational Briefing */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '18px' }}>
-        {/* Left: Arterial Corridor Flow */}
-        <div style={cardStyle}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '20px' }}>
+        {/* Left: Arterial Corridor Flow - Terracotta theme */}
+        <div style={{ ...cardStyle, border: '1px solid var(--agent-traffic-border)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Navigation size={15} color={isLight ? '#0284C7' : '#38BDF8'} />
-              <span style={{ fontSize: '13px', fontWeight: 600, color: isLight ? '#0F172A' : '#F8FAFC' }}>
+              <div
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '8px',
+                  backgroundColor: 'var(--agent-traffic-bg)',
+                  color: 'var(--agent-traffic)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Navigation size={15} />
+              </div>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)' }}>
                 Arterial Corridor Congestion
               </span>
             </div>
             <button
               onClick={() => onSelectTab('traffic')}
-              style={{ background: 'transparent', border: 'none', color: isLight ? '#2563EB' : '#38BDF8', fontSize: '11px', fontWeight: 600, cursor: 'pointer' }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--agent-traffic)',
+                fontSize: '11.5px',
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
             >
-              Corridor Deep Dive &rarr;
+              Corridors &rarr;
             </button>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {corridorLocations.map((loc) => {
+            {corridorLocations.slice(0, 5).map((loc) => {
               const isHigh = loc.congestion_level === 'high'
               const isMod = loc.congestion_level === 'moderate'
-              const color = isHigh ? '#DC2626' : isMod ? '#D97706' : '#16A34A'
+              const color = isHigh ? '#B25938' : isMod ? '#9C6C42' : '#526A50'
 
               return (
                 <div
@@ -178,18 +229,18 @@ export default function DashboardMain({
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '10px 12px',
-                    borderRadius: '6px',
-                    backgroundColor: isLight ? '#F8FAFC' : 'rgba(255, 255, 255, 0.02)',
-                    border: `1px solid ${isLight ? '#E2E8F0' : 'rgba(255, 255, 255, 0.05)'}`,
+                    padding: '10px 14px',
+                    borderRadius: 'var(--radius-md)',
+                    backgroundColor: 'var(--bg-surface-raised)',
+                    border: '1px solid var(--border-hairline)',
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: '12.5px', fontWeight: 600, color: isLight ? '#0F172A' : '#F8FAFC' }}>
+                    <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>
                       {loc.location}
                     </div>
                     {loc.incident && loc.incident !== 'none' && (
-                      <div style={{ fontSize: '10.5px', color: color, textTransform: 'capitalize' }}>
+                      <div style={{ fontSize: '11px', color: '#B25938', textTransform: 'capitalize', fontWeight: 600 }}>
                         Incident: {loc.incident}
                       </div>
                     )}
@@ -199,7 +250,7 @@ export default function DashboardMain({
                     <div style={{ fontSize: '13px', fontFamily: 'monospace', fontWeight: 700, color: color }}>
                       {(loc.congestion_score * 100).toFixed(0)}% Delay
                     </div>
-                    <div style={{ fontSize: '10px', textTransform: 'uppercase', color: '#64748B' }}>
+                    <div style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-dim)', fontWeight: 600 }}>
                       {loc.congestion_level}
                     </div>
                   </div>
@@ -209,16 +260,29 @@ export default function DashboardMain({
           </div>
         </div>
 
-        {/* Right: Cross-Agent Real-time Advisories */}
-        <div style={cardStyle}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+        {/* Right: Multi-Agent Synthesis Advisories */}
+        <div style={{ ...cardStyle, border: '1px solid var(--agent-events-border)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Radio size={15} color={isLight ? '#16A34A' : '#4ADE80'} />
-              <span style={{ fontSize: '13px', fontWeight: 600, color: isLight ? '#0F172A' : '#F8FAFC' }}>
+              <div
+                style={{
+                  width: '28px',
+                  height: '28px',
+                  borderRadius: '8px',
+                  backgroundColor: 'var(--agent-events-bg)',
+                  color: 'var(--agent-events)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Radio size={15} />
+              </div>
+              <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)' }}>
                 Multi-Agent Synthesis Advisories
               </span>
             </div>
-            <span style={{ fontSize: '10.5px', color: '#64748B', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '10.5px', color: 'var(--text-dim)', fontFamily: 'monospace', fontWeight: 600 }}>
               LIVE FEED
             </span>
           </div>
@@ -226,28 +290,28 @@ export default function DashboardMain({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {resolvedAlerts.map((alert, idx) => {
               const isCrit = alert.severity === 'critical'
-              const accentColor = isCrit ? '#DC2626' : '#D97706'
+              const accentColor = isCrit ? 'var(--agent-traffic)' : 'var(--agent-events)'
 
               return (
                 <div
                   key={idx}
                   style={{
-                    padding: '12px 14px',
-                    borderRadius: '6px',
-                    backgroundColor: isLight ? '#F8FAFC' : 'rgba(255, 255, 255, 0.02)',
-                    border: `1px solid ${isLight ? '#E2E8F0' : 'rgba(255, 255, 255, 0.06)'}`,
+                    padding: '14px 16px',
+                    borderRadius: 'var(--radius-md)',
+                    backgroundColor: 'var(--bg-surface-raised)',
+                    border: '1px solid var(--border-hairline)',
                     borderLeft: `3px solid ${accentColor}`,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '10px', fontWeight: 700, color: accentColor, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                    <span style={{ fontSize: '10px', fontWeight: 700, color: accentColor, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                       {isCrit ? 'CORRIDOR ALERT' : 'CROSS-AGENT ADVISORY'}
                     </span>
-                    <span style={{ fontSize: '10px', color: '#64748B', fontFamily: 'monospace' }}>
+                    <span style={{ fontSize: '10px', color: 'var(--text-dim)', fontFamily: 'monospace' }}>
                       {alert.time || '14:15'}
                     </span>
                   </div>
-                  <p style={{ fontSize: '12px', color: isLight ? '#334155' : '#CBD5E1', lineHeight: 1.45, margin: 0 }}>
+                  <p style={{ fontSize: '12.5px', color: 'var(--text-secondary)', lineHeight: 1.5, margin: 0 }}>
                     {alert.message}
                   </p>
                 </div>
@@ -259,18 +323,10 @@ export default function DashboardMain({
 
       {/* 5. Four Intelligent Agents Architecture */}
       <div>
-        <div style={{ marginBottom: '16px' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: 700, color: isLight ? '#0F172A' : '#F8FAFC', margin: '0 0 4px 0' }}>
-            Autonomous Multi-Agent Architecture
-          </h2>
-          <p style={{ fontSize: '13px', color: isLight ? '#64748B' : '#94A3B8', margin: 0 }}>
-            Four specialized agents cross-correlating urban and campus telemetry in real time.
-          </p>
-        </div>
-
         <AgentNetworkVisualizer
           onSelectAgent={onSelectTab}
           agentSources={agentSources}
+          onOpenGeminiModal={onOpenGeminiModal}
         />
       </div>
 
@@ -280,7 +336,7 @@ export default function DashboardMain({
           onOpenHostModal={onOpenHostModal}
           onSelectTab={onSelectTab}
           studentCount={studentData?.total_students || 118}
-          eventsCount={eventsData?.total_events || (Array.isArray(eventsData?.events) ? eventsData.events.length : 31)}
+          eventsCount={eventsData?.total_events || (Array.isArray(eventsData?.events) ? eventsData.events.length : 26)}
           theme={theme}
         />
       </div>

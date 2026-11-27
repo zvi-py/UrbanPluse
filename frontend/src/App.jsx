@@ -9,6 +9,7 @@ import StudentPanel from './components/StudentPanel.jsx'
 import EnvironmentPanel from './components/EnvironmentPanel.jsx'
 import CityMap from './components/CityMap.jsx'
 import HostEventModal from './components/HostEventModal.jsx'
+import GeminiAssistantModal from './components/GeminiAssistantModal.jsx'
 import AgentNetworkVisualizer from './components/AgentNetworkVisualizer.jsx'
 import EnvironmentDashboard from './components/environment/EnvironmentDashboard.jsx'
 import { MOCK_OVERVIEW_DATA } from './mockData.js'
@@ -21,6 +22,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('overview') // 'overview' | 'student' | 'events' | 'traffic' | 'environment' | 'agents_core' | 'map'
   const [searchQuery, setSearchQuery] = useState('')
   const [isHostModalOpen, setIsHostModalOpen] = useState(false)
+  const [isGeminiModalOpen, setIsGeminiModalOpen] = useState(false)
 
   const [theme, setTheme] = useState(() => {
     try {
@@ -31,9 +33,9 @@ export default function App() {
           return paramTheme
         }
       }
-      return localStorage.getItem('urbanpulse_theme') || 'dark'
+      return localStorage.getItem('urbanpulse_theme') || 'light'
     } catch {
-      return 'dark'
+      return 'light'
     }
   })
 
@@ -154,6 +156,7 @@ export default function App() {
         activeTab={activeTab}
         onSelectTab={setActiveTab}
         onOpenHostModal={() => setIsHostModalOpen(true)}
+        onOpenGeminiModal={() => setIsGeminiModalOpen(true)}
         theme={theme}
       />
 
@@ -167,6 +170,7 @@ export default function App() {
           loading={loading}
           theme={theme}
           onToggleTheme={toggleTheme}
+          onOpenGeminiModal={() => setIsGeminiModalOpen(true)}
           alertCount={alerts.length || 3}
         />
 
@@ -182,6 +186,7 @@ export default function App() {
               studentData={studentData}
               alerts={alerts}
               onOpenHostModal={() => setIsHostModalOpen(true)}
+              onOpenGeminiModal={() => setIsGeminiModalOpen(true)}
               onSelectTab={setActiveTab}
               theme={theme}
               agentSources={agentSources}
@@ -259,6 +264,7 @@ export default function App() {
               <AgentNetworkVisualizer
                 agentSources={agentSources}
                 onSelectAgent={setActiveTab}
+                onOpenGeminiModal={() => setIsGeminiModalOpen(true)}
               />
             </div>
           )}
@@ -291,6 +297,12 @@ export default function App() {
         isOpen={isHostModalOpen}
         onClose={() => setIsHostModalOpen(false)}
         onEventCreated={fetchData}
+      />
+
+      {/* Gemini AI Urban Assistant Modal */}
+      <GeminiAssistantModal
+        isOpen={isGeminiModalOpen}
+        onClose={() => setIsGeminiModalOpen(false)}
       />
     </div>
   )
