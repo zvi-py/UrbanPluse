@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cpu, Navigation, Calendar, Users, Activity, Sparkles, ArrowRight } from 'lucide-react'
+import { Cpu, Navigation, Calendar, Users, Activity, Radio, ArrowRight } from 'lucide-react'
 
 export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {} }) {
   const agents = [
@@ -65,7 +65,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
       {/* Section Header matching Video Frame 3 & 4 */}
       <div style={{ textAlign: 'center', marginBottom: '40px' }} className="fade-in-up">
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: 'var(--radius-pill)', background: 'var(--bg-glass)', border: '1px solid var(--border-glass)', marginBottom: '14px' }}>
-          <Sparkles size={14} color="var(--accent)" />
+          <Radio size={14} color="var(--accent)" />
           <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', color: 'var(--accent)', textTransform: 'uppercase' }}>
             Autonomous Multi-Agent Synthesis
           </span>

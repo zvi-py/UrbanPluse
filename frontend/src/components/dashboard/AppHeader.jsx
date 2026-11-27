@@ -15,20 +15,20 @@ export default function AppHeader({
   return (
     <header
       style={{
-        height: '64px',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-        backgroundColor: isLight ? '#FFFFFF' : '#111827',
+        height: '54px',
+        borderBottom: '1px solid #1E293B',
+        backgroundColor: isLight ? '#FFFFFF' : '#0B0F17',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 28px',
+        padding: '0 24px',
         position: 'sticky',
         top: 0,
         zIndex: 90,
       }}
     >
-      {/* Search Input Bar & Belagavi Location Tag */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1, maxWidth: '520px' }}>
+      {/* Search Bar with Keyboard Shortcut */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, maxWidth: '480px' }}>
         <div
           style={{
             position: 'relative',
@@ -38,71 +38,86 @@ export default function AppHeader({
           }}
         >
           <Search
-            size={16}
+            size={14}
             style={{
               position: 'absolute',
-              left: '12px',
-              color: '#9CA3AF',
+              left: '11px',
+              color: '#64748B',
               pointerEvents: 'none',
             }}
           />
           <input
             type="text"
-            placeholder="Search by activity, gathering, corridor, or ward..."
+            placeholder="Search activities, gathering keywords, corridors, or wards..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%',
-              padding: '9px 14px 9px 36px',
-              borderRadius: '10px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              backgroundColor: isLight ? '#F3F4F6' : '#161F30',
-              color: isLight ? '#111827' : '#F9FAFB',
-              fontSize: '13px',
+              padding: '7px 60px 7px 32px',
+              borderRadius: '6px',
+              border: '1px solid #1E293B',
+              backgroundColor: isLight ? '#F1F5F9' : '#0F172A',
+              color: isLight ? '#0F172A' : '#F8FAFC',
+              fontSize: '12.5px',
               outline: 'none',
-              transition: 'border-color 0.2s ease',
+              fontFamily: 'inherit',
             }}
           />
+          <span
+            style={{
+              position: 'absolute',
+              right: '8px',
+              fontSize: '10px',
+              color: '#64748B',
+              backgroundColor: isLight ? '#E2E8F0' : '#1E293B',
+              padding: '2px 5px',
+              borderRadius: '4px',
+              pointerEvents: 'none',
+              fontFamily: 'monospace',
+            }}
+          >
+            ⌘K
+          </span>
         </div>
 
-        {/* Belagavi Location Badge */}
+        {/* Belagavi Locality Indicator */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            padding: '7px 12px',
-            borderRadius: '10px',
+            gap: '5px',
+            padding: '5px 10px',
+            borderRadius: '6px',
             backgroundColor: 'rgba(6, 182, 212, 0.08)',
             border: '1px solid rgba(6, 182, 212, 0.25)',
             color: '#06B6D4',
-            fontSize: '12px',
+            fontSize: '11.5px',
             fontWeight: 600,
             whiteSpace: 'nowrap',
           }}
         >
-          <MapPin size={14} />
+          <MapPin size={12} />
           <span>Belagavi, KA</span>
         </div>
       </div>
 
-      {/* Right Controls: Telemetry Sync, Theme Toggle, Notifications */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-        {/* Live Synchronized Badge */}
+      {/* Right Controls: Telemetry Status, Actions */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Sync Status Badge */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '6px 12px',
-            borderRadius: '20px',
-            backgroundColor: 'rgba(34, 197, 94, 0.1)',
-            border: '1px solid rgba(34, 197, 94, 0.3)',
-            color: '#22C55E',
+            padding: '4px 10px',
+            borderRadius: '4px',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            border: '1px solid rgba(16, 185, 129, 0.25)',
+            color: '#10B981',
             fontSize: '11px',
-            fontWeight: 700,
+            fontWeight: 600,
             letterSpacing: '0.04em',
-            textTransform: 'uppercase',
+            fontFamily: 'monospace',
           }}
         >
           <span
@@ -110,88 +125,87 @@ export default function AppHeader({
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              backgroundColor: '#22C55E',
-              boxShadow: '0 0 8px #22C55E',
+              backgroundColor: '#10B981',
+              boxShadow: '0 0 6px #10B981',
             }}
           />
-          <span>4 / 4 Synchronized</span>
+          <span>4 / 4 AGENTS IN SYNC</span>
         </div>
 
-        {/* Refresh Button */}
+        {/* Telemetry Refresh */}
         <button
           onClick={onRefresh}
-          title="Refresh All Telemetry"
+          title="Refresh Telemetry"
           style={{
             background: 'transparent',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: isLight ? '#4B5563' : '#D1D5DB',
-            width: '36px',
-            height: '36px',
-            borderRadius: '8px',
+            border: '1px solid #1E293B',
+            color: '#94A3B8',
+            width: '32px',
+            height: '32px',
+            borderRadius: '6px',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+          <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
         </button>
 
         {/* Theme Toggle */}
         <button
           onClick={onToggleTheme}
-          title={isLight ? 'Switch to Midnight Theme' : 'Switch to Light Theme'}
+          title={isLight ? 'Dark Theme' : 'Light Theme'}
           style={{
             background: 'transparent',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            color: isLight ? '#4B5563' : '#D1D5DB',
-            width: '36px',
-            height: '36px',
-            borderRadius: '8px',
+            border: '1px solid #1E293B',
+            color: '#94A3B8',
+            width: '32px',
+            height: '32px',
+            borderRadius: '6px',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          {isLight ? <Moon size={16} /> : <Sun size={16} />}
+          {isLight ? <Moon size={14} /> : <Sun size={14} />}
         </button>
 
-        {/* Bell Notifications */}
+        {/* Notifications */}
         <div style={{ position: 'relative' }}>
           <button
             style={{
               background: 'transparent',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: isLight ? '#4B5563' : '#D1D5DB',
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
+              border: '1px solid #1E293B',
+              color: '#94A3B8',
+              width: '32px',
+              height: '32px',
+              borderRadius: '6px',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <Bell size={16} />
+            <Bell size={14} />
           </button>
           {alertCount > 0 && (
             <span
               style={{
                 position: 'absolute',
-                top: '-4px',
-                right: '-4px',
-                width: '16px',
-                height: '16px',
+                top: '-3px',
+                right: '-3px',
+                width: '14px',
+                height: '14px',
                 borderRadius: '50%',
                 backgroundColor: '#EF4444',
                 color: '#FFFFFF',
-                fontSize: '9.5px',
+                fontSize: '9px',
                 fontWeight: 700,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 6px #EF4444',
               }}
             >
               {alertCount}

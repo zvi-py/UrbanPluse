@@ -8,10 +8,9 @@ import {
   Cpu,
   Activity,
   ShieldCheck,
-  Sparkles,
+  Radio,
   Bell,
-  Settings,
-  ChevronRight
+  Settings
 } from 'lucide-react'
 
 export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, alertCount = 3 }) {
@@ -19,49 +18,64 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'student', label: 'Student Network', icon: Users },
     { id: 'events', label: 'Discover Events', icon: Compass },
-    { id: 'host_event', label: 'Host an Event', icon: CalendarPlus, isAction: true },
+    { id: 'host_event', label: 'Host Gathering', icon: CalendarPlus, isAction: true },
     { id: 'map', label: 'Explore City', icon: MapPin },
     { id: 'agents_core', label: 'Four Agents Core', icon: Cpu },
     { id: 'traffic', label: 'Traffic Intelligence', icon: Activity },
-    { id: 'environment', label: 'Environmental Monitoring', icon: ShieldCheck },
-    { id: 'ai_insights', label: 'AI Insights', icon: Sparkles, badge: alertCount },
+    { id: 'environment', label: 'Environmental Monitor', icon: ShieldCheck },
+    { id: 'ai_insights', label: 'Synthesis Alerts', icon: Radio, badge: alertCount },
     { id: 'notifications', label: 'Notifications', icon: Bell },
   ]
 
   return (
-    <aside className="video-sidebar">
-      {/* Brand Header */}
+    <aside
+      style={{
+        width: '230px',
+        minWidth: '230px',
+        backgroundColor: '#090D14',
+        borderRight: '1px solid #1E293B',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100vh',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        userSelect: 'none',
+      }}
+    >
       <div>
-        <div style={{ padding: '24px 20px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Brand Header */}
+        <div style={{ padding: '20px 18px 16px', display: 'flex', alignItems: 'center', gap: '10px', borderBottom: '1px solid #1E293B' }}>
           <div
             style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%)',
+              width: '30px',
+              height: '30px',
+              borderRadius: '6px',
+              backgroundColor: '#06B6D4',
+              color: '#090D14',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#FFFFFF',
-              boxShadow: '0 0 16px rgba(6, 182, 212, 0.45)',
+              fontWeight: 900,
+              fontSize: '16px',
+              fontFamily: 'monospace',
             }}
           >
-            <span style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-display, sans-serif)' }}>
-              U
-            </span>
+            U
           </div>
           <div>
-            <div style={{ fontSize: '16px', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary, #F8FAFC)' }}>
+            <div style={{ fontSize: '14.5px', fontWeight: 700, letterSpacing: '-0.02em', color: '#F8FAFC' }}>
               URBANPULSE
             </div>
-            <div style={{ fontSize: '10px', color: '#06B6D4', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600 }}>
-              AI Urban Intelligence
+            <div style={{ fontSize: '9.5px', color: '#64748B', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
+              Autonomous Urban AI
             </div>
           </div>
         </div>
 
         {/* Navigation List */}
-        <nav style={{ padding: '8px 0', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <nav style={{ padding: '12px 8px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.id
@@ -69,7 +83,6 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
             return (
               <div
                 key={item.id}
-                className={`video-nav-item ${isActive ? 'active' : ''}`}
                 onClick={() => {
                   if (item.isAction) {
                     if (onOpenHostModal) onOpenHostModal()
@@ -77,16 +90,30 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
                     onSelectTab(item.id)
                   }
                 }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '8px 12px',
+                  borderRadius: '6px',
+                  color: isActive ? '#38BDF8' : '#94A3B8',
+                  backgroundColor: isActive ? 'rgba(56, 189, 248, 0.08)' : 'transparent',
+                  borderLeft: isActive ? '2.5px solid #38BDF8' : '2.5px solid transparent',
+                  fontSize: '13px',
+                  fontWeight: isActive ? 600 : 500,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
               >
-                <Icon size={18} />
+                <Icon size={16} />
                 <span style={{ flex: 1 }}>{item.label}</span>
                 {item.badge && (
                   <span
                     style={{
-                      fontSize: '10px',
-                      padding: '2px 6px',
+                      fontSize: '9.5px',
+                      padding: '1px 6px',
                       borderRadius: '10px',
-                      backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                      backgroundColor: 'rgba(239, 68, 68, 0.18)',
                       color: '#EF4444',
                       fontWeight: 700,
                     }}
@@ -100,14 +127,23 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
         </nav>
       </div>
 
-      {/* Bottom User Profile & Settings */}
-      <div style={{ padding: '16px 12px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+      {/* Footer Profile & Settings */}
+      <div style={{ padding: '14px 12px', borderTop: '1px solid #1E293B' }}>
         <div
-          className="video-nav-item"
-          style={{ marginBottom: '8px' }}
           onClick={() => onSelectTab('settings')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '7px 10px',
+            borderRadius: '6px',
+            color: '#94A3B8',
+            fontSize: '12.5px',
+            cursor: 'pointer',
+            marginBottom: '8px',
+          }}
         >
-          <Settings size={18} />
+          <Settings size={15} />
           <span>Settings</span>
         </div>
 
@@ -116,34 +152,34 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
-            padding: '8px 10px',
-            borderRadius: '10px',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
+            padding: '8px',
+            borderRadius: '6px',
+            backgroundColor: '#0F172A',
+            border: '1px solid #1E293B',
           }}
         >
           <div
             style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '50%',
-              backgroundColor: '#374151',
+              width: '26px',
+              height: '26px',
+              borderRadius: '4px',
+              backgroundColor: '#1E293B',
+              color: '#38BDF8',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#F9FAFB',
               fontWeight: 700,
-              fontSize: '12px',
-              border: '1.5px solid #06B6D4',
+              fontSize: '11px',
             }}
           >
             Z
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--text-primary, #F9FAFB)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: '12px', fontWeight: 600, color: '#F8FAFC', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               Zaveriya · Lead
             </div>
-            <div style={{ fontSize: '10px', color: '#9CA3AF' }}>
-              Belagavi Municipal
+            <div style={{ fontSize: '10px', color: '#64748B' }}>
+              Belagavi Municipal Hub
             </div>
           </div>
         </div>
