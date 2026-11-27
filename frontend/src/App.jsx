@@ -170,28 +170,22 @@ export default function App() {
           alertCount={alerts.length || 3}
         />
 
-        {/* 3. Center Area (Dashboard Stage + Right AI Insights Panel) */}
+        {/* 3. Center Area (Dashboard Stage) */}
         <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
           {/* Main Content Area */}
           {activeTab === 'overview' && (
-            <>
-              <DashboardMain
-                overview={overview}
-                eventsData={resolvedEvents}
-                trafficData={resolvedTrafficData}
-                envData={envData}
-                studentData={studentData}
-                onOpenHostModal={() => setIsHostModalOpen(true)}
-                onSelectTab={setActiveTab}
-                theme={theme}
-                agentSources={agentSources}
-              />
-              <AiInsightsPanel
-                alerts={alerts}
-                events={resolvedEvents}
-                onOpenHostModal={() => setIsHostModalOpen(true)}
-              />
-            </>
+            <DashboardMain
+              overview={overview}
+              eventsData={resolvedEvents}
+              trafficData={resolvedTrafficData}
+              envData={envData}
+              studentData={studentData}
+              alerts={alerts}
+              onOpenHostModal={() => setIsHostModalOpen(true)}
+              onSelectTab={setActiveTab}
+              theme={theme}
+              agentSources={agentSources}
+            />
           )}
 
           {activeTab === 'student' && (

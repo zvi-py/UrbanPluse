@@ -8,30 +8,24 @@ import {
   Cpu,
   Activity,
   ShieldCheck,
-  Radio,
-  Bell,
-  Settings
 } from 'lucide-react'
 
-export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, alertCount = 3 }) {
+export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal }) {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
+    { id: 'map', label: 'Explore City Map', icon: MapPin },
+    { id: 'agents_core', label: '4 Intelligent Agents', icon: Cpu },
     { id: 'student', label: 'Student Network', icon: Users },
-    { id: 'events', label: 'Discover Events', icon: Compass },
-    { id: 'host_event', label: 'Host Gathering', icon: CalendarPlus, isAction: true },
-    { id: 'map', label: 'Explore City', icon: MapPin },
-    { id: 'agents_core', label: 'Four Agents Core', icon: Cpu },
-    { id: 'traffic', label: 'Traffic Intelligence', icon: Activity },
-    { id: 'environment', label: 'Environmental Monitor', icon: ShieldCheck },
-    { id: 'ai_insights', label: 'Synthesis Alerts', icon: Radio, badge: alertCount },
-    { id: 'notifications', label: 'Notifications', icon: Bell },
+    { id: 'events', label: 'Campus Gatherings', icon: Compass },
+    { id: 'traffic', label: 'Traffic Corridors', icon: Activity },
+    { id: 'environment', label: 'Environment Vitals', icon: ShieldCheck },
   ]
 
   return (
     <aside
       style={{
-        width: '230px',
-        minWidth: '230px',
+        width: '220px',
+        minWidth: '220px',
         backgroundColor: '#090D14',
         borderRight: '1px solid #1E293B',
         display: 'flex',
@@ -49,32 +43,32 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
         <div style={{ padding: '20px 18px 16px', display: 'flex', alignItems: 'center', gap: '10px', borderBottom: '1px solid #1E293B' }}>
           <div
             style={{
-              width: '30px',
-              height: '30px',
+              width: '28px',
+              height: '28px',
               borderRadius: '6px',
               backgroundColor: '#06B6D4',
               color: '#090D14',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontWeight: 900,
-              fontSize: '16px',
+              fontWeight: 800,
+              fontSize: '15px',
               fontFamily: 'monospace',
             }}
           >
             U
           </div>
           <div>
-            <div style={{ fontSize: '14.5px', fontWeight: 700, letterSpacing: '-0.02em', color: '#F8FAFC' }}>
+            <div style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '-0.02em', color: '#F8FAFC' }}>
               URBANPULSE
             </div>
-            <div style={{ fontSize: '9.5px', color: '#64748B', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
-              Autonomous Urban AI
+            <div style={{ fontSize: '9px', color: '#64748B', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
+              Belagavi City AI
             </div>
           </div>
         </div>
 
-        {/* Navigation List */}
+        {/* Primary Navigation */}
         <nav style={{ padding: '12px 8px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {navItems.map((item) => {
             const Icon = item.icon
@@ -83,13 +77,7 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
             return (
               <div
                 key={item.id}
-                onClick={() => {
-                  if (item.isAction) {
-                    if (onOpenHostModal) onOpenHostModal()
-                  } else {
-                    onSelectTab(item.id)
-                  }
-                }}
+                onClick={() => onSelectTab(item.id)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -99,89 +87,54 @@ export default function AppSidebar({ activeTab, onSelectTab, onOpenHostModal, al
                   color: isActive ? '#38BDF8' : '#94A3B8',
                   backgroundColor: isActive ? 'rgba(56, 189, 248, 0.08)' : 'transparent',
                   borderLeft: isActive ? '2.5px solid #38BDF8' : '2.5px solid transparent',
-                  fontSize: '13px',
+                  fontSize: '12.5px',
                   fontWeight: isActive ? 600 : 500,
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
                 }}
               >
-                <Icon size={16} />
+                <Icon size={15} />
                 <span style={{ flex: 1 }}>{item.label}</span>
-                {item.badge && (
-                  <span
-                    style={{
-                      fontSize: '9.5px',
-                      padding: '1px 6px',
-                      borderRadius: '10px',
-                      backgroundColor: 'rgba(239, 68, 68, 0.18)',
-                      color: '#EF4444',
-                      fontWeight: 700,
-                    }}
-                  >
-                    {item.badge}
-                  </span>
-                )}
               </div>
             )
           })}
         </nav>
-      </div>
 
-      {/* Footer Profile & Settings */}
-      <div style={{ padding: '14px 12px', borderTop: '1px solid #1E293B' }}>
-        <div
-          onClick={() => onSelectTab('settings')}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '7px 10px',
-            borderRadius: '6px',
-            color: '#94A3B8',
-            fontSize: '12.5px',
-            cursor: 'pointer',
-            marginBottom: '8px',
-          }}
-        >
-          <Settings size={15} />
-          <span>Settings</span>
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '8px',
-            borderRadius: '6px',
-            backgroundColor: '#0F172A',
-            border: '1px solid #1E293B',
-          }}
-        >
-          <div
+        {/* Action Button */}
+        <div style={{ padding: '4px 12px' }}>
+          <button
+            onClick={onOpenHostModal}
             style={{
-              width: '26px',
-              height: '26px',
-              borderRadius: '4px',
-              backgroundColor: '#1E293B',
-              color: '#38BDF8',
+              width: '100%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontWeight: 700,
-              fontSize: '11px',
+              gap: '6px',
+              padding: '7px 12px',
+              borderRadius: '6px',
+              backgroundColor: '#10B981',
+              border: 'none',
+              color: '#FFFFFF',
+              fontSize: '11.5px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'background-color 0.15s ease',
             }}
           >
-            Z
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: '12px', fontWeight: 600, color: '#F8FAFC', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              Zaveriya · Lead
-            </div>
-            <div style={{ fontSize: '10px', color: '#64748B' }}>
-              Belagavi Municipal Hub
-            </div>
-          </div>
+            <CalendarPlus size={13} />
+            <span>Host Gathering</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Footer Status */}
+      <div style={{ padding: '14px 16px', borderTop: '1px solid #1E293B', backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#10B981', boxShadow: '0 0 6px #10B981' }} />
+          <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500 }}>Belagavi Mesh Live</span>
+        </div>
+        <div style={{ fontSize: '10px', color: '#64748B', marginTop: '4px', fontFamily: 'monospace' }}>
+          Orchestrator v2.4
         </div>
       </div>
     </aside>
