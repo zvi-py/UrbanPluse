@@ -56,7 +56,7 @@ const createTrafficIcon = (level, incident) => {
   })
 }
 
-export default function CityMap({ events = [], trafficData = null, theme = 'dark' }) {
+export default function CityMap({ events = [], trafficData = null, theme = 'dark', embedded = false }) {
   const [filterMode, setFilterMode] = useState('all') // 'all' | 'events' | 'traffic' | 'high'
 
   const validEvents = (Array.isArray(events) ? events : events?.events || [])
@@ -93,12 +93,13 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
       style={{
         maxWidth: '1360px',
         margin: '0 auto',
-        padding: '80px 28px',
-        borderTop: '1px solid var(--border-hairline)',
+        padding: embedded ? '8px 0 24px' : '36px 28px',
+        borderTop: embedded ? 'none' : '1px solid var(--border-hairline)',
         position: 'relative',
+        width: '100%',
       }}
     >
-      <div className="crosshair-corner" style={{ position: 'absolute', top: 0, left: '28px', right: '28px' }} />
+      {!embedded && <div className="crosshair-corner" style={{ position: 'absolute', top: 0, left: '28px', right: '28px' }} />}
 
       {/* Section Header */}
       <div
