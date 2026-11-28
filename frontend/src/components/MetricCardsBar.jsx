@@ -1,9 +1,7 @@
 import React from 'react'
 import { Users, Calendar, Activity, ShieldCheck, ArrowUpRight } from 'lucide-react'
 
-export default function MetricCardsBar({ overview, eventsData, trafficData, envData, studentData, theme = 'dark' }) {
-  const isLight = theme === 'light'
-
+export default function MetricCardsBar({ overview, eventsData, trafficData, envData, studentData, theme = 'light' }) {
   const studentCount = studentData?.total_students || studentData?.matches?.length || 118
   const eventsCount = eventsData?.total_events || (Array.isArray(eventsData?.events) ? eventsData.events.length : 26)
 
@@ -50,12 +48,17 @@ export default function MetricCardsBar({ overview, eventsData, trafficData, envD
         width: '100%',
       }}
     >
-      {/* Metric 1: Student Network - Botanical Sage */}
+      {/* Metric 1: Student Network - HEAVENLY (#95BAEB) */}
       <div style={{ ...baseCardStyle, border: '1px solid var(--agent-student-border)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-student)', textTransform: 'uppercase' }}>
-            STUDENT NETWORK
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-student)', textTransform: 'uppercase' }}>
+              STUDENT NETWORK
+            </span>
+            <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--agent-student)', padding: '1px 5px', borderRadius: '4px', backgroundColor: 'var(--agent-student-bg)' }}>
+              HEAVENLY
+            </span>
+          </div>
           <div
             style={{
               width: '28px',
@@ -81,12 +84,17 @@ export default function MetricCardsBar({ overview, eventsData, trafficData, envD
         <div style={subtextStyle}>KLE Tech · KLS GIT · VTU Guilds</div>
       </div>
 
-      {/* Metric 2: Verified Gatherings - Champagne Bronze */}
+      {/* Metric 2: Verified Gatherings - STRAWBERRY (#F9D1D9) */}
       <div style={{ ...baseCardStyle, border: '1px solid var(--agent-events-border)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-events)', textTransform: 'uppercase' }}>
-            VERIFIED GATHERINGS
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-events)', textTransform: 'uppercase' }}>
+              VERIFIED GATHERINGS
+            </span>
+            <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--agent-events)', padding: '1px 5px', borderRadius: '4px', backgroundColor: 'var(--agent-events-bg)' }}>
+              STRAWBERRY
+            </span>
+          </div>
           <div
             style={{
               width: '28px',
@@ -121,12 +129,17 @@ export default function MetricCardsBar({ overview, eventsData, trafficData, envD
         <div style={subtextStyle}>26 campus fests & symposiums</div>
       </div>
 
-      {/* Metric 3: Traffic Corridor Flow - Warm Terracotta */}
+      {/* Metric 3: Traffic Corridor Flow - WINE (#930400) */}
       <div style={{ ...baseCardStyle, border: '1px solid var(--agent-traffic-border)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-traffic)', textTransform: 'uppercase' }}>
-            CORRIDOR FLOW INDEX
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-traffic)', textTransform: 'uppercase' }}>
+              CORRIDOR FLOW INDEX
+            </span>
+            <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--agent-traffic)', padding: '1px 5px', borderRadius: '4px', backgroundColor: 'var(--agent-traffic-bg)' }}>
+              WINE
+            </span>
+          </div>
           <div
             style={{
               width: '28px',
@@ -165,12 +178,17 @@ export default function MetricCardsBar({ overview, eventsData, trafficData, envD
         <div style={subtextStyle}>12 corridors · Detours via NH48</div>
       </div>
 
-      {/* Metric 4: Municipal Wards - Deep Mineral Spruce */}
+      {/* Metric 4: Municipal Wards - MATCHA (#838F58) */}
       <div style={{ ...baseCardStyle, border: '1px solid var(--agent-env-border)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-env)', textTransform: 'uppercase' }}>
-            MUNICIPAL WARDS
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--agent-env)', textTransform: 'uppercase' }}>
+              MUNICIPAL WARDS
+            </span>
+            <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--agent-env)', padding: '1px 5px', borderRadius: '4px', backgroundColor: 'var(--agent-env-bg)' }}>
+              MATCHA
+            </span>
+          </div>
           <div
             style={{
               width: '28px',

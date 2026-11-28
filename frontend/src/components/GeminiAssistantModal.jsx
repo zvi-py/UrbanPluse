@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Sparkles, X, Send, Key, Check, AlertCircle, Bot, User, Compass, Activity, Navigation, Users } from 'lucide-react'
+import { X, Send, Key, Check, AlertCircle, Bot, User, Compass, Activity, Navigation, Users } from 'lucide-react'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
@@ -8,7 +8,7 @@ const QUICK_PROMPTS = [
   { label: '🏛️ Weekend Campus Gatherings', prompt: 'What are the top upcoming events and tech fests in Belagavi colleges this week?' },
   { label: '🎓 Collegiate Student Projects', prompt: 'Which student groups at KLE Tech and KLS GIT are active in robotics and AI collaboration?' },
   { label: '🌿 Quiet Study Zones in Belagavi', prompt: 'Which BCC wards have the lowest noise levels and best air quality for focused study?' },
-  { label: '✦ Full City Executive Briefing', prompt: 'Provide a complete cross-agent executive briefing for Belagavi today across transit, fests, and environment.' },
+  { label: 'Executive Urban Briefing', prompt: 'Provide a complete cross-agent executive briefing for Belagavi today across transit, fests, and environment.' },
 ]
 
 export default function GeminiAssistantModal({ isOpen, onClose }) {
@@ -155,7 +155,7 @@ export default function GeminiAssistantModal({ isOpen, onClose }) {
                 justifyContent: 'center',
               }}
             >
-              <Sparkles size={18} />
+              <Bot size={18} />
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -345,7 +345,7 @@ export default function GeminiAssistantModal({ isOpen, onClose }) {
 
           {loading && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '12.5px', padding: '8px' }}>
-              <Sparkles size={14} className="spin-slow" color="var(--agent-gemini)" />
+              <Bot size={14} className="spin-slow" color="var(--agent-gemini)" />
               <span>Gemini is synthesizing cross-agent telemetry...</span>
             </div>
           )}

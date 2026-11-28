@@ -92,6 +92,7 @@ def get_student_matches() -> Dict[str, Any]:
             "Angadi Institute of Technology (AITM)",
             "Belagavi Institute of Medical Sciences (BIMS)",
         ],
-        "matches": matches,
+        "matches": matches[:3],
+        "all_matches": matches,
         "recommended_groups": recommended_groups,
     }

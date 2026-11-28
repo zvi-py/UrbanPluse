@@ -270,21 +270,38 @@ export default function App() {
           )}
 
           {activeTab === 'map' && (
-            <div style={{ flex: 1, padding: '24px 28px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ flex: 1, padding: '24px 32px', display: 'flex', flexDirection: 'column', gap: '16px', overflowY: 'auto' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0 }}>Explore City · Belagavi Cartographic Atlas</h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '16px', height: '2px', backgroundColor: 'var(--accent)' }} />
+                  <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent)' }}>
+                    Geospatial Telemetry Mesh
+                  </span>
+                </div>
                 <button
                   onClick={() => setActiveTab('overview')}
-                  style={{ background: 'transparent', border: theme === 'light' ? '1px solid #CBD5E1' : '1px solid #334155', color: theme === 'light' ? '#0F172A' : '#F8FAFC', padding: '6px 14px', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: 600 }}
+                  style={{
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-hairline)',
+                    color: 'var(--text-primary)',
+                    padding: '6px 16px',
+                    borderRadius: 'var(--radius-pill)',
+                    cursor: 'pointer',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    transition: 'all 0.15s ease',
+                  }}
                 >
                   &larr; Back to Dashboard
                 </button>
               </div>
-              <div style={{ flex: 1, borderRadius: '14px', overflow: 'hidden' }}>
+              <div style={{ flex: 1, minHeight: '620px', borderRadius: 'var(--radius-xl)', overflow: 'hidden', border: '1px solid var(--border-hairline)', backgroundColor: 'var(--bg-surface)', padding: '20px 24px' }}>
                 <CityMap
                   events={resolvedEvents}
                   trafficData={resolvedTrafficData}
                   theme={theme}
+                  onOpenGeminiModal={() => setIsGeminiModalOpen(true)}
+                  onOpenHostModal={() => setIsHostModalOpen(true)}
                 />
               </div>
             </div>

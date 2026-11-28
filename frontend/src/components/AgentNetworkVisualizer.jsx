@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigation, Calendar, Users, Activity, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
+import { Navigation, Calendar, Users, Activity, Bot, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
 
 export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {}, onOpenGeminiModal }) {
   const agents = [
@@ -7,6 +7,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
       id: 'traffic',
       number: '01',
       title: 'Traffic Intelligence Agent',
+      colorTag: 'WINE · #930400',
       category: 'Municipal Transit',
       icon: Navigation,
       accent: 'var(--agent-traffic)',
@@ -20,6 +21,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
       id: 'events',
       number: '02',
       title: 'Event Intelligence Agent',
+      colorTag: 'STRAWBERRY · #F9D1D9',
       category: 'Civic & Culture',
       icon: Calendar,
       accent: 'var(--agent-events)',
@@ -33,6 +35,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
       id: 'student',
       number: '03',
       title: 'Student Connectivity Agent',
+      colorTag: 'HEAVENLY · #95BAEB',
       category: 'Campus Guilds',
       icon: Users,
       accent: 'var(--agent-student)',
@@ -46,6 +49,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
       id: 'environment',
       number: '04',
       title: 'Environmental Vitals Agent',
+      colorTag: 'MATCHA · #838F58',
       category: '58 BCC Wards',
       icon: Activity,
       accent: 'var(--agent-env)',
@@ -80,7 +84,7 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
             marginBottom: '16px',
           }}
         >
-          <Sparkles size={13} color="var(--accent)" />
+          <Bot size={13} color="var(--accent)" />
           <span
             style={{
               fontSize: '11px',
@@ -209,11 +213,11 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
-            boxShadow: '0 4px 12px rgba(184, 144, 71, 0.25)',
+            boxShadow: '0 4px 12px rgba(147, 4, 0, 0.22)',
             transition: 'all 0.15s ease',
           }}
         >
-          <Sparkles size={14} />
+          <Bot size={14} />
           <span>Ask Gemini AI</span>
         </button>
       </div>
@@ -270,19 +274,36 @@ export default function AgentNetworkVisualizer({ onSelectAgent, agentSources = {
                     </span>
                   </div>
 
-                  <span
-                    style={{
-                      fontSize: '10.5px',
-                      padding: '3px 9px',
-                      borderRadius: 'var(--radius-pill)',
-                      backgroundColor: agent.accentBg,
-                      color: agent.accent,
-                      border: `1px solid ${agent.accentBorder}`,
-                      fontWeight: 700,
-                    }}
-                  >
-                    {agent.category}
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span
+                      style={{
+                        fontSize: '9.5px',
+                        padding: '2px 7px',
+                        borderRadius: 'var(--radius-pill)',
+                        backgroundColor: agent.accentBg,
+                        color: agent.accent,
+                        border: `1px solid ${agent.accentBorder}`,
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                        fontFamily: 'monospace',
+                      }}
+                    >
+                      {agent.colorTag}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '10.5px',
+                        padding: '3px 9px',
+                        borderRadius: 'var(--radius-pill)',
+                        backgroundColor: agent.accentBg,
+                        color: agent.accent,
+                        border: `1px solid ${agent.accentBorder}`,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {agent.category}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Agent Title */}

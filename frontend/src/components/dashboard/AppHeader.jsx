@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, MapPin, RefreshCw, Sun, Moon, Sparkles } from 'lucide-react'
+import { Search, MapPin, RefreshCw, Sun, Moon, Bot } from 'lucide-react'
 
 export default function AppHeader({
   searchQuery,
@@ -123,7 +123,7 @@ export default function AppHeader({
             transition: 'all 0.15s ease',
           }}
         >
-          <Sparkles size={13} />
+          <Bot size={13} />
           <span>Gemini AI</span>
         </button>
 

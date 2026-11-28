@@ -42,10 +42,10 @@ function MapResizer() {
   return null
 }
 
-// Executive Event Pin Icon (Champagne Bronze / Gilded Amber for high attendance)
+// Executive Event Pin Icon (STRAWBERRY #F9D1D9 / WINE #930400 for high attendance)
 const createEventIcon = (isHigh, isLight) => {
-  const mainColor = isHigh ? '#B89047' : '#9C6C42'
-  const ringColor = isHigh ? 'rgba(184, 144, 71, 0.25)' : 'rgba(156, 108, 66, 0.22)'
+  const mainColor = isHigh ? '#930400' : '#9A243F'
+  const ringColor = isHigh ? 'rgba(147, 4, 0, 0.25)' : '#F9D1D9'
 
   return L.divIcon({
     className: 'urban-event-marker',
@@ -81,16 +81,16 @@ const createEventIcon = (isHigh, isLight) => {
   })
 }
 
-// Executive Traffic Radar Icon (Warm Terracotta / Sienna / Botanical Sage)
+// Executive Traffic Radar Icon (WINE #930400 / MATCHA #838F58)
 const createTrafficIcon = (level, incident) => {
   const isCritical = level === 'high' || incident === 'accident'
   const isWarning = level === 'moderate' || incident === 'roadwork'
-  const color = isCritical ? '#B25938' : isWarning ? '#C87D55' : '#526A50'
+  const color = isCritical ? '#930400' : isWarning ? '#930400' : '#838F58'
   const ringBg = isCritical
-    ? 'rgba(178, 89, 56, 0.22)'
+    ? 'rgba(147, 4, 0, 0.22)'
     : isWarning
-    ? 'rgba(200, 125, 85, 0.2)'
-    : 'rgba(82, 106, 80, 0.2)'
+    ? 'rgba(147, 4, 0, 0.15)'
+    : 'rgba(131, 143, 88, 0.2)'
 
   return L.divIcon({
     className: 'urban-traffic-marker',
@@ -127,7 +127,14 @@ const createTrafficIcon = (level, incident) => {
   })
 }
 
-export default function CityMap({ events = [], trafficData = null, theme = 'dark', embedded = false }) {
+export default function CityMap({
+  events = [],
+  trafficData = null,
+  theme = 'dark',
+  embedded = false,
+  onOpenGeminiModal = null,
+  onOpenHostModal = null,
+}) {
   const [filterMode, setFilterMode] = useState('all') // 'all' | 'events' | 'traffic' | 'high'
 
   const validEvents = (Array.isArray(events) ? events : events?.events || [])
@@ -188,7 +195,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-end',
+          alignItems: 'flex-start',
           marginBottom: '20px',
           flexWrap: 'wrap',
           gap: '16px',
@@ -209,95 +216,149 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           </div>
 
           <h2 style={{
-            fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+            fontSize: 'clamp(1.8rem, 3.2vw, 2.7rem)',
             fontFamily: 'var(--font-display)',
             fontWeight: 700,
-            letterSpacing: '-0.02em',
-            margin: 0,
+            letterSpacing: '-0.025em',
+            margin: '0 0 4px 0',
             color: 'var(--text-primary)',
+            lineHeight: 1.15,
           }}>
-            Spatial Distribution of Urban Events & Traffic
+            Spatial Distribution of <span style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--accent)' }}>Urban Events & Traffic</span>
           </h2>
+          <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: 0 }}>
+            Live geospatial mesh correlating arterial delays, campus fests, student guild hubs, and municipal ward vitals.
+          </p>
         </div>
 
-        {/* Controls & Layer Filter */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{
-            fontSize: '11px',
-            fontWeight: 700,
-            color: 'var(--text-dim)',
-            letterSpacing: '0.06em',
-          }}>
-            LAYERS:
-          </span>
+        {/* Action Controls & Layer Filter */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '10px' }}>
+          {(onOpenGeminiModal || onOpenHostModal) && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              {onOpenGeminiModal && (
+                <button
+                  onClick={onOpenGeminiModal}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '7px',
+                    padding: '8px 16px',
+                    borderRadius: 'var(--radius-pill)',
+                    backgroundColor: 'var(--agent-gemini-bg)',
+                    border: '1px solid var(--agent-gemini-border)',
+                    color: 'var(--agent-gemini)',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span>Gemini AI Briefing</span>
+                </button>
+              )}
+              {onOpenHostModal && (
+                <button
+                  onClick={onOpenHostModal}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 16px',
+                    borderRadius: 'var(--radius-pill)',
+                    backgroundColor: 'var(--accent)',
+                    border: 'none',
+                    color: '#FFFFFF',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 12px rgba(147, 4, 0, 0.22)',
+                    transition: 'opacity 0.15s ease',
+                  }}
+                >
+                  <span>+ Host Gathering</span>
+                </button>
+              )}
+            </div>
+          )}
 
-          <button
-            onClick={() => setFilterMode('all')}
-            style={{
-              fontSize: '12px',
-              padding: '6px 14px',
-              borderRadius: 'var(--radius-pill)',
-              border: `1px solid ${filterMode === 'all' ? 'var(--accent)' : 'var(--border-hairline)'}`,
-              background: filterMode === 'all' ? 'var(--accent)' : 'var(--bg-surface-raised)',
-              color: filterMode === 'all' ? '#FFFFFF' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              fontWeight: 600,
-              transition: 'all 0.15s ease',
-            }}
-          >
-            All Corridors ({validEvents.length + trafficLocations.length})
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+            <span style={{
+              fontSize: '10.5px',
+              fontWeight: 700,
+              color: 'var(--text-dim)',
+              letterSpacing: '0.06em',
+            }}>
+              LAYERS:
+            </span>
 
-          <button
-            onClick={() => setFilterMode('events')}
-            style={{
-              fontSize: '12px',
-              padding: '6px 14px',
-              borderRadius: 'var(--radius-pill)',
-              border: `1px solid ${filterMode === 'events' ? 'var(--agent-events)' : 'var(--border-hairline)'}`,
-              background: filterMode === 'events' ? 'var(--agent-events)' : 'var(--bg-surface-raised)',
-              color: filterMode === 'events' ? '#FFFFFF' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              fontWeight: 600,
-              transition: 'all 0.15s ease',
-            }}
-          >
-            Campus Gatherings ({validEvents.length})
-          </button>
+            <button
+              onClick={() => setFilterMode('all')}
+              style={{
+                fontSize: '11.5px',
+                padding: '5px 12px',
+                borderRadius: 'var(--radius-pill)',
+                border: `1px solid ${filterMode === 'all' ? 'var(--accent)' : 'var(--border-hairline)'}`,
+                background: filterMode === 'all' ? 'var(--accent)' : 'var(--bg-surface)',
+                color: filterMode === 'all' ? '#FFFFFF' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontWeight: 600,
+                transition: 'all 0.15s ease',
+              }}
+            >
+              All Corridors ({validEvents.length + trafficLocations.length})
+            </button>
 
-          <button
-            onClick={() => setFilterMode('traffic')}
-            style={{
-              fontSize: '12px',
-              padding: '6px 14px',
-              borderRadius: 'var(--radius-pill)',
-              border: `1px solid ${filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--border-hairline)'}`,
-              background: filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--bg-surface-raised)',
-              color: filterMode === 'traffic' ? '#FFFFFF' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              fontWeight: 600,
-              transition: 'all 0.15s ease',
-            }}
-          >
-            Traffic Corridors ({trafficLocations.length})
-          </button>
+            <button
+              onClick={() => setFilterMode('events')}
+              style={{
+                fontSize: '11.5px',
+                padding: '5px 12px',
+                borderRadius: 'var(--radius-pill)',
+                border: `1px solid ${filterMode === 'events' ? 'var(--agent-events)' : 'var(--border-hairline)'}`,
+                background: filterMode === 'events' ? 'var(--agent-events-strawberry)' : 'var(--bg-surface)',
+                color: filterMode === 'events' ? 'var(--agent-events)' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontWeight: 600,
+                transition: 'all 0.15s ease',
+              }}
+            >
+              Campus Gatherings ({validEvents.length})
+            </button>
 
-          <button
-            onClick={() => setFilterMode('high')}
-            style={{
-              fontSize: '12px',
-              padding: '6px 14px',
-              borderRadius: 'var(--radius-pill)',
-              border: `1px solid ${filterMode === 'high' ? 'var(--agent-gemini)' : 'var(--border-hairline)'}`,
-              background: filterMode === 'high' ? 'var(--agent-gemini)' : 'var(--bg-surface-raised)',
-              color: filterMode === 'high' ? '#FFFFFF' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              fontWeight: 600,
-              transition: 'all 0.15s ease',
-            }}
-          >
-            High Attendance
-          </button>
+            <button
+              onClick={() => setFilterMode('traffic')}
+              style={{
+                fontSize: '11.5px',
+                padding: '5px 12px',
+                borderRadius: 'var(--radius-pill)',
+                border: `1px solid ${filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--border-hairline)'}`,
+                background: filterMode === 'traffic' ? 'var(--agent-traffic-bg)' : 'var(--bg-surface)',
+                color: filterMode === 'traffic' ? 'var(--agent-traffic)' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontWeight: 600,
+                transition: 'all 0.15s ease',
+              }}
+            >
+              Traffic Corridors ({trafficLocations.length})
+            </button>
+
+            <button
+              onClick={() => setFilterMode('high')}
+              style={{
+                fontSize: '11.5px',
+                padding: '5px 12px',
+                borderRadius: 'var(--radius-pill)',
+                border: `1px solid ${filterMode === 'high' ? 'var(--agent-traffic)' : 'var(--border-hairline)'}`,
+                background: filterMode === 'high' ? '#FFF7E6' : 'var(--bg-surface)',
+                color: filterMode === 'high' ? 'var(--agent-traffic)' : 'var(--text-secondary)',
+                cursor: 'pointer',
+                fontWeight: 600,
+                transition: 'all 0.15s ease',
+              }}
+            >
+              High Attendance
+            </button>
+          </div>
         </div>
       </div>
 
@@ -348,7 +409,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                           fontSize: '9.5px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.06em',
-                          color: isAccident ? '#DC2626' : isRoadwork ? '#D97706' : '#16A34A',
+                          color: isAccident ? 'var(--agent-traffic)' : isRoadwork ? 'var(--agent-events)' : 'var(--agent-env)',
                           fontWeight: 700,
                         }}
                       >
@@ -357,10 +418,10 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                       {loc.incident !== 'none' && (
                         <span style={{
                           fontSize: '9px',
-                          color: '#DC2626',
+                          color: 'var(--agent-traffic)',
                           fontWeight: 700,
                           textTransform: 'uppercase',
-                          background: 'rgba(220, 38, 38, 0.1)',
+                          background: 'var(--agent-traffic-bg)',
                           padding: '2px 5px',
                           borderRadius: '4px',
                         }}>
@@ -369,7 +430,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                       )}
                     </div>
 
-                    <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 6px 0', color: isLight ? '#0F172A' : '#F8FAFC' }}>
+                    <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 6px 0', color: isLight ? 'var(--text-primary)' : '#F8FAFC' }}>
                       {loc.location}
                     </h4>
 
@@ -379,11 +440,11 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                       gap: '8px',
                       marginBottom: '8px',
                       fontSize: '12px',
-                      color: isLight ? '#334155' : '#94A3B8',
+                      color: isLight ? 'var(--text-secondary)' : '#94A3B8',
                     }}>
                       <span>Congestion Delay:</span>
                       <strong style={{
-                        color: pct >= 70 ? '#DC2626' : pct >= 50 ? '#D97706' : '#16A34A',
+                        color: pct >= 70 ? 'var(--agent-traffic)' : pct >= 50 ? 'var(--agent-events)' : 'var(--agent-env)',
                         fontWeight: 700,
                       }}>
                         {pct}%
@@ -393,8 +454,9 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                     {isAccident && (
                       <div style={{
                         fontSize: '11px',
-                        color: '#991B1B',
-                        backgroundColor: '#FEE2E2',
+                        color: 'var(--agent-traffic)',
+                        backgroundColor: 'var(--agent-traffic-bg)',
+                        border: '1px solid var(--agent-traffic-border)',
                         padding: '6px 8px',
                         borderRadius: '6px',
                         lineHeight: 1.35,
@@ -405,8 +467,9 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                     {isRoadwork && (
                       <div style={{
                         fontSize: '11px',
-                        color: '#92400E',
-                        backgroundColor: '#FEF3C7',
+                        color: 'var(--agent-events)',
+                        backgroundColor: 'var(--agent-events-bg)',
+                        border: '1px solid var(--agent-events-border)',
                         padding: '6px 8px',
                         borderRadius: '6px',
                         lineHeight: 1.35,
@@ -417,8 +480,9 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                     {!isAccident && !isRoadwork && (
                       <div style={{
                         fontSize: '11px',
-                        color: '#166534',
-                        backgroundColor: '#DCFCE7',
+                        color: 'var(--agent-env)',
+                        backgroundColor: 'var(--agent-env-bg)',
+                        border: '1px solid var(--agent-env-border)',
                         padding: '4px 6px',
                         borderRadius: '4px',
                       }}>
@@ -450,7 +514,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                           fontSize: '9.5px',
                           textTransform: 'uppercase',
                           letterSpacing: '0.06em',
-                          color: isHigh ? '#D97706' : '#4F46E5',
+                          color: isHigh ? 'var(--agent-traffic)' : 'var(--agent-events)',
                           fontWeight: 700,
                         }}
                       >
@@ -459,8 +523,9 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                       {isHigh && (
                         <span style={{
                           fontSize: '9px',
-                          color: '#92400E',
-                          background: '#FEF3C7',
+                          color: 'var(--agent-traffic)',
+                          background: '#FFF7E6',
+                          border: '1px solid var(--agent-traffic-border)',
                           padding: '2px 5px',
                           borderRadius: '4px',
                           fontWeight: 700,
@@ -474,7 +539,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
                       style={{
                         fontSize: '15px',
                         fontWeight: 700,
-                        color: isLight ? '#0F172A' : '#F8FAFC',
+                        color: isLight ? 'var(--text-primary)' : '#F8FAFC',
                         marginBottom: '4px',
                         lineHeight: 1.3,
                       }}
@@ -520,7 +585,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           })}
         </MapContainer>
 
-        {/* Executive Map Legend Floating Bar with Harmonized Sage Theme Colors */}
+        {/* Executive Map Legend Floating Bar with Exact Palette */}
         <div
           style={{
             position: 'absolute',
@@ -531,7 +596,7 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
             backdropFilter: 'blur(12px)',
             border: '1px solid var(--border-hairline)',
             borderRadius: 'var(--radius-pill)',
-            padding: '7px 16px',
+            padding: '7px 18px',
             display: 'flex',
             alignItems: 'center',
             gap: '14px',
@@ -541,20 +606,20 @@ export default function CityMap({ events = [], trafficData = null, theme = 'dark
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#9C6C42' }} />
-            <span>Campus Event</span>
+            <span style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#F9D1D9', border: '1px solid #9A243F' }} />
+            <span>Campus Event (STRAWBERRY)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B89047' }} />
-            <span>High Attendance</span>
+            <span style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#930400' }} />
+            <span>High Attendance / Delay (WINE)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#B25938' }} />
-            <span>Traffic Delay / Incident</span>
+            <span style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#838F58' }} />
+            <span>Nominal Flow (MATCHA)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#526A50' }} />
-            <span>Flowing Corridor</span>
+            <span style={{ width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#95BAEB' }} />
+            <span>Student Clusters (HEAVENLY)</span>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import {
   Cpu,
   Activity,
   ShieldCheck,
-  Sparkles,
+  Bot,
 } from 'lucide-react'
 
 export default function AppSidebar({
@@ -16,7 +16,7 @@ export default function AppSidebar({
   onSelectTab,
   onOpenHostModal,
   onOpenGeminiModal,
-  theme = 'dark',
+  theme = 'light',
 }) {
   const isLight = theme === 'light'
 
@@ -123,7 +123,7 @@ export default function AppSidebar({
               transition: 'all 0.15s ease',
             }}
           >
-            <Sparkles size={14} />
+            <Bot size={14} />
             <span>Ask Gemini AI</span>
           </button>
         </div>
@@ -181,7 +181,7 @@ export default function AppSidebar({
               fontWeight: 700,
               cursor: 'pointer',
               transition: 'all 0.15s ease',
-              boxShadow: '0 4px 10px rgba(82, 106, 80, 0.25)',
+              boxShadow: '0 4px 10px rgba(147, 4, 0, 0.22)',
             }}
           >
             <CalendarPlus size={14} />

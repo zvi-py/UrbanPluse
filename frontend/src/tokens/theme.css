@@ -5,148 +5,160 @@
 
 :root,
 [data-theme="dark"] {
-  /* Color Palette - Roasted Espresso Editorial (Dark) */
-  --bg-base: #131210;
-  --bg-surface: #1B1917;
-  --bg-surface-raised: #24211D;
-  --bg-glass: rgba(255, 248, 240, 0.04);
-  --bg-glass-hover: rgba(255, 248, 240, 0.08);
-  --bg-glass-active: rgba(255, 248, 240, 0.12);
+  /* Color Palette - Midnight Wine Editorial (Dark) */
+  --bg-base: #141111;
+  --bg-surface: #1C1717;
+  --bg-surface-raised: #251F1F;
+  --bg-glass: rgba(255, 247, 230, 0.04);
+  --bg-glass-hover: rgba(255, 247, 230, 0.08);
+  --bg-glass-active: rgba(255, 247, 230, 0.12);
 
   /* Hairline Borders */
-  --border-hairline: #2D2822;
-  --border-glass: rgba(255, 248, 240, 0.09);
-  --border-glass-bright: rgba(255, 248, 240, 0.18);
-  --border-accent: rgba(142, 170, 138, 0.35);
+  --border-hairline: #2E2525;
+  --border-glass: rgba(255, 247, 230, 0.09);
+  --border-glass-bright: rgba(255, 247, 230, 0.18);
+  --border-accent: rgba(147, 4, 0, 0.35);
 
   /* Typography Colors */
-  --text-primary: #F7F4EE;
-  --text-secondary: #B0A99D;
-  --text-dim: #787165;
+  --text-primary: #FFF7E6; /* MILK */
+  --text-secondary: #C4B9B4;
+  --text-dim: #857874;
 
-  /* Accent - Sage Olive Glow */
-  --accent: #8EAA8A;
-  --accent-hover: #A4C2A0;
-  --accent-light: #202A1E;
-  --accent-dim: rgba(142, 170, 138, 0.16);
-  --accent-glow: rgba(142, 170, 138, 0.25);
+  /* Accent - WINE */
+  --accent: #E0534F;
+  --accent-hover: #F26E6A;
+  --accent-light: #2A1717;
+  --accent-dim: rgba(224, 83, 79, 0.16);
+  --accent-glow: rgba(224, 83, 79, 0.25);
 
-  /* Four Agent Color Signatures (Dark Mode Harmonized) */
-  --agent-traffic: #D97E5B;
-  --agent-traffic-bg: rgba(178, 89, 56, 0.16);
-  --agent-traffic-border: rgba(178, 89, 56, 0.35);
+  /* Four Agent Color Signatures - EXACT PALETTE */
+  /* 1. Traffic: WINE */
+  --agent-traffic: #E0534F;
+  --agent-traffic-bg: rgba(147, 4, 0, 0.22);
+  --agent-traffic-border: rgba(224, 83, 79, 0.4);
 
-  --agent-events: #D4A173;
-  --agent-events-bg: rgba(156, 108, 66, 0.16);
-  --agent-events-border: rgba(156, 108, 66, 0.35);
+  /* 2. Events: STRAWBERRY */
+  --agent-events: #F9D1D9;
+  --agent-events-bg: rgba(249, 209, 217, 0.15);
+  --agent-events-border: rgba(249, 209, 217, 0.4);
 
-  --agent-student: #8EAA8A;
-  --agent-student-bg: rgba(82, 106, 80, 0.18);
-  --agent-student-border: rgba(82, 106, 80, 0.35);
+  /* 3. Student: HEAVENLY */
+  --agent-student: #95BAEB;
+  --agent-student-bg: rgba(149, 186, 235, 0.15);
+  --agent-student-border: rgba(149, 186, 235, 0.4);
 
-  --agent-env: #66B2A9;
-  --agent-env-bg: rgba(53, 104, 99, 0.18);
-  --agent-env-border: rgba(53, 104, 99, 0.35);
+  /* 4. Environment: MATCHA */
+  --agent-env: #9EB06D;
+  --agent-env-bg: rgba(131, 143, 88, 0.2);
+  --agent-env-border: rgba(131, 143, 88, 0.45);
 
-  --agent-gemini: #E0BA70;
-  --agent-gemini-bg: rgba(184, 144, 71, 0.18);
-  --agent-gemini-border: rgba(184, 144, 71, 0.35);
+  /* Central Gemini Synthesis */
+  --agent-gemini: #E0534F;
+  --agent-gemini-bg: rgba(147, 4, 0, 0.2);
+  --agent-gemini-border: rgba(224, 83, 79, 0.4);
 
   /* Status Colors */
-  --status-ok: #8EAA8A;
-  --status-ok-bg: rgba(142, 170, 138, 0.14);
-  --status-warning: #D4A173;
-  --status-warning-bg: rgba(212, 161, 115, 0.14);
-  --status-critical: #C9695F;
-  --status-critical-bg: rgba(201, 105, 95, 0.14);
-  --status-info: #66B2A9;
-  --status-info-bg: rgba(102, 178, 169, 0.14);
+  --status-ok: #9EB06D;
+  --status-ok-bg: rgba(131, 143, 88, 0.18);
+  --status-warning: #F9D1D9;
+  --status-warning-bg: rgba(249, 209, 217, 0.15);
+  --status-critical: #E0534F;
+  --status-critical-bg: rgba(147, 4, 0, 0.22);
+  --status-info: #95BAEB;
+  --status-info-bg: rgba(149, 186, 235, 0.15);
 
   /* Shadows & Highlights */
-  --shadow-glass: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 248, 240, 0.08);
+  --shadow-glass: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 247, 230, 0.08);
   --shadow-glow: 0 0 32px -4px var(--accent-glow);
 
   /* Thematic Accents */
   --grain-opacity: 0.035;
-  --glow-color: rgba(142, 170, 138, 0.12);
-  --chapter-stroke: rgba(255, 248, 240, 0.14);
-  --btn-primary-bg: #8EAA8A;
-  --btn-primary-text: #131210;
-  --btn-primary-hover: #A4C2A0;
-  --topbar-bg: rgba(19, 18, 16, 0.88);
-  --map-bg: #131210;
+  --glow-color: rgba(147, 4, 0, 0.14);
+  --chapter-stroke: rgba(255, 247, 230, 0.14);
+  --btn-primary-bg: #930400;
+  --btn-primary-text: #FFF7E6;
+  --btn-primary-hover: #AA0E0A;
+  --topbar-bg: rgba(20, 17, 17, 0.92);
+  --map-bg: #141111;
 }
 
 [data-theme="light"] {
-  /* Color Palette - Clean Crisp White with Botanical Sage Accents */
+  /* Color Palette - Crisp White with WINE, MILK, HEAVENLY, STRAWBERRY & MATCHA */
   --bg-base: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-surface-raised: #F8FAFC;
+  --bg-surface-raised: #FAF9F7;
   --bg-glass: rgba(255, 255, 255, 0.95);
-  --bg-glass-hover: #F1F5F9;
+  --bg-glass-hover: #F8F6F4;
   --bg-glass-active: #FFFFFF;
 
-  /* Crisp Hairlines */
-  --border-hairline: #E2E8F0;
-  --border-glass: #E2E8F0;
-  --border-glass-bright: #CBD5E1;
-  --border-accent: rgba(82, 106, 80, 0.35);
+  /* Luxury Crisp Hairlines */
+  --border-hairline: #EBE5E2;
+  --border-glass: #E5DFDC;
+  --border-glass-bright: #D6CECA;
+  --border-accent: rgba(147, 4, 0, 0.25);
 
-  /* Deep Ink & Slate Typography */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-dim: #94A3B8;
+  /* Typography Colors */
+  --text-primary: #181212;
+  --text-secondary: #5C5251;
+  --text-dim: #948886;
 
-  /* Accent - Signature Botanical Sage (From Image Reference) */
-  --accent: #526A50;
-  --accent-hover: #435841;
-  --accent-light: #EDF2EC;
-  --accent-dim: rgba(82, 106, 80, 0.12);
-  --accent-glow: rgba(82, 106, 80, 0.18);
+  /* Accent - WINE (#930400) */
+  --accent: #930400;
+  --accent-hover: #780300;
+  --accent-light: #FAECEB;
+  --accent-dim: rgba(147, 4, 0, 0.08);
+  --accent-glow: rgba(147, 4, 0, 0.18);
 
-  /* Four Agent Color Signatures (Sage Theme Harmonized) */
-  --agent-traffic: #B25938;
-  --agent-traffic-bg: #FAF0EB;
-  --agent-traffic-border: #ECCDC1;
+  /* Four Agent Color Signatures - EXACT USER PALETTE */
+  /* 1. Traffic: WINE (#930400) */
+  --agent-traffic: #930400;
+  --agent-traffic-bg: #FAECEB;
+  --agent-traffic-border: #E8B8B6;
 
-  --agent-events: #9C6C42;
-  --agent-events-bg: #FAF4EC;
-  --agent-events-border: #E5D3C2;
+  /* 2. Events: STRAWBERRY (#F9D1D9) */
+  --agent-events: #9A243F;
+  --agent-events-strawberry: #F9D1D9;
+  --agent-events-bg: #FDF2F4;
+  --agent-events-border: #F9D1D9;
 
-  --agent-student: #526A50;
-  --agent-student-bg: #EDF2EC;
-  --agent-student-border: #CBD8CA;
+  /* 3. Student: HEAVENLY (#95BAEB) */
+  --agent-student: #265B9A;
+  --agent-student-heavenly: #95BAEB;
+  --agent-student-bg: #F0F6FD;
+  --agent-student-border: #95BAEB;
 
-  --agent-env: #356863;
-  --agent-env-bg: #ECF4F3;
-  --agent-env-border: #C1DDD9;
+  /* 4. Environment: MATCHA (#838F58) */
+  --agent-env: #838F58;
+  --agent-env-bg: #F4F6EE;
+  --agent-env-border: #CBD2B2;
 
-  --agent-gemini: #B89047;
-  --agent-gemini-bg: #FBF7EE;
-  --agent-gemini-border: #E8DBBD;
+  /* Central Gemini Synthesis - WINE & MILK */
+  --agent-gemini: #930400;
+  --agent-gemini-bg: #FAECEB;
+  --agent-gemini-border: #E8B8B6;
 
   /* Status Colors */
-  --status-ok: #526A50;
-  --status-ok-bg: #EDF2EC;
-  --status-warning: #9C6C42;
-  --status-warning-bg: #FAF4EC;
-  --status-critical: #B25938;
-  --status-critical-bg: #FAF0EB;
-  --status-info: #356863;
-  --status-info-bg: #ECF4F3;
+  --status-ok: #838F58; /* MATCHA */
+  --status-ok-bg: #F4F6EE;
+  --status-warning: #9A243F; /* STRAWBERRY ACCENT */
+  --status-warning-bg: #FDF2F4;
+  --status-critical: #930400; /* WINE */
+  --status-critical-bg: #FAECEB;
+  --status-info: #265B9A; /* HEAVENLY ACCENT */
+  --status-info-bg: #F0F6FD;
 
   /* Shadows & Highlights */
-  --shadow-glass: 0 10px 30px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  --shadow-glass: 0 10px 30px -5px rgba(24, 18, 18, 0.04), inset 0 1px 0 0 rgba(255, 255, 255, 1);
   --shadow-glow: 0 0 24px -4px var(--accent-glow);
 
   /* Thematic Accents */
   --grain-opacity: 0.01;
-  --glow-color: rgba(82, 106, 80, 0.05);
-  --chapter-stroke: rgba(0, 0, 0, 0.08);
-  --btn-primary-bg: #526A50;
+  --glow-color: rgba(147, 4, 0, 0.06);
+  --chapter-stroke: rgba(147, 4, 0, 0.12);
+  --btn-primary-bg: #930400;
   --btn-primary-text: #FFFFFF;
-  --btn-primary-hover: #41553F;
-  --topbar-bg: rgba(255, 255, 255, 0.95);
+  --btn-primary-hover: #780300;
+  --topbar-bg: rgba(255, 255, 255, 0.96);
   --map-bg: #FFFFFF;
 }
 

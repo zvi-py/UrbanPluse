@@ -3,7 +3,7 @@ import MetricCardsBar from '../MetricCardsBar.jsx'
 import CityMap from '../CityMap.jsx'
 import AgentNetworkVisualizer from '../AgentNetworkVisualizer.jsx'
 import DiscoveryGrid from './DiscoveryGrid.jsx'
-import { Navigation, Radio, CalendarPlus, ChevronRight, Sparkles } from 'lucide-react'
+import { Navigation, Radio, CalendarPlus, ChevronRight, Cpu } from 'lucide-react'
 
 export default function DashboardMain({
   overview,
@@ -55,101 +55,37 @@ export default function DashboardMain({
     <div
       style={{
         flex: 1,
-        padding: '32px 40px',
+        padding: '28px 36px 48px',
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        gap: '32px',
-        maxWidth: '1360px',
+        gap: '28px',
+        maxWidth: '1380px',
         margin: '0 auto',
         width: '100%',
       }}
     >
-      {/* 1. Dashboard Header with Sage Editorial Typography */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <span style={{ width: '18px', height: '2px', backgroundColor: 'var(--accent)' }} />
-            <span
-              style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--accent)',
-              }}
-            >
-              Belagavi Smart Urban Life
-            </span>
-          </div>
-
-          <h1
-            style={{
-              fontSize: 'clamp(2.2rem, 3.5vw, 3rem)',
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              margin: '0 0 6px 0',
-              letterSpacing: '-0.025em',
-              lineHeight: 1.1,
-            }}
-          >
-            Belagavi Urban Pulse
-          </h1>
-          <p style={{ fontSize: '14px', color: 'var(--text-secondary)', margin: 0, maxWidth: '600px', lineHeight: 1.6 }}>
-            Autonomous multi-agent intelligence coordinating transit arteries, collegiate gatherings, and municipal environment.
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          {/* Ask Gemini AI Trigger Button */}
-          <button
-            onClick={onOpenGeminiModal}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '9px 18px',
-              borderRadius: 'var(--radius-pill)',
-              backgroundColor: 'var(--agent-gemini-bg)',
-              border: '1px solid var(--agent-gemini-border)',
-              color: 'var(--agent-gemini)',
-              fontSize: '12.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            <Sparkles size={14} />
-            <span>Ask Gemini AI</span>
-          </button>
-
-          {/* Host Gathering Action */}
-          <button
-            onClick={onOpenHostModal}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '7px',
-              padding: '9px 18px',
-              borderRadius: 'var(--radius-pill)',
-              backgroundColor: 'var(--accent)',
-              border: 'none',
-              color: '#FFFFFF',
-              fontSize: '12.5px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(82, 106, 80, 0.25)',
-              transition: 'opacity 0.15s ease',
-            }}
-          >
-            <CalendarPlus size={14} />
-            <span>Host Gathering</span>
-          </button>
-        </div>
+      {/* 1. THE MAIN THING: Belagavi Cartographic Atlas Hero Centerpiece */}
+      <div
+        style={{
+          backgroundColor: 'var(--bg-surface)',
+          border: '1px solid var(--border-hairline)',
+          borderRadius: 'var(--radius-xl)',
+          padding: '24px 28px 20px',
+          boxShadow: 'var(--shadow-glass)',
+        }}
+      >
+        <CityMap
+          events={eventsData}
+          trafficData={trafficData}
+          theme={theme}
+          embedded={true}
+          onOpenGeminiModal={onOpenGeminiModal}
+          onOpenHostModal={onOpenHostModal}
+        />
       </div>
 
-      {/* 2. Top 4 Metric Cards with Sage Luxury Styling */}
+      {/* 2. Four Color-Coded Metric Cards (WINE · STRAWBERRY · HEAVENLY · MATCHA) */}
       <MetricCardsBar
         overview={overview}
         eventsData={eventsData}
@@ -159,27 +95,9 @@ export default function DashboardMain({
         theme={theme}
       />
 
-      {/* 3. The Main Centerpiece: Belagavi Cartographic Atlas */}
-      <div
-        style={{
-          backgroundColor: 'var(--bg-surface)',
-          border: '1px solid var(--border-hairline)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '24px 24px 16px',
-          boxShadow: 'var(--shadow-glass)',
-        }}
-      >
-        <CityMap
-          events={eventsData}
-          trafficData={trafficData}
-          theme={theme}
-          embedded={true}
-        />
-      </div>
-
-      {/* 4. Live 2-Column Operational Briefing */}
+      {/* 3. Live 2-Column Operational Briefing */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '20px' }}>
-        {/* Left: Arterial Corridor Flow - Terracotta theme */}
+        {/* Left: Arterial Corridor Flow - WINE (#930400) & MATCHA (#838F58) */}
         <div style={{ ...cardStyle, border: '1px solid var(--agent-traffic-border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -220,7 +138,7 @@ export default function DashboardMain({
             {corridorLocations.slice(0, 5).map((loc) => {
               const isHigh = loc.congestion_level === 'high'
               const isMod = loc.congestion_level === 'moderate'
-              const color = isHigh ? '#B25938' : isMod ? '#9C6C42' : '#526A50'
+              const color = isHigh ? 'var(--agent-traffic)' : isMod ? 'var(--agent-events)' : 'var(--agent-env)'
 
               return (
                 <div
@@ -240,7 +158,7 @@ export default function DashboardMain({
                       {loc.location}
                     </div>
                     {loc.incident && loc.incident !== 'none' && (
-                      <div style={{ fontSize: '11px', color: '#B25938', textTransform: 'capitalize', fontWeight: 600 }}>
+                      <div style={{ fontSize: '11px', color: 'var(--agent-traffic)', textTransform: 'capitalize', fontWeight: 600 }}>
                         Incident: {loc.incident}
                       </div>
                     )}
@@ -260,7 +178,7 @@ export default function DashboardMain({
           </div>
         </div>
 
-        {/* Right: Multi-Agent Synthesis Advisories */}
+        {/* Right: Multi-Agent Synthesis Advisories - STRAWBERRY (#F9D1D9 / #9A243F) & WINE (#930400) */}
         <div style={{ ...cardStyle, border: '1px solid var(--agent-events-border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -321,7 +239,7 @@ export default function DashboardMain({
         </div>
       </div>
 
-      {/* 5. Four Intelligent Agents Architecture */}
+      {/* 4. Four Intelligent Agents Architecture */}
       <div>
         <AgentNetworkVisualizer
           onSelectAgent={onSelectTab}
@@ -330,7 +248,7 @@ export default function DashboardMain({
         />
       </div>
 
-      {/* 6. Quick Operational Shortcuts */}
+      {/* 5. Quick Operational Shortcuts */}
       <div>
         <DiscoveryGrid
           onOpenHostModal={onOpenHostModal}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Sparkles, Calendar, Plus, ChevronRight, Navigation, Activity } from 'lucide-react'
+import { Bot, Calendar, Plus, ChevronRight, Navigation, Activity } from 'lucide-react'
 
 export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostModal, onOpenGeminiModal }) {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -28,7 +28,7 @@ export default function AiInsightsPanel({ alerts = [], events = [], onOpenHostMo
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Sparkles size={15} color="var(--agent-gemini)" />
+            <Bot size={15} color="var(--agent-gemini)" />
             <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--text-primary)', textTransform: 'uppercase' }}>
               Gemini Urban Synthesis
             </span>
